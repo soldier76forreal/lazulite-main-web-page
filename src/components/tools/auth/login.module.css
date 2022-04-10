@@ -1,0 +1,572 @@
+.backDrop{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 13;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: 0.5s ease-in-out all;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.644);
+}
+
+.modalDiv{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 13;
+    width: 100%;
+    height: 100%;
+}
+.fadeIn{
+
+    animation: openModal ease-in-out 0.5s forwards;
+}
+.fadeOut{
+    animation: closeModal ease-in-out 0.5s forwards;
+
+}
+@keyframes openModal {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+@keyframes closeModal {
+    0% {
+
+        opacity: 1;
+        transform: translateY(0%);
+
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+.modalBoarder{
+    width: 310px;
+    max-width: 100%;
+    transition: 0.5s ease-in-out all;
+    z-index: 16;
+    border-top: aliceblue;
+    height: 319px;
+    border-radius: 20px;
+    border-bottom: #1043A9 6px solid;
+    background-color: rgb(238, 238, 238);
+    max-height: 100%;
+
+}
+.modalBoarder h4{
+    font-size: 22px;
+    text-align: center;
+    margin-top: 17px;
+    font-family: Dana1;
+    margin-bottom: 15px;
+}
+.modalSymbol{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 55%;
+}
+.msg{
+    text-align: center;
+}
+.msg h3{
+ color: #354063;
+ font-family: Dana1;
+ font-size: 27px;
+}
+.btnsDiv{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    
+}
+.btnDiv{
+    margin-left: auto;
+    margin-right: 10px;
+}
+.btnDiv2{
+    margin-left: 10px;
+    margin-right: auto;
+}
+.scaleIn{ transform: scale(1.0);}
+.scaleOut{transform: scale(0.0);}
+
+.opratorDiv{
+    background-color: #d8d8d8;
+    border-radius: 8px;
+    width: 86%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 0px 10px 10px 10px !important;
+}
+.opratorDiv h3{
+    color: #354063;
+    font-size: 16px;
+    padding-top: 8px;
+
+}
+.numbersDiv{
+    font-size: 17px;
+    color: #d8d8d8;
+    border-radius: 8px;
+    background-color: #1043A9;
+    padding: 12px 0px 7px 0px;
+    
+}
+.num1{
+    margin-right: 10px;
+    font-size: 19px;
+}
+.num2{
+    margin-left: 10px;
+    font-size: 19px;
+
+}
+
+.callPhoneNumber{
+    border:#7fa5f1 3px solid ;
+    background-color: rgb(235, 235, 235);
+    padding: 6px 10px 6px 10px;
+    width: 97%;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.numbersDiv a{
+    color: rgb(241, 241, 241);
+    box-shadow: none;
+    transition: 0.2s all ease-in-out;
+    text-decoration: none ;
+    
+}
+.numbersDiv a:hover{
+    color: rgb(187, 187, 187);
+    box-shadow: none;
+    text-decoration: none ;
+    
+}
+
+
+
+
+
+
+.modalBackground{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 13;
+    bottom: 0;
+    overflow-y: hidden;
+    left: 0;
+    right: 0;
+    transition: 0.5s ease-in-out all;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.644);
+}
+.modalDiv{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 13;
+    width: 100%;
+    height: 100%;
+}
+.signUpForm{       
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center; 
+    height: 65vh;
+    background-color: #E6EDFD;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.sideImg{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: #1E1D1E;
+    background-repeat: none;
+    background-position: center;
+    background-size: cover  ;
+    height: 65vh;
+}
+.contentRow{
+    text-align: center;
+    z-index: 23;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    width: 100%;
+    justify-content: center;
+}
+.input{
+    width: 100%;
+    border-radius: 7px;
+    outline: none;
+    background-color: #FFFFFF;
+    color: #354063;
+    text-align: right;
+    padding-right: 15px;
+    border: solid #94b5f8 2px;
+    font-size: 14px;
+    padding: 13px 38px 13px 20px;
+}
+.input:focus{
+
+
+    -webkit-box-shadow: 0px 0px 0px 3px #95AEE8; 
+    box-shadow: 0px 0px 0px 3px #95AEE8; 
+    
+}
+.inputDiv{
+    position: relative;
+    margin-top: 10px;
+}
+.icon{
+    
+    color:  #1043A9;
+    margin-top: 11px;
+    margin-right: 8px;
+position: absolute;
+}
+
+.signUpBtn{
+    padding: 8px 0 8px 0;
+    background-color: #1043A9;
+    width: 100%;
+   
+    border-radius: 7px;
+    box-shadow: none;
+    border-width: 4px;
+    border-style: solid;
+    
+    font-family: Dana1;
+    outline: none;        
+    color: #E7E7E7;
+    border-color: #95AEE8;
+    font-size: 18px;
+    transition: ease-in-out all 0.3s;
+
+}
+.signUpBtn:hover{
+    padding: 8px 0 8px 0;
+    background-color: #4D76C8 ;
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: none;
+    border-width: 4px;
+    border-style: solid;
+    font-family: Dana1;
+    outline: none;        
+    border-color: #4D76C8;
+    font-size: 18px;
+
+}
+.signUpBtn:hover, .signUpBtn:focus {
+    outline: none;
+    border-style: solid;
+    }
+    .signUpBtn:focus{
+        border-color: #95AEE8;
+        background-color: #002163 ;
+    }
+    .signUpBtn:active{
+        border-color: #CCD9F7;
+        background-color: #CCD9F7 ;
+        color: #354063;
+    }
+
+    .logInDiv{
+        color: #354063;
+        margin-top: 8px;
+
+        display: inline-block;
+    }
+    .logInDiv h5{
+        font-size: 15px;
+        display: inline-block;
+    }
+    .logInBtn{
+        color: #285fce;
+    }
+    .signUpHeader{
+            color: #354063;
+            font-family: Dana1;
+            font-size: 50px;
+            margin-bottom: 70px;
+    }
+    .signUpDiv{
+        width: 100% !important;
+        padding: 0px 20px 0px 20px;
+    }
+
+    .closeBtn{
+        transition: ease-in-out 0.2s all;
+        color: #1043A9;
+        font-size: 30px !important;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        margin: 20px 20px 0px 0px;
+    }
+    .closeBtn:hover{
+        color: #5e8be4;
+    }
+    .closeBtnDiv{
+        top:16%;
+        right: 20%;
+        position: absolute;
+    }
+
+
+    .errorDiv{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        margin: 0;
+        transform: 0.5s all ease;
+    }
+    .errorDiv h4{
+        display: inline-block;
+        color: #ff1100;
+        width: 300px;
+        font-size: 17px;
+        margin: 0;
+        transform: 0.5s all ease;
+    }
+
+
+    .loaderDiv{
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    
+    }
+    .visibilityIconStyle{
+        color: #afafaf !important;
+        position: absolute;
+        left: 0px;
+        margin-left: 10px;
+        margin-top: 14px;
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
+    }
+    
+    .visibilityIconStyle:hover{
+        color:#292929 !important;
+    }
+    .activeVisibility{
+        color: #ff1100 !important;
+    }
+ @media only screen and (max-width: 992px) {
+    .contentRow{
+        text-align: center;
+        margin: 0px;
+        padding: 0px;
+    }
+    .closeBtnDiv{
+        top:15%;
+        right: 13%;
+        position: absolute;
+    }
+}
+
+@media only screen and (max-width: 768.98px) {
+
+    .signUpForm{
+        margin-left: auto;
+        margin-right: auto;
+        padding: 40px 0px 30px 0px;
+        border-radius: 55px;
+        height: 100%;
+    }
+    .sideImg{
+        display: none;
+    }
+    .closeBtnDiv{
+        top:16%;
+        right: 19.5%;
+        position: absolute;
+    }
+    .errorDiv h4{
+        display: inline-block;
+        color: #ff1100;
+        width: 300px;
+        font-size: 13px;
+        margin: 0;
+        transform: 0.5s all ease;
+    }
+    .errorDiv{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        margin: 0;
+        transform: 0.5s all ease;
+    }
+    .signUpBtn{
+        padding: 8px 0 8px 0;
+        background-color: #1043A9;
+        width: 100%;
+       
+        border-radius: 7px;
+        box-shadow: none;
+        border-width: 4px;
+        border-style: solid;
+        
+        font-family: Dana1;
+        outline: none;        
+        color: #E7E7E7;
+        border-color: #95AEE8;
+        margin-bottom: 12px;
+        font-size: 15px;
+        transition: ease-in-out all 0.3s;
+    
+    }
+    .signUpBtn:hover{
+        padding: 8px 0 8px 0;
+        background-color: #4D76C8 ;
+        width: 100%;
+        border-radius: 7px;
+        box-shadow: none;
+        border-width: 4px;
+        border-style: solid;
+        font-family: Dana1;
+        outline: none;        
+        border-color: #4D76C8;
+        font-size: 15px;
+    
+    }
+    .signUpHeader{
+        color: #354063;
+        font-family: Dana1;
+        font-size: 50px;
+        margin-bottom: 40px;
+    }
+ }
+
+ @media (max-width: 576px) {
+
+    .signUpForm{
+        margin-left: auto;
+        margin-right: auto;
+        padding: 40px 0px 30px 0px;
+        border-radius: 55px;
+        width: 100%;
+        height: 100%;
+    }
+    .closeBtnDiv{
+        top:16% !important;
+        right: 13.5% !important;
+        position: absolute;
+    }
+    .errorDiv h4{
+        display: inline-block;
+        color: #ff1100;
+        width: 300px;
+        font-size: 13px;
+        margin: 0;
+        transform: 0.5s all ease;
+    }
+    .contentRow{       
+        padding: 0px 30px 0px 30px;
+    }
+ }
+
+ @media (max-width: 356px) {
+    .signUpHeader{
+        color: #354063;
+        font-family: Dana1;
+        font-size: 30px;
+        margin-bottom: 30px;
+}
+    .signUpForm{
+        margin-left: auto;
+        margin-right: auto;
+        padding: 40px 0px 30px 0px;
+        border-radius: 55px;
+        width: 100%;
+        height: 100%;
+    }
+    .closeBtnDiv{
+        top:16% !important;
+        right: 13.5% !important;
+        position: absolute;
+    }
+
+
+    .errorDiv h4{
+        display: inline-block;
+        color: #ff1100;
+        width: 300px;
+        font-size: 12px;
+        margin: 0;
+        transform: 0.5s all ease;
+    }
+
+    .input{
+        width: 100%;
+        border-radius: 7px;
+        outline: none;
+        background-color: #FFFFFF;
+        color: #354063;
+        text-align: right;
+        padding-right: 15px;
+        
+        border: solid #94b5f8 2px;
+        font-size: 14px;
+        padding: 8px 38px 8px 20px;
+    
+        
+    }
+
+    .icon{
+    
+        color:  #1043A9;
+        margin-top: 7px;
+        margin-right: 8px;
+    position: absolute;
+    }
+    .visibilityIconStyle{
+        margin-top: 9px;
+    }
+
+    .contentRow{       
+        padding: 0px 10px 0px 10px;
+    }
+ }
+
+

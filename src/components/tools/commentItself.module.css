@@ -1,0 +1,207 @@
+.commentItselfDiv{
+    background-color: #EFEFEF;
+    border-radius: 8px;
+}
+.commentProfItselfImage{
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+.commentProfItselfImage img{
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    border-width: 10px;
+    border: solid;
+    object-fit: cover;
+    border-color:#1043A9;
+}
+.commentProfItselfName h4{
+    color: #354063;
+    font-size: 20px;
+    padding-right: 10px;
+}
+.commentProfItselfName {
+    display: inline-block;
+}
+.commentItselfProfDiv{
+    padding: 0px 35px 0px 0px;
+    display: inline-block;
+    width: 50%;
+}
+.commentItselfDateDiv h4{
+    display: inline-block;
+    margin-top: 35px;
+    font-size: 15px;
+    color: #354063;
+    padding-left: 35px;
+}
+.commentItselfDateDiv{
+    display: inline-block;
+    margin-left: 0px;
+    width: 50%;
+    text-align: left;
+}
+.commentTextItselfDiv{
+  
+    padding: 10px 65px 0px 65px;
+}
+.commentTextItselfDiv p{
+    color: #354063;
+    font-size: 15px;
+}
+.commentItselfFooterDiv{
+   margin-top: 10px;
+   text-align: center;
+   padding-bottom: 15px;
+}
+.commentLike h5{
+    display: inline-block;
+    color: #354063;
+    padding-left: 2px;
+    font-size: 20px;
+}
+.commentDislike h5{
+    display: inline-block;
+    color: #354063;
+    padding-left: 2px;
+    font-size: 20px;
+}
+
+.commentLike{
+    display: inline-block;
+}
+.commentDislike{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.commentLikeBtn{
+    transition:  0.3s ease-in-out;
+
+    cursor: pointer;
+}
+.commentDislikeBtn{
+    cursor: pointer;  
+    transition:  0.3s ease-in-out;
+
+}
+
+.commentLikeAndDislike{
+    display: inline-block;
+    float: right;
+    margin-right: 35px;
+
+}
+.commentLikeBtn:hover{
+    color: rgb(0, 235, 20);
+    cursor: pointer;
+}
+.commentDislikeBtn:hover{
+    color: rgb(235, 0, 78);
+    cursor: pointer;    
+}
+
+
+.commentReplyBtnDiv{
+    float: left;
+    margin-left: 35px;
+    display: inline-block;
+
+}
+.commentReplyBtn{
+    transition:  0.3s ease-in-out;
+    display: inline-block;
+    color: #1043A9;
+}
+
+.commentReplyBtn:active{
+
+    display: inline-block;    
+    pointer-events: none;
+
+    color: #354063;
+}
+.commentReplyBtn:hover{
+
+    display: inline-block;
+    color: #354063;
+}
+
+.commentShowReplyDiv{
+
+    cursor: pointer;
+    display: inline-block;
+}
+.commentShowReplyArrow{
+    display: inline-block;
+}
+.commentShowReplyDiv h5{
+    display: inline-block;
+    padding: 0 5px 0px 5px;
+    font-size: 15px;
+    color: #354063;
+}
+.commentShowReplyDiv h5 span{
+    display: inline-block;
+    font-size: 15px;
+    color: #1043A9;
+    margin-left: 3px;
+}
+.commentShowReplyArrow{
+    color: #1043A9;
+    display: inline-block;
+}
+.replyBtnButton{
+    background: none;
+    border: none;
+    padding: none;
+
+}
+
+@media only screen and (max-width: 1200.98px) {
+    
+}
+@media only screen and (max-width: 992.98px) {
+    .commentItselfDateDiv h4{
+
+        font-size: 12px;
+ 
+    }
+    .commentProfItselfName h4{
+        font-size: 16px !important;
+    }
+    .commentProfItselfImage{
+        margin: 0px !important;
+    }
+}
+@media only screen and (max-width: 768.98px) {
+ }
+
+ @media only screen and (max-width: 576.98px) {
+    .commentProfItselfImage{
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        font-size: 10px !important;
+    }
+    .commentProfItselfName h4{
+        color: #354063;
+        font-size: 14px !important;
+        padding-right: 10px;
+    }
+    .commentProfItselfName{
+        margin-top: -10px;
+
+
+    }
+    .commentItselfProfDiv{
+        top: 0px;
+    }
+    
+ }
+ @media only screen and (max-width: 356.98px) {
+
+  
+
+ }

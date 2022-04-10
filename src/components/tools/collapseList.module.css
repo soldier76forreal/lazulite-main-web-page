@@ -1,0 +1,72 @@
+.list ul{
+list-style: none;
+background-color: #e4e4e4;
+margin: 10px 0px 10px 0px;
+padding: 5px 15px 5px 15px;
+}
+.list button{
+    background: none;
+    border: none;
+    font-size: 17px;
+    padding: 0px 30px 0px 30px;
+    font-family: Dana1;
+    color: #354063;
+    transition: 0.3s ease-in-out all;
+
+    }
+    
+.list button:hover{
+    color: #737ea3;
+}
+.list ul li{
+    padding: 4px 14px 4px 14px;
+    transition: 0.3s ease-in-out all;
+    cursor: pointer;
+    color: #3a435e;
+    max-width: fit-content;
+}
+.list ul li:hover{
+    padding: 4px 14px 4px 14px;
+    color: rgb(137, 142, 163);
+    max-width: fit-content;
+}
+.showOnCategory h5{
+    font-size: 15px;
+    color: #888888;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.showOnCategory{
+    display: inline-block;
+}
+
+
+        .rotateIn{
+   
+            animation: arrowUp ease-in-out 0.2s forwards;
+        }
+        .rotateOut{
+               
+        
+            animation: arrowDown ease-in-out 0.2s forwards;
+        
+        }
+        
+        
+        @keyframes arrowUp {
+            0% {
+                transform:rotate(0deg);
+            } 
+            100% {
+                transform:rotate(180deg);
+            }
+        }
+        @keyframes arrowDown {
+            0% {
+                transform:rotate(180deg);
+            }
+        
+            100% {
+                transform:rotate(0deg);
+            }
+        }

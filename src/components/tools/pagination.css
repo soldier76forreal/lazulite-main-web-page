@@ -1,0 +1,63 @@
+.pg{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.pg_ul{
+    display: flex;
+padding-left: 0;
+list-style: none;
+margin-top: 0;
+justify-content: center;
+margin-bottom: 1rem;
+}
+.pg_backClick{
+    background-color: #354063;
+    padding: 2px 15px 2px 15px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    cursor: pointer;
+    transition:0.3s all ease ;
+}
+.pg_forwardClick{
+    background-color: #354063;
+    padding: 2px 15px 2px 15px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    cursor: pointer;
+
+    transition:0.3s all ease ;  
+}
+.pg_backClick:hover{
+    background-color: #4D76C8;
+    
+
+}
+.pg_forwardClick:hover{
+    background-color: #4D76C8;
+
+}
+.pg_item{
+    color: #354063;
+    background-color: #CCD9F7;
+    font-size: 14px;
+    transition:0.3s all ease ;  
+    cursor: pointer;
+
+    padding: 5px 10px 5px 10px;
+}
+.pg_item:hover{
+    color: rgb(219, 219, 219);
+    background-color: #1043A9;
+}
+.pg_iconRight{
+    margin-top: 5px;
+}
+.pg_iconRFirst{
+    margin-top: 5px;
+
+}
+.pg_active{
+    background-color: #354063;
+    color:rgb(219, 219, 219);
+
+}

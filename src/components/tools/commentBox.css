@@ -1,0 +1,197 @@
+.commentSection{
+    background-color: #EFEFEF;
+    border-radius: 8px;
+}
+.commentHeaderSection{
+    padding-top: 25px;
+    
+    }
+.commentCounter{
+    text-align: right;
+    float: right;
+    padding-right: 50px;
+    display: inline-block;
+}
+.charCounter{
+    float: left;
+    padding-left: 50px;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.commentCounter h3 {
+    color: #354063;
+    font-size: 20px;
+    padding-bottom: 10px;
+
+}
+.commentCounter h3 span {
+    color: #354063;
+}
+.charCounter h3{
+    color: #354063;
+    font-size: 20px;
+}
+.charCounter h3 span{
+    color: #1043A9;
+}
+
+.commentItself{
+    text-align: center;
+    margin-top: 15px;
+}
+
+.commentTextarea{
+    background-color: #E6EDFD;
+    border-color: #354063; 
+    -webkit-border-radius: 25px;
+    border-width: 3px;
+    -moz-border-radius: 25px;
+    color: #354063 !important;
+    padding: 10px !important;
+    border-radius: 8px;
+
+}
+.commentTextarea:active{
+    background-color: #E6EDFD;
+
+}
+.commentTextarea:focus{
+    background-color: #E6EDFD;
+
+}
+.textareaDiv{
+    padding: 0px 35px 0px 35px;
+}
+.commentFooter input{
+    border-color: #1043A9;
+    display: inline-block;
+    
+}
+.commentFooter{
+    margin-top: 15px;
+    text-align: center;
+    
+}
+.commentFooter h4{
+    color: #354063;
+    display: inline-block;
+    font-size: 15px;
+    padding-right: 10px;
+    
+}
+.commentSendBtn{
+    display: block;
+    margin-top: 8px;
+    padding-bottom: 10px;
+}
+.commentSection h4{
+    color: #354063;
+
+}
+.commentTitle{
+    text-align: justify;
+    font-size: 37px;
+    font-family: Dana1;
+    line-height: 37px;
+    margin-right: 30px;
+    padding-bottom: 8px;
+    color: #F38033;
+}
+    .commentSectionCol{
+
+    }
+
+
+    .commentBoxLogInBtn{
+        color: #000000;
+        background-color: #F38033;
+        border: none;
+        border-radius: 8px;
+        padding: 6px 10px 6px 10px;
+        margin-bottom: 4px;
+        transition: all ease-in-out 0.2s;
+    }
+    .commentBoxLogInBtn {
+        color: #000000;
+        background-color: #eb8643;
+        border: none;
+        border-radius: 8px;
+        padding: 6px 10px 6px 10px;
+
+    }
+    .commentBoxLogInBtn:hover {
+        background-color: #db712a;
+
+    }
+
+    .commentBoxLogInBtn span{
+        font-size: 18px;
+        font-family: Dana1;
+        color: aliceblue;
+        padding: 0px 3px 0px 3px;
+    }
+
+.commentRateText{
+    font-size:13px; 
+}
+
+    @media only screen and (max-width: 992px) {
+        .commentCounter h3 {
+            color: #354063;
+            font-size: 16px;
+            padding-bottom: 10px;
+        
+        }
+        .commentRateText{
+            font-size:12px; 
+        }
+        .commentHeaderSection{
+            padding-top:18px;
+        }
+        .commentTextarea{
+            font-size: 14px;
+        }
+        .commentSendBtn button{
+            font-size: 16px;
+        }
+    }
+    @media only screen and (max-width: 768.98px) {
+
+     }
+    @media (max-width: 576px) {
+        .commentRateText{
+            display: block !important;
+            margin: 0px !important;
+            margin-bottom: 5px !important;
+            font-size:11px; 
+
+        }
+        .charCounter svg{
+            font-size: 20px !important;
+        }
+        .charCounter{
+            display: block;
+            margin-bottom:6px;
+        }
+        .commentHeaderSection{
+            padding-top:16px ;
+        }
+        .textareaDiv{
+            padding: 0px 25px 0px 25px;
+        }
+        .charCounter{
+            padding-left: 35px;
+            
+        }
+        .commentCounter{
+            padding-right: 35px;
+        }
+        .commentSendBtn button{
+            font-size: 14px;
+        }
+     }
+
+     @media (max-width: 356px) {
+     }

@@ -1,0 +1,8 @@
+.MuiSlider-thumbColorPrimary {
+    background-color: #354063 !important;
+}
+.MuiSlider-valueLabel {
+    background-color: #1043A9 !important;
+    border-radius: 5px;
+    font-size: 10px !important;
+}

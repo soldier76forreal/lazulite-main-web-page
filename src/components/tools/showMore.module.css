@@ -1,0 +1,52 @@
+.showMoreStyle{
+    color: aliceblue;
+
+}
+.showLessOrMore{
+    color: #d1d1d1;
+    
+}
+.showLessOrMore:hover{
+    color: #90e5f0;
+}
+.showMoreStyle span{
+    color:#FFFFFF;
+    font-family: Dana2;
+    line-height: 28px;
+    font-size: 14px;
+    text-justify: auto;
+
+}
+
+
+@media only screen and (max-width: 768.98px) {
+
+
+
+ }
+
+ @media only screen and (max-width: 576px) {
+
+
+    .showMoreStyle span{
+        color:#FFFFFF;
+        font-family: Dana2;
+        line-height: 10px;
+        font-size: 10px;
+        text-justify: auto;
+        padding: 0px;
+    }
+    .showMoreStyle{
+        margin-top: 5px;
+        margin-bottom: 3px;
+
+    }
+
+
+
+    
+ }
+
+ @media only screen and (max-width: 356px) {
+
+ }

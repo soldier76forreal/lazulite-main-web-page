@@ -1,0 +1,142 @@
+.selectLangBtn{
+    background-color: #354063;
+    padding: 5px 5px 5px 5px;
+    border: none;
+    text-align: right;
+    border-radius: 8px;
+    width: 155px;
+}
+.selectLangBtn img{
+    width: 50px;
+    height: 30px;
+    border-radius: 6px;
+    background-size: cover;
+    border: 3px solid #E6EDFD;
+}
+.name{
+    color: #E6EDFD;
+    margin-right: 10px;
+    
+}
+
+
+.selectLangBtnInList{
+    background-color: #354063;
+    padding: 5px 5px 5px 5px;
+    border: none;
+    text-align: right;
+    border-radius: 8px;
+    width: 135px;
+    transition: 0.2s all ease-in-out;
+}
+.selectLangBtnInList:hover{
+    background-color: #697396;
+    border: none;
+    text-align: right;
+    border-radius: 8px;
+    width: 135px;
+}
+.selectLangBtnInList img{
+    width: 50px;
+    border-radius: 6px;
+    border: 3px solid #E6EDFD;
+}
+.nameOnList{
+    color: #E6EDFD;
+    margin-right: 5px;
+    font-size: 15px;
+}
+.list{
+    width: 155px;
+    padding: 10px;
+    position: absolute;
+    z-index: 10;
+    margin-top: 5px;
+    background-color: #354063;
+    border-radius: 8px;
+
+}
+.arrowIcon{
+    margin-left: 0px !important;
+    
+}
+.arrowIconDiv{
+    display: inline-block;
+    float: left;
+    margin-top: 3px;
+
+}
+
+.blank{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+
+@media only screen and (max-width: 992px) {
+    .selectLangBtn img{
+        width: 40px;
+        height: 22px;
+        border-radius: 2px;
+        background-size: cover;
+        border: 2px solid #E6EDFD;
+    }
+
+    .name{
+        color: #E6EDFD;
+        margin-right: 10px;
+        font-size: 15px;
+        outline: none;
+        outline: none;
+        
+    }
+
+    .selectLangBtn{
+        background-color: #354063;
+        padding: 5px 5px 5px 5px;
+        border: none;
+        text-align: right;
+        border-radius: 3px;
+        width: 135px;
+        height: 32px;
+    }
+    .arrowIconDiv{
+        display: inline-block;
+        float: left;
+        margin-top: -1px;
+
+
+    }
+    .selectLangBtnInList{
+        background-color: #354063;
+        padding: 5px 5px 5px 5px;
+        border: none;
+        text-align: right;
+        border-radius: 3px;
+        width: 115px;
+        transition: 0.2s all ease-in-out;
+    }
+    .selectLangBtnInList:hover{
+        width: 115px;
+        border-radius: 3px;
+
+    }
+    .list{
+        width: 135px;
+        padding: 10px 10px 10px 10px;
+        position: absolute;
+        z-index: 10;
+        margin-top: 5px;
+        background-color: #354063;
+        border-radius: 3px;
+    
+    }
+    .selectLangBtnInList img{
+        width: 40px;
+        height: 22px;
+        margin-top: 1px;
+        border-radius: 3px;
+        border: 2px solid #E6EDFD;
+    }
+}

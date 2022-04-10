@@ -1,0 +1,610 @@
+.footerDiv{
+    width: 100%;
+    height: 100%;
+    background-color: #354063;
+    margin-top: 30px;
+    padding: 70px 100px 70px 100px;
+}
+.addressDiv{
+  height: 100%;
+}
+.titleDiv{
+    display: flex;
+}
+.titleDiv h4{
+    color: #E6EDFD;
+    font-size: 23px;
+    margin-top: 5px;
+    margin-right: 2px;
+    font-family: Dana1;
+}
+.addressInnerDiv{
+    display: flex;
+    padding-top: 2px;
+    margin-top: 5px;
+    margin-right: 16px;
+    border-right: 4px solid #E6EDFD;
+}
+
+.addressInfoDiv h5{
+    margin-right: 16px;
+    color: #BBD0FE;
+    font-family: Dana1;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.addressInfoDiv p{
+    margin: 0px 2px 4px 0px;
+    color: #E6EDFD;
+    padding: 0px 19px 0px 19px;
+    font-family: Dana2;
+
+}
+
+.addressInfoDiv p span{
+    color: #95DEEB;
+
+}
+.hrLine{
+  border-bottom: solid 2px #696969;  
+  width: 93%;
+  margin: 0px auto 0px auto;
+}
+.contactInfo button{
+    border: none;
+    font-size: 15px;
+    background-color: #50576D;
+    padding: 0px;
+    border-radius: 5px;
+    color: #E6EDFD;
+    padding-right: 8px;
+    margin-left: 16px;
+    transition: ease-in-out all 0.2s;
+}
+.contactInfo button:hover{
+    background-color: #3a3f50;
+    color: #E6EDFD;
+
+}
+.contactInfo button:focus{
+    background-color: #E6EDFD;
+    color: #50576D;
+
+}
+.contactInfo button div{
+    border-radius: 5px;
+    padding: 2px;
+    margin: 0px 8px 0px 0px;
+    display: inline-block;
+    background-color: #E6EDFD;
+}
+.contactInfo{
+    display: block;
+    height: 100%;
+    padding: 6px 0px 6px 0px;
+}
+.contactUsDiv{
+    height: 100%;
+  }
+  .contactUsTitleDiv{
+      display: flex;
+  }
+  .contactUsTitleDiv h4{
+      color: #E6EDFD;
+      font-size: 23px;
+      margin-top: 5px;
+      margin-left: 2px;
+      font-family: Dana1;
+  }
+  .contactInnerDiv{
+      display: flex;
+      padding-top: 2px;
+      margin-top: 5px;
+      margin-left: 16px;
+      border-left: 4px solid #E6EDFD;
+  }
+  .contactInnerDiv h5{
+      margin-left: 16px;
+      color: #BBD0FE;
+      font-family: Dana1;
+      margin-bottom: 5px;
+  }
+  .contactInnerDiv p{
+      margin: 0px 0px 4px 2px;
+      color: #E6EDFD;
+      padding: 0px 19px 0px 19px;
+      font-family: Dana2;
+  
+  }
+  
+  .contactInnerDiv p span{
+      color: #95DEEB;
+  
+  }
+  .pouriyaMark{
+      background-color: #E6EDFD;
+      height: 100%;
+      padding: 0px;
+      text-align: center;
+      
+  }
+.pouriyaMark h5{
+    color: #354063;
+    font-family: "Roboto";
+    font-weight: 700;
+    margin: 0px;
+    font-size: 10px;
+    width: 100%;
+    padding: 8px 0px 8px 0px;
+}
+.pouriyaMark span{
+    color: #1043A9;
+    font-family: "Roboto";
+    font-weight: 700;
+    margin: 0px;
+    font-size: 14px;
+    padding: 8px 0px 8px 0px;
+    }
+
+.footerLogo img{
+    max-width: 300px;
+    
+    margin: 45px auto 0px auto;
+}
+.footerLogo{
+    text-align: left;
+    height: 100%;
+    
+    margin: 0px auto 0px auto;
+}
+
+.showOnMapBtn{
+    background: none;
+    border: none;
+    text-align: right;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin: 0px 0px 0px 30px;
+    float: left;
+    padding: 0px;
+}
+.showOnMapBtn:hover span{
+    opacity: 1;
+}
+.showOnMapBtn span{
+    color: #BBD0FE;
+    font-size: 13px;
+    padding: 0px;
+    margin: 1px 0px 0px 4px;
+    opacity: 0;
+    transition: 0.2s all ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @media only screen and (max-width: 1200.98px) {
+
+        
+        }
+        
+        
+        @media only screen and (max-width: 992.98px) {
+
+            .footerDiv{
+                width: 100%;
+                height: 100%;
+                background-color: #354063;
+                margin-top: 30px;
+                padding: 50px 30px 50px 30px;
+            }
+            .titleDiv h4{
+                color: #E6EDFD;
+                font-size: 18px;
+                margin-top: 5px;
+                margin-right: 2px;
+                font-family: Dana1;
+            }
+            .addressInnerDiv{
+                display: flex;
+                padding-top: 2px;
+                margin-top: 5px;
+                margin-right: 16px;
+                border-right: 4px solid #E6EDFD;
+            }
+            
+            .addressInfoDiv h5{
+                margin-right: 16px;
+                color: #BBD0FE;
+                font-family: Dana1;
+                margin-bottom: 5px;
+                font-size: 15px;
+            }
+            
+            .addressInfoDiv p{
+                margin: 0px 2px 4px 0px;
+                color: #E6EDFD;
+                padding: 0px 19px 0px 19px;
+                font-family: Dana2;
+                font-size: 14px;
+
+            }
+            .contactInfo button{
+                border: none;
+                font-size: 15px;
+                background-color: #50576D;
+                padding: 0px;
+                border-radius: 5px;
+                color: #E6EDFD;
+                padding-right: 8px;
+                margin-left: 16px;
+            
+            }
+            .contactInfo button div{
+                border-radius: 5px;
+                padding: 2px;
+                margin: 0px 8px 0px 0px;
+                display: inline-block;
+                background-color: #E6EDFD;
+            }
+            .contactInfo{
+                display: block;
+                height: 100%;
+                padding: 6px 0px 6px 0px;
+            }
+            .contactUsDiv{
+                height: 100%;
+            }
+            .contactUsTitleDiv{
+                display: flex;
+            }
+            .contactUsTitleDiv h4{
+                color: #E6EDFD;
+                font-size: 18px;
+                margin-top: 5px;
+                margin-left: 2px;
+                font-family: Dana1;
+            }
+            .contactInnerDiv{
+                display: flex;
+                padding-top: 2px;
+                margin-top: 5px;
+                margin-left: 16px;
+                border-left: 4px solid #E6EDFD;
+            }
+            .contactInnerDiv h5{
+                margin-left: 16px;
+                color: #BBD0FE;
+                font-family: Dana1;
+                margin-bottom: 5px;
+            }
+            .contactInnerDiv p{
+                margin: 0px 0px 4px 2px;
+                color: #E6EDFD;
+                padding: 0px 19px 0px 19px;
+                font-family: Dana2;
+            }
+              
+            .contactInnerDiv p span{
+                color: #95DEEB;
+              }
+            .pouriyaMark{
+                background-color: #E6EDFD;
+                height: 100%;
+                padding: 0px;
+                text-align: center;
+              }
+            .pouriyaMark h5{
+                color: #354063;
+                font-family: "Roboto";
+                font-weight: 700;
+                margin: 0px;
+                font-size: 10px;
+                padding: 8px 0px 8px 0px;
+            }
+            .pouriyaMark span{
+                color: #1043A9;
+                font-family: "Roboto";
+                font-weight: 700;
+                margin: 0px;
+                font-size: 14px;
+                padding: 8px 0px 8px 0px;
+            }
+            
+            .footerLogo img{
+                max-width: 250px;
+                margin: 45px auto 0px auto;
+            }
+            .footerLogo{
+                text-align: center;
+                height: 100%;
+                margin: 0px auto 0px auto;
+            }
+         
+        
+        
+        }
+        
+        @media only screen and (max-width: 768.98px) {
+
+            .footerDiv{
+                width: 100%;
+                height: 100%;
+                background-color: #354063;
+                margin-top: 30px;
+                padding: 50px 80px 50px 80px;
+            }
+            .titleDiv h4{
+                color: #E6EDFD;
+                font-size: 18px;
+                margin-top: 5px;
+                margin-right: 2px;
+                font-family: Dana1;
+            }
+            .addressInnerDiv{
+                display: flex;
+                padding-top: 2px;
+                margin-top: 5px;
+                margin-right: 16px;
+                border-right: 4px solid #E6EDFD;
+            }
+            
+            .addressInfoDiv h5{
+                margin-right: 16px;
+                color: #BBD0FE;
+                font-family: Dana1;
+                margin-bottom: 5px;
+                font-size: 15px;
+            }
+            
+            .addressInfoDiv p{
+                margin: 0px 2px 4px 0px;
+                color: #E6EDFD;
+                padding: 0px 19px 0px 19px;
+                font-family: Dana2;
+                font-size: 14px;
+
+            }
+            .contactInfo button{
+                border: none;
+                font-size: 15px;
+                background-color: #50576D;
+                padding: 0px;
+                border-radius: 5px;
+                color: #E6EDFD;
+                padding-right: 8px;
+                margin-left: 16px;
+            
+            }
+            .contactInfo button div{
+                border-radius: 5px;
+                padding: 2px;
+                margin: 0px 8px 0px 0px;
+                display: inline-block;
+                background-color: #E6EDFD;
+            }
+            .contactInfo{
+                display: block;
+                height: 100%;
+                padding: 6px 0px 6px 0px;
+            }
+            .contactUsDiv{
+                margin-top: 40px;
+                height: 100%;
+            }
+            .contactUsTitleDiv{
+                display: flex;
+            }
+            .contactUsTitleDiv h4{
+                color: #E6EDFD;
+                font-size: 18px;
+                margin-top: 5px;
+                margin-left: 2px;
+                font-family: Dana1;
+            }
+            .contactInnerDiv{
+                display: flex;
+                padding-top: 2px;
+                margin-top: 5px;
+                margin-left: 16px;
+                border-left: 4px solid #E6EDFD;
+            }
+            .contactInnerDiv h5{
+                margin-left: 16px;
+                color: #BBD0FE;
+                font-family: Dana1;
+                margin-bottom: 5px;
+            }
+            .contactInnerDiv p{
+                margin: 0px 0px 4px 2px;
+                color: #E6EDFD;
+                padding: 0px 19px 0px 19px;
+                font-family: Dana2;
+            }
+              
+            .pouriyaMark{
+                background-color: #E6EDFD;
+                height: 100%;
+                padding: 0px;
+                text-align: center;
+              }
+            .pouriyaMark h5{
+                color: #354063;
+                font-family: "Roboto";
+                font-weight: 700;
+                margin: 0px;
+                font-size: 10px;
+                padding: 8px 0px 8px 0px;
+            }
+            .pouriyaMark span{
+                color: #1043A9;
+                font-family: "Roboto";
+                font-weight: 700;
+                margin: 0px;
+                font-size: 14px;
+                padding: 8px 0px 8px 0px;
+            }
+            
+            .footerLogo img{
+                max-width: 250px;
+                margin: 45px auto 0px auto;
+            }
+            .footerLogo{
+                text-align: center;
+                height: 100%;
+                margin: 0px auto 0px auto;
+            }
+         }
+        
+         @media only screen and (max-width: 576px) {
+            .footerDiv{
+                width: 100%;
+                height: 100%;
+                background-color: #354063;
+                margin-top: 30px;
+                padding: 50px 20px 40px 20px;
+            }
+            .titleDiv h4{
+                color: #E6EDFD;
+                font-size: 18px;
+                margin-top: 5px;
+                margin-right: 2px;
+                font-family: Dana1;
+            }
+            .addressInnerDiv{
+                display: flex;
+                padding-top: 2px;
+                margin-top: 5px;
+                margin-right: 16px;
+                border-right: 4px solid #E6EDFD;
+            }
+            
+            .addressInfoDiv h5{
+                margin-right: 16px;
+                color: #BBD0FE;
+                font-family: Dana1;
+                margin-bottom: 5px;
+                font-size: 15px;
+            }
+            
+            .addressInfoDiv p{
+                margin: 0px 2px 4px 0px;
+                color: #E6EDFD;
+                padding: 0px 19px 0px 19px;
+                font-family: Dana2;
+                font-size: 14px;
+
+            }
+            .contactInfo button{
+                border: none;
+                font-size: 15px;
+                background-color: #50576D;
+                padding: 0px;
+                border-radius: 5px;
+                color: #E6EDFD;
+                padding-right: 8px;
+                margin-left: 16px;
+            
+            }
+            .contactInfo button div{
+                border-radius: 5px;
+                padding: 2px;
+                margin: 0px 8px 0px 0px;
+                display: inline-block;
+                background-color: #E6EDFD;
+            }
+            .contactInfo{
+                display: block;
+                height: 100%;
+                padding: 6px 0px 6px 0px;
+            }
+            .contactUsDiv{
+                margin-top: 40px;
+                height: 100%;
+            }
+            .contactUsTitleDiv{
+                display: flex;
+            }
+            .contactUsTitleDiv h4{
+                color: #E6EDFD;
+                font-size: 18px;
+                margin-top: 5px;
+                margin-left: 2px;
+                font-family: Dana1;
+            }
+            .contactInnerDiv{
+                display: flex;
+                padding-top: 2px;
+                margin-top: 5px;
+                margin-left: 16px;
+                border-left: 4px solid #E6EDFD;
+            }
+            .contactInnerDiv h5{
+                margin-left: 16px;
+                color: #BBD0FE;
+                font-family: Dana1;
+                margin-bottom: 5px;
+            }
+            .contactInnerDiv p{
+                margin: 0px 0px 4px 2px;
+                color: #E6EDFD;
+                padding: 0px 19px 0px 19px;
+                font-family: Dana2;
+            }
+              
+            .pouriyaMark{
+                background-color: #E6EDFD;
+                height: 100%;
+                padding: 0px;
+                text-align: center;
+              }
+            .pouriyaMark h5{
+                color: #354063;
+                font-family: "Roboto";
+                font-weight: 700;
+                margin: 0px;
+                font-size: 10px;
+                padding: 8px 0px 8px 0px;
+            }
+            .pouriyaMark span{
+                color: #1043A9;
+                font-family: "Roboto";
+                font-weight: 700;
+                margin: 0px;
+                font-size: 14px;
+                padding: 8px 0px 8px 0px;
+            }
+            
+            .footerLogo img{
+                max-width: 170px;
+                margin: 35px auto 0px auto;
+            }
+            .footerLogo{
+                text-align: center;
+                height: 100%;
+                margin: 0px auto 0px auto;
+            }
+            
+         }
+        
+         @media only screen and (max-width: 356px) {
+        
+            
+
+         }
+        

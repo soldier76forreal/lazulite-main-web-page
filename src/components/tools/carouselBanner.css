@@ -1,0 +1,39 @@
+.carousel .carousel-control-prev  { opacity: 0; }
+.carousel:hover .carousel-control-prev { opacity: 0.7; }
+.carousel  .carousel-control-next { opacity: 0; }
+.carousel:hover .carousel-control-next { opacity: 0.7; }
+
+.carousel-indicators button{
+    width: 12px !important;
+    height: 12px !important;
+    background: rgba( 1, 64, 161, 0.3 ) !important;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ) !important;
+    backdrop-filter: blur( 10.5px ) !important;
+    -webkit-backdrop-filter: blur( 10.5px ) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
+
+}
+.carousel-indicators .active{
+    width: 12px !important;
+    height: 12px !important;
+    background: rgba(12, 12, 12, 0.521) !important;
+    box-shadow: 0 8px 32px 0 rgba(27, 27, 27, 0.733) !important;
+    backdrop-filter: blur( 10.5px ) !important;
+    -webkit-backdrop-filter: blur( 10.5px ) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgb(113, 170, 255) !important;
+
+}
+
+.carousel-control-prev-icon{
+    background-image: url('../../assets/nextOrPrev.png');
+    transition: 0.2s ease-in-out all;
+    
+}
+.carousel-control-next-icon{
+    background-image: url('../../assets/nextOrPrev.png');
+    transform: rotate(180deg);
+    transition: 0.2s ease-in-out all;
+
+}

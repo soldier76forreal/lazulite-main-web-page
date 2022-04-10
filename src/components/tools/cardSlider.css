@@ -1,0 +1,400 @@
+.cardDivCardSlider{
+    padding: 15px 5px 15px 5px;
+    
+}
+.wapperDivCardSlider{
+    
+    padding-top: 10px;
+}
+.customStyle li button::before{
+    font-size: 13px !important;
+    color: #6b8dd1 !important;
+
+}
+.customStyle li{
+}
+.customStyle li {
+
+
+}
+
+.line_dash{
+    width: 100%;
+    height: 3px;
+    
+}
+.dotted {
+    border:3px dashed #1f1f1f; 
+    opacity: 0.45;
+    border-style: none none dashed;
+    color: #fff;
+    background-color: #fff;
+    margin: 15px 0px 4px 0px;
+     }
+
+.cardSliderTopSection{
+    display: flex;
+    text-align: right;
+    position: relative;
+}
+.cardSliderTopSection h2{
+
+    margin: 0px 0px 0px auto;
+    font-family: Dana1;
+    font-size: 30px;
+    color:#1043A9;
+    padding-right: 20px;
+    display: inline-block;
+    line-height: 25px;
+}
+.cardSliderTopSection button{
+    background: none;
+    border: none;
+    max-width: 50%;
+    color: #1043A9;
+    font-size: 23px;
+    position: absolute;
+    left: 0px;
+    float: left;
+    padding-left: 20px;
+    transition: all ease-in-out 0.2s;
+
+}
+.btnArrow{
+    color:#354063;
+    font-size:24px;
+    transform:rotate(180deg);
+}
+.cardSliderTopSection button span{
+    background-color: #CCDBF8;
+    padding: 2px 7px 0px 7px;
+    border-radius: 100%;
+    margin-right: 6px;
+    transition: all ease-in-out 0.2s;
+
+}
+.cardSliderTopSection button:hover{
+    color: #4e7fe2;
+}
+.cardSliderTopSection button:hover span{
+    background-color: #8ca7dd;
+
+}
+.cardSliderTopSection button span{
+    background-color: #CCDBF8;
+    padding: 2px 7px 0px 7px;
+    border-radius: 100%;
+    margin-right: 6px;
+
+}
+
+
+.slick-prev::before{
+    font-family: none!important;
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: white;
+    content: '' !important;
+
+}
+
+.slick-prev{
+    background-image: url('../../assets/nextOrPrev.png') !important;
+    height: 30px !important;
+    width: 30px !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    padding-right: 10px !important;
+    left: -40px !important;
+
+
+}
+
+.slick-next::before{
+    font-family: none!important;
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: white;
+    content: '' !important;
+
+}
+.slick-next{
+    background-image: url('../../assets/nextOrPrev.png') !important;
+    height: 30px !important;
+    width: 30px !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    padding-right: 10px !important;
+    right: -40px !important;
+    transform: rotate(180deg) !important;
+
+}
+
+
+@media only screen and (max-width: 1400px) {
+    .cardDivCardSlider{
+        padding: 15px 10px 15px 10px;
+        
+    }
+    .cardSliderTopSection{
+        text-align: right;
+        padding: 0px;
+    }
+    .cardSliderTopSection h2{
+        font-family: Dana1;
+        font-size: 25px;
+        color:#1043A9;
+        padding-right: 20px;
+        display: inline-block;
+    }
+    .cardSliderTopSection button{
+        background: none;
+        border: none;
+        color: #1043A9;
+        font-size: 20px;
+        float: left;
+        padding-left: 20px;
+        transition: all ease-in-out 0.2s;
+    
+    }
+    .btnArrow{
+        color:#354063;
+        font-size:19px;
+        transform:rotate(180deg);
+    }
+    .cardSliderTopSection button span{
+        background-color: #CCDBF8;
+        padding: 3px 6px 2px 6px;
+        border-radius: 100%;
+        margin-right: 6px;
+    
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .cardDivCardSlider{
+        padding: 15px 5px 15px 5px;
+    }
+        .cardSliderTopSection h2{
+        font-family: Dana1;
+        font-size: 25px;
+        color:#1043A9;
+        padding-right: 20px;
+        display: inline-block;
+    }
+    .cardSliderTopSection button{
+        background: none;
+        border: none;
+        color: #1043A9;
+        font-size: 20px;
+        float: left;
+        padding-left: 20px;
+        transition: all ease-in-out 0.2s;
+    
+    }
+    .btnArrow{
+        color:#354063;
+        font-size:19px;
+        transform:rotate(180deg);
+    }
+    .cardSliderTopSection button span{
+        background-color: #CCDBF8;
+        padding: 3px 6px 2px 6px;
+        border-radius: 100%;
+        margin-right: 6px;
+    
+    }
+
+}
+
+@media only screen and (max-width: 768.98px) {
+    .cardDivCardSlider{
+        padding: 15px 5px 15px 5px;
+        
+    }
+    .cardSliderTopSection h2{
+        font-family: Dana1;
+        font-size: 22px;
+        color:#1043A9;
+        padding-right: 20px;
+        display: inline-block;
+    }
+    .cardSliderTopSection button{
+        background: none;
+        border: none;
+        color: #1043A9;
+        font-size: 18px;
+        float: left;
+        padding-left: 20px;
+        transition: all ease-in-out 0.2s;
+    
+    }
+    .btnArrow{
+        color:#354063;
+        font-size:17px;
+        transform:rotate(180deg);
+    }
+    .cardSliderTopSection button span{
+        background-color: #CCDBF8;
+        padding: 5px 6px 4px 6px;
+        border-radius: 100%;
+        margin-right: 6px;
+    
+    }
+    
+    .slick-prev{
+        background-image: url('../../assets/nextOrPrev.png') !important;
+        height: 30px !important;
+        width: 30px !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        padding-right: 10px !important;
+        left: -40px !important;
+        display: none !important;
+
+
+    }
+    .slick-next{
+        background-image: url('../../assets/nextOrPrev.png') !important;
+        height: 30px !important;
+        width: 30px !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        padding-right: 10px !important;
+        right: -40px !important;
+        transform: rotate(180deg) !important;
+        display: none !important;
+
+    }
+    .slick-thumb li{
+        margin: 0px 1px 0px 1px !important;
+    }
+
+ }
+
+ @media only screen and (max-width: 600px) {
+    .cardDivCardSlider{
+        padding: 15px 65px 15px 65px;
+    }
+
+
+    .cardSliderTopSection h2{
+        font-family: Dana1;
+        font-size: 17px;
+        color:#1043A9;
+        padding-right: 20px;
+        display: inline-block;
+    }
+    .cardSliderTopSection button{
+        background: none;
+        border: none;
+        color: #1043A9;
+        font-size: 14px;
+        float: left;
+        padding-left: 20px;
+        transition: all ease-in-out 0.2s;
+    
+    }
+    .btnArrow{
+        color:#354063;
+        font-size:13px;
+        transform:rotate(180deg);
+    }
+    .cardSliderTopSection button span{
+        background-color: #CCDBF8;
+        padding: 6px 4px 5px 4px;
+        border-radius: 100%;
+        margin-right: 6px;
+    
+    }
+
+    
+ }
+ @media only screen and (max-width: 520px) {
+    .cardDivCardSlider{
+        padding: 15px 15px 9px 15px;
+    }
+    .cardSliderTopSection h2{
+        font-family: Dana1;
+        font-size: 16px;
+        color:#1043A9;
+        padding-right: 10px;
+        display: inline-block;
+        padding-top: 3px;
+    }
+    .cardSliderTopSection button{
+        background: none;
+        border: none;
+        color: #1043A9;
+        font-size: 14px;
+        float: left;
+    
+        padding-left: 10px;
+        transition: all ease-in-out 0.2s;
+    
+    }
+    .btnArrow{
+        color:#354063;
+        font-size:1px;
+        transform:rotate(180deg);
+    }
+    .cardSliderTopSection button span{
+        background-color: #CCDBF8;
+        padding: 5px 3px 4px 3px;
+        border-radius: 100%;
+        margin-right: 6px;
+    
+    }
+    .customStyle li button::before{
+        font-size: 8px !important;
+        color: #6b8dd1 !important;
+    
+    
+    }
+}
+
+
+ @media only screen and (max-width: 356px) {
+    .cardDivCardSlider{
+        padding: 15px 15px 9px 15px;
+    }
+    .cardSliderTopSection h2{
+        font-family: Dana1;
+        font-size: 14px;
+        color:#1043A9;
+        padding-right: 10px;
+        display: inline-block;
+        padding-top: 3px;
+    }
+    .cardSliderTopSection button{
+        background: none;
+        border: none;
+        color: #1043A9;
+        font-size: 12px;
+        float: left;
+        padding-left: 10px;
+        transition: all ease-in-out 0.2s;
+    
+    }
+    .btnArrow{
+        color:#354063;
+        font-size:22px !important;
+        transform:rotate(180deg);
+    }
+    .cardSliderTopSection button span{
+        background-color: #CCDBF8;
+        padding: 5px 3px 4px 3px;
+        border-radius: 100%;
+        margin-right: 6px;
+    
+    }
+    .customStyle li button::before{
+        font-size: 8px !important;
+        color: #6b8dd1 !important;
+    
+    
+    }
+
+ }

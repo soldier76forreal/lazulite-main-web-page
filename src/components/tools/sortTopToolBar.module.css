@@ -1,0 +1,86 @@
+
+.topFilterSectionInnerDiv{
+    margin: 0px 0px 0px 0px;
+    display: inline-block;
+    
+}
+.normalHeader {
+    display: inline-block;
+    margin-right: 2px;
+    font-family: Dana1;
+    font-size: 15px;
+}
+.responsiveHeader {
+    display: none;
+    margin-right: 2px;
+    font-family: Dana1;
+    font-size: 15px;
+}
+.filterItem{
+    display: inline-block;
+    padding: 0px 10px 0px 10px;
+
+}
+.filterItem h4{
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3 all ease-in-out;
+}
+.filterItem h4:hover{
+
+    color: #6a7494;
+}
+.filterItemsDiv{
+    display: inline-block;
+    width: 100%;
+}
+
+.iconDiv{
+    display: inline-block;
+}
+.active h4{
+    color: #3d62db;
+}
+@media only screen and (max-width: 992.98px) {
+
+    .iconDiv{
+        display: none;
+    }
+    .filterItem h4{
+        display:block;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 0px !important;
+        color: #354063;
+        width: 100%;
+    }
+    .filterItem{
+        display:block;
+        width: 100%;
+        padding: 10px 0px 10px 0px;
+        border-top: solid 1px #b8b8b8;
+    }
+
+    .normalHeader {
+        display: none;
+    }
+    .responsiveHeader {
+        display: block;
+        font-size: 20px;
+        padding: 16px 0px 15px 0px;
+        color:#354063;
+        margin-bottom: 0px !important;
+
+    }
+    .topFilterSectionInnerDiv{
+        margin: 0px 0px 0px 0px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+    .active h4{
+        color: #7391f3 !important;
+        
+    }
+}

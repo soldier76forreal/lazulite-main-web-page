@@ -1,0 +1,47 @@
+.priceLimiterDiv{
+    background-color:#FFFFFF ;
+    -webkit-box-shadow: 0px 0px 23px -12px rgba(0,41,173,0.49); 
+    box-shadow: 0px 0px 23px -12px rgba(0,41,173,0.49);
+    border-radius:8px ;
+    margin-top: 10px;
+}
+.priceLimiterDiv h4{
+    font-size: 15px;
+    color: #354063;
+    padding:18px 14px 0px 0px ;
+    font-family: Dana1;
+}
+.limiterDiv{
+    width: 100%;
+    text-align: center;
+    margin: 10px auto 0px auto;
+}
+
+.priceDiv{
+    width: 100%;
+    text-align: center;
+    margin: 0px auto 0px auto;
+    padding-bottom: 16px;
+    font-size: 14px;
+    color: #354063;
+}
+.priceDiv span{
+
+    color: #1043A9;
+}
+
+.buttonDiv{
+     margin: 3px 0px 3px 0px;
+}
+.btnStyle{
+    background: none;
+    border: none;
+
+}
+
+.hrLine{
+    border-bottom:solid rgb(240, 240, 240) 2px;
+   
+    width: 90%;
+    margin: 0px auto 0px auto;
+}

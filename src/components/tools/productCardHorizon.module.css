@@ -1,0 +1,107 @@
+.productCardDiv{
+    width: 100%;
+    height: 100%;
+    background-color: #F8FBFE;
+    border-radius: 15px;
+    transition: 0.3s  ease-in-out all;
+    -webkit-box-shadow: 0px 0px 23px -12px rgba(0,41,173,0.49); 
+    box-shadow: 0px 0px 23px -12px rgba(0,41,173,0.49);
+    
+}
+.productCardDiv:hover{
+    background-color: #F8FBFE;
+    filter: drop-shadow(0 0 0.35rem #1043A9);
+
+}
+.productCardDiv img{
+
+    max-width: 135px;
+    height: 140px;
+    width: 100%;
+    background-repeat: none;
+    background-position: center;
+    object-fit: cover;
+    border-radius: 15px;
+    border: #CCD9F7 4px solid;
+}
+.productCardDiv h4{
+    font-size: 17px;
+    text-align: right;
+    font-family: Dana1;
+    padding: 10px 17px 0px 17px;
+    color: #010102;
+    line-height: 23px;
+    display: inline-block;
+}
+.cardInfo{
+    width: 67%;
+    padding: 0px;
+    margin: 0px 0px 10px 0px;
+    position: absolute;
+    bottom: 0px;
+}
+.measure h4{
+    padding: 4px 8px 4px 8px;
+    color: #EFEFEF;
+    border-radius: 7px;
+    font-size: 14px;
+    display: inline-block;
+    background-color: #354063;
+}
+.priceDiv h5{
+    font-size: 12px;
+    padding-right: 4px;
+}
+.priceDiv{
+    display: inline-block;
+    margin-top: 9px;
+    
+}
+.measure{
+    padding:2px 8px 0px 6px;
+    display: inline-block;
+}
+
+.ratingStar{
+    display: flex;
+    padding-top: 7px;
+    left: 0px;
+    float: left;
+    padding-left: 12px;
+}
+.ratingStar h4{
+    display: inline-block;
+    padding: 3px 0px 0px 2px;
+    font-size: 5px;
+
+}
+.productNameDiv{
+    height: 0px;
+    margin-top: 8px;
+}
+
+
+.productNameDiv h4{
+    padding: 7px 8px 0px 0px;
+}
+@media only screen and (max-width: 1280.98px) {
+
+    .measure h4{
+        padding: 4px 8px 4px 8px;
+        color: #EFEFEF;
+        border-radius: 7px;
+        font-size: 12px;
+        display: inline-block;
+        background-color: #354063;
+    }
+    .priceDiv h5{
+        font-size: 12px;
+        padding-right: 4px;
+    }
+    .ratingStar h4{
+        display: inline-block;
+        padding: 3px 0px 0px 2px;
+        font-size: 12px;
+    
+    }
+}

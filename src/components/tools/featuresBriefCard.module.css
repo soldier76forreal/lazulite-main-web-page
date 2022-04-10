@@ -1,0 +1,516 @@
+/*===================== brief card section =====================*/
+.briefCardDiv{
+    max-width: 1500px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    height: 100%;
+    padding: 0px 40px 0px 40px;
+    
+}
+.briefCardRiviewDiv{
+    height: auto;
+    background-color: #1E63D9;
+    width: 100%;
+    
+    -webkit-box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33); 
+    box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33);
+    border-radius: 20px;
+}
+.briefCardRiviewImage{
+   height: 100%;
+}
+.briefCardRiviewImage img{
+    object-fit: cover;
+    height: 100%;
+    padding: 4px;
+    width: 100%;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+
+.briefCardRiviewText{
+   text-align: right;
+   padding-top: 25px;
+}
+.briefCardRiviewText h4{
+    color:#FFFFFF;
+    font-size: 33px;
+    font-family: Dana1;
+    margin-right: 40px;
+
+ }
+ .briefCardRiviewText p{
+    color:#FFFFFF;
+    font-family: Dana2;
+    line-height: 28px;
+    font-size: 14px;
+    text-justify: auto;
+ }
+
+ .moreBtn{
+     text-align: center;
+     margin: 0px auto 20px auto;
+     
+ }
+ .moreBtn button{
+      background-color: #4D76C8;
+      border: none;
+      padding: 0px;
+      width: fit-content;
+      padding: 6px 8px 6px 0px;
+      border-radius: 100px;
+}
+
+.moreBtn button span{
+    background-color: #CCDBF8;
+    padding: 6px 10px 6px 10px;
+    margin: 0px !important;
+    border-radius: 100px;
+    color:#354063;
+    font-family: Dana1;
+    transition: 0.3s ease-in-out all;
+}
+.moreBtn button span:hover{
+    background-color: #4D76C8;
+    padding: 6px 10px 6px 10px;
+    margin: 0px !important;
+    border-radius: 100px;
+    color:#e2e2e2;
+    font-family: Dana1;
+
+}
+.briefCameraRowDiv{
+    margin-top: 25px;
+}
+
+.responsive{
+    display: none;
+    
+    padding: 0px 30px 10px 0px;
+}
+
+.normal{
+    display: block;
+    padding: 0px 30px 0px 0px;
+}
+@media only screen and (max-width: 1200.98px) {
+
+    .briefCardRiviewDiv{
+        height: auto;
+        background-color: #1E63D9;
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33); 
+        box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33);
+        border-radius: 20px;
+    }
+    .briefCardRiviewImage img{
+        object-fit: cover;
+        height: 100%;
+        padding: 4px;
+        width: 100%;
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px;
+    }
+    
+    .briefCardRiviewText h4{
+        color:#FFFFFF;
+        font-size: 26px;
+        font-family: Dana1;
+        margin-right: 35px;
+        margin-top: 10px;
+    
+     }
+    .responsive{
+        display: none;
+        padding: 0px 30px 10px 10px;
+    }
+    .normal{
+        display: block;
+        padding: 0px 30px 0px 10px;
+    }
+     
+     .briefCardRiviewText{
+        text-align: right;
+        padding-top: 10px;
+     }
+    .briefCardCol{
+        padding-right: 0px;
+    }
+
+}
+
+
+@media only screen and (max-width: 992.98px) {
+    /*===================== brief card section =====================*/
+
+
+    .briefCardRiviewDiv{
+        height: auto;
+        background-color: #1E63D9;
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33); 
+        box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33);
+        border-radius: 20px;
+    }
+    .briefCardCol{
+        padding-right: calc(var(--bs-gutter-x) * .5);
+    }
+    .briefCardRiviewImage img{
+        object-fit: cover;
+        height: 100%;
+        padding: 4px;
+        width: 100%;
+        max-height: 100%;
+
+        border-radius: 0px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px
+    }
+    .briefCardRiviewImage{
+        height: 100%;
+     }
+
+    .briefCardRiviewText h4{
+        color:#FFFFFF;
+        font-size: 24px;
+        font-family: Dana1;
+        margin-right: 30px;
+        margin-top: 10px;
+    
+     }
+     .responsive{
+        display: none;
+        padding: 0px 35px 10px 35px;
+    }
+    .normal{
+        display: block;
+        padding: 0px 35px 0px 35px;
+    }
+
+     .briefCardRiviewText{
+        text-align: right;
+        padding-top: 0px;
+     }
+     .briefCardRiviewDiv{
+        max-height: 100%;
+        height: 100%;
+        background-color: #1E63D9;
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33); 
+        box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33);
+        border-radius: 20px;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 768.98px) {
+    /*===================== brief card section =====================*/
+
+    .briefCardRiviewImage img{
+        object-fit: cover;
+        height: 100%;
+        padding: 4px;
+        width: 100%;
+        border-radius: 0px;
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px
+    }
+    .briefCardRiviewImage{
+        height: 100%;
+     }
+
+     .briefCardRiviewText{
+        text-align: right;
+        padding-top: 15px;
+        
+     }
+     h4{
+         margin: 0px;
+     }
+    .briefCardRiviewText h4{
+        color:#FFFFFF;
+        font-size: 20px;
+        font-family: Dana1;
+        margin-right: 35px;
+        margin-top: 19px;
+        
+    
+     }
+     
+        .responsive{
+            display: block;
+            padding: 0px 35px 15px 5px;
+        }
+        .normal{
+            display: none;
+            padding: 0px 35px 10px 35px;
+        }
+
+     .briefCardRiviewText{
+        text-align: right;
+        padding-top: 0px;
+     }
+     .briefCardRiviewDiv{
+        max-height:100%;
+        height: 100%;
+        background-color: #1E63D9;
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33); 
+        box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33);
+        border-radius: 20px;
+    }
+
+    
+     .moreBtn button{
+          background-color: #4D76C8;
+          border: none;
+          padding: 0px;
+          width: fit-content;
+          padding: 2px 8px 3px 0px;
+          border-radius: 100px;
+    }
+    
+    .moreBtn button span{
+        background-color: #CCDBF8;
+        padding: 6px 10px 6px 10px;
+        margin: 0px !important;
+        border-radius: 100px;
+        color:#354063;
+        font-size: 12px;
+        font-family: Dana1;
+        transition: 0.3s ease-in-out all;
+    }
+    .moreBtn button span:hover{
+        background-color: #4D76C8;
+        padding: 6px 10px 6px 10px;
+        margin: 0px !important;
+        border-radius: 100px;
+        color:#e2e2e2;
+        font-family: Dana1;
+    
+    }
+    
+    .moreBtn{
+        text-align: center;
+        margin: 0px auto 20px auto;
+        
+    }
+
+
+ }
+
+ @media only screen and (max-width: 576.98px) {
+
+
+    .briefCardRiviewImage img{
+        object-fit: cover;
+        height: 100%;
+        padding: 4px;
+        width: 100%;
+        border-radius: 0px;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px
+    }
+    .briefCardRiviewImage{
+        height: 100%;
+     }
+
+     .briefCardRiviewText{
+        text-align: right;
+        padding-top: 15px;
+        
+     }
+     h4{
+         margin: 0px;
+     }
+    .briefCardRiviewText h4{
+        color:#FFFFFF;
+        font-size: 18px;
+        font-family: Dana1;
+        margin-right: 35px;
+        margin-top: 19px;
+        
+    
+     }
+     .briefCardRiviewText p{
+        color:#FFFFFF;
+        font-family: Dana2;
+        line-height: 21px;
+        font-size: 12px;
+        text-justify: auto;
+        margin-top: 5px;
+     }
+        .responsive{
+            display: block;
+            padding: 0px 30px 5px 5px;
+        }
+        .normal{
+            display: none;
+            padding: 0px 35px 10px 35px;
+        }
+
+     .briefCardRiviewText{
+        text-align: right;
+        padding-top: 0px;
+     }
+     .briefCardRiviewDiv{
+        max-height:100%;
+        height: 100%;
+        background-color: #1E63D9;
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33); 
+        box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33);
+        border-radius: 10px;
+    }
+
+    
+     .moreBtn button{
+          background-color: #4D76C8;
+          border: none;
+          padding: 0px;
+          width: fit-content;
+          padding: 0px 5px 0px 0px;
+          border-radius: 100px;
+    }
+    .arrowDiv{
+        font-size: 16px !important;
+    }
+    .moreBtn button span{
+        background-color: #CCDBF8;
+        padding: 5px 10px 4px 10px;
+        margin: 0px  !important;
+        border-radius: 100px;
+        color:#354063;
+        font-size: 10px;
+        font-family: Dana1;
+        transition: 0.3s ease-in-out all;
+    }
+    .moreBtn button span:hover{
+        background-color: #4D76C8;
+        padding: 5px 10px 4px 10px;
+        margin: 0px !important;
+        border-radius: 100px;
+        color:#e2e2e2;
+        font-family: Dana1;
+    
+    }
+    
+    .moreBtn{
+        text-align: center;
+        margin: 0px auto 15px auto;
+        
+    }
+
+
+
+
+    
+ }
+
+ @media only screen and (max-width: 356.98px) {
+
+    
+    .briefCardRiviewImage img{
+        object-fit: cover;
+        height: 100%;
+        padding: 4px;
+        width: 100%;
+        border-radius: 0px;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px
+    }
+    .briefCardRiviewImage{
+        height: 100%;
+     }
+
+     .briefCardRiviewText{
+        text-align: right;
+        padding-top: 15px;
+        
+     }
+     h4{
+         margin: 0px;
+     }
+    .briefCardRiviewText h4{
+        color:#FFFFFF;
+        font-size: 15px;
+        font-family: Dana1;
+        margin-right: 30px;
+        margin-top: 12px;
+        
+    
+     }
+     .briefCardRiviewText p{
+        color:#FFFFFF;
+        font-family: Dana2;
+        line-height: 21px;
+        font-size: 12px;
+        text-justify: auto;
+        margin-top: 5px;
+     }
+        .responsive{
+            display: block;
+            padding: 0px 30px 5px 5px;
+        }
+        .normal{
+            display: none;
+            padding: 0px 35px 10px 35px;
+        }
+
+     .briefCardRiviewText{
+        text-align: right;
+        padding-top: 0px;
+     }
+     .briefCardRiviewDiv{
+        max-height:100%;
+        height: 100%;
+        background-color: #1E63D9;
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33); 
+        box-shadow: 0px 0px 36px 3px rgba(0,41,173,0.33);
+        border-radius: 10px;
+    }
+
+    
+     .moreBtn button{
+          background-color: #4D76C8;
+          border: none;
+          padding: 0px;
+          width: fit-content;
+          padding: 0px 5px 0px 0px;
+          border-radius: 100px;
+    }
+    .arrowDiv{
+        font-size: 16px !important;
+    }
+    .moreBtn button span{
+        background-color: #CCDBF8;
+        padding: 5px 10px 4px 10px;
+        margin: 0px  !important;
+        border-radius: 100px;
+        color:#354063;
+        font-size: 10px;
+        font-family: Dana1;
+        transition: 0.3s ease-in-out all;
+    }
+    .moreBtn button span:hover{
+        background-color: #4D76C8;
+        padding: 5px 10px 4px 10px;
+        margin: 0px !important;
+        border-radius: 100px;
+        color:#e2e2e2;
+        font-family: Dana1;
+    
+    }
+    
+    .moreBtn{
+        text-align: center;
+        margin: 0px auto 15px auto;
+        
+    }
+ }

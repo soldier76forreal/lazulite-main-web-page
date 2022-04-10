@@ -1,0 +1,637 @@
+.navbar {
+    background-color: black !important;
+    display: flex !important; /* displays flex-items (children) inline */
+    justify-content: center !important; /* centers them horizontally */
+}
+.navLink{
+   margin: 0px 10px 0px 10px;
+   color: #354063 !important;
+   font-size: 18px;
+   font-family: Dana1;
+   text-align: right;
+   padding: 5px 10px 5px 10px!important;
+
+}
+.active{
+    color: #6988dd !important;
+}
+.lmcLogo img{
+    width: 70px;
+}
+.lmcName{
+    display: none;
+}
+.navLink:hover{
+    color: #8996c2 !important;
+ 
+ }
+.navbar-collapse {
+    width: 300px !important;
+    background-color: #354063 !important;
+}
+
+.navbar-toggler span{
+    background-image: url();
+}
+.logIn{
+    padding: 4px 6px 4px 6px;
+    border: 4px solid #354063;
+    background: none;
+    font-size: 15px;
+    border-radius: 8px;
+    color: #354063;
+    margin-right: 10px;
+    transition: 0.3s all ease-in-out;
+
+
+}
+.logIn:hover{
+    padding: 4px 6px 4px 6px;
+    border: 4px solid #4D76C8;
+    background: none;
+    font-size: 15px;
+    border-radius: 8px;
+    color: #4D76C8;
+    margin-right: 10px;
+
+}
+.logIn span{
+    margin-left: 2px;
+
+}
+
+.searchBtn{
+    background: none;
+    border: none;
+    margin-right: 3px;
+    color: #354063;
+    transition: 0.3s all ease-in-out;
+}
+.searchBtn:hover{
+
+    color: #4D76C8;
+}
+
+.subMenu {
+    text-align: center;
+    display: none;
+    z-index: 9 !important;
+}
+
+.responsiveSearch{
+    display: none;
+    
+}
+
+.linksDiv{
+    padding: 0px 0px 0px 0px;
+    display: flex;
+}
+.logInDropDownResPonsive{
+    position: absolute;
+    text-align: center;
+    left: 0px;
+    right: 0px;
+}
+
+.fadeIn{
+
+    animation: openModal ease-in-out 0.5s forwards;
+}
+.fadeOut{
+    animation: closeModal ease-in-out 0.5s forwards;
+
+}
+@keyframes openModal {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+@keyframes closeModal {
+    0% {
+
+        opacity: 1;
+        transform: translateY(0%);
+
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+
+
+.logInDropDownResPonsiveActive{
+    animation: openMenuRes ease-in-out 0.5s forwards;
+}
+.logInDropDownResPonsiveNotActive{
+    animation: closeMenuRes ease-in-out 0.1s forwards;
+
+}
+@keyframes openMenuRes {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+@keyframes closeMenuRes {
+    0% {
+
+        opacity: 1;
+        transform: translateY(0%);
+
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+.userMenuBtn{
+    background: none;
+    border-radius: 8px;
+    border: none;
+    position: relative;
+    margin-right: 8px;
+    background-color: rgb(235, 235, 235);
+}
+
+.userMenuBtn h4{
+    display: inline-block;
+    margin: 0px;
+    padding: 0px 3px 0px 3px;
+    font-family: Roboto;
+    font-size: 15px;
+    color: #354063;
+}
+.listStyleDiv{
+    position: absolute;
+    background-color: rgb(235, 235, 235);
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    margin-top: 10px;
+    border-radius: 8px;
+    color: #1043A9;
+    font-size: 14px;
+}
+.listStyleDiv ul{
+    padding: 8px 0px 8px 0px;
+    font-size: Dana2;
+    list-style: none;
+    margin: 0px !important;
+    font-size: 13px ;
+    text-align: right;
+
+}
+.listStyleDiv ul li{
+    padding: 5px 5px 5px 5px;
+    transition: 0.2s all ease-in-out;
+}
+.listStyleDiv ul li:hover{
+    padding: 5px 5px 5px 5px;
+    background-color: #dddddd;
+}
+.listStyleDiv ul li span{
+    padding: 0px 5px 0px 0px ;
+}
+.logInDropDownResPonsive{
+    display: none;
+}
+.backDropStyle{
+    background: none;
+    position:fixed;
+    z-index:5;
+    display:block;
+    width:100%;
+    height:100%;
+}
+/*==================== search section ====================*/
+.searchBarSec{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+.productListBackShade{
+    margin-top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: fixed;
+    background: rgba( 38, 38, 38, 0.7 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 16.5px );
+    -webkit-backdrop-filter: blur( 16.5px );
+    border-radius: 0px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.productList{
+    position: fixed;
+    width: 70%;
+    height:fit-content;
+    max-height: 645px;
+    border-radius: 8px;
+    margin: 0% auto; /* Will not center vertically and won't work in IE6/7. */
+    left: 0;
+    margin-top: 60px;
+    right: 0;
+    box-shadow: none;
+    background-color: #F8FBFE;
+    z-index: 11;
+    padding: 10px 10px 10px 10px;
+}
+.theList ul{
+    list-style: none;
+    padding: 0px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    display: flex;
+    padding: 25px;
+    height: auto;
+    max-height: 545px;
+
+    align-content: flex-start;
+}
+.theList h5{
+    width: fit-content;
+    margin: 0px;
+    border-right:3px solid #1043A9 ;
+    font-family: Dana1;
+    padding-right: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+    color: #354063;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+
+}
+.theList h5:hover{
+    color: #406abe;
+
+}
+.theList ul li{
+    margin-left: 20px;
+    padding: 0px;
+    max-width: 100%;
+    display: flex;
+    margin-right: 8px;
+    margin-bottom: 0px;
+    padding-left: 30px ;
+}
+
+.theList ul li h4{
+    
+    font-size: 0.9rem;
+    font-family: Dana2;
+    color: #797979;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+
+}
+.mainNav{
+    width: 100%;
+    background-color: #F8FBFE;  
+    z-index: 16;
+    display: flex;
+    justify-content: center;
+}
+.theList ul li h4:hover{
+    color: #1043A9;
+}
+
+.listsWapper{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    flex-grow: 4;
+}
+
+.largDisplayStatus{
+    display: flex;
+}
+.logIn_responsive{
+    display: none;
+}
+.responsivNavSec{
+    width: 100%;
+}
+.langSelect{
+    float: left;
+}
+
+.responsivProductSec {
+    text-align: right;
+}
+.responsivProductSec button{
+    font-family: Dana2;
+    color: #1043A9;
+    background: none;
+    border: none;
+    font-size: 20px;
+}
+.arrowIcon{
+    transform: rotate(-90deg);
+    padding: 0px;
+    outline: none;
+    margin-right: 3px;
+}
+
+.rotateIn{
+   
+    animation: arrowUp ease-in-out 0.2s forwards;
+}
+.rotateOut{
+       
+
+    animation: arrowDown ease-in-out 0.2s forwards;
+
+}
+.searchResult{
+    width: 100%;
+    position: absolute;
+    display: block;
+    top:65px;
+    max-width: 430px;
+    width: 100%;
+    left: 0px;
+    background-color: #F8FBFE;
+    padding: 10px;
+    border-radius: 5px;
+    max-height: 400px;
+    height: auto;
+    right: 0px;
+    margin: 0px auto 0px auto;
+    overflow-y: scroll;
+}
+.searchedItem{
+    display: block;
+    margin-bottom: 10px;
+}
+.searchedLable{
+    display: inline-block;
+    padding: 4px 8px 4px 8px;
+    background-color: #406abe;
+    color: #F8FBFE;
+    border-radius: 5px;
+    font-size: 13px;
+}
+.searchedLable a{
+    color: #F8FBFE;
+}
+.searchedTitle{
+    display: inline-block;
+    padding: 4px 8px 4px 8px;
+    font-size: 13px;
+
+}
+
+.noResult{
+    font-size: 15px;
+    color: #90a9dd;
+    text-align: center;
+}
+@keyframes arrowUp {
+    0% {
+       
+        transform:rotate(0deg);
+    }
+
+    100% {
+        transform:rotate(180deg);
+    }
+}
+@keyframes arrowDown {
+    0% {
+        transform:rotate(180deg);
+    }
+
+    100% {
+        transform:rotate(0deg);
+    }
+}
+
+
+
+
+.scaleIn{
+
+    animation: openList ease-in-out 0.6s forwards;
+}
+.scaleOut{
+    animation: closeList ease-in-out 0.6s forwards;
+
+}
+
+
+@keyframes openList {
+    0% {
+       
+        transform:translateY(-2000px);
+    }
+
+    100% {
+        transform:translateY(0px);
+
+    }
+}
+@keyframes closeList {
+    0% {
+
+        transform:translateY(0px);
+
+    }
+
+    100% {
+        
+        transform:translateY(-2000px);
+
+    }
+}
+
+.categoryListSec{
+    width: 100%;
+    background-color: #F8FBFE;
+    height:85%;
+    position: fixed;
+    z-index: 8 !important;
+    transform:translateY(-1000px);
+    padding-top: 30px;
+    display: none;
+    overflow-y: scroll;
+}
+
+.outSearchBar{
+    transform:translateY(-500px) !important;
+}
+
+.scaleInSearchBar{
+
+    animation: openSearchBar ease-in-out 0.6s forwards;
+}
+.scaleOutSearchBar{
+    animation: closeSearchBar ease-in-out 0.6s forwards;
+
+}
+
+
+@keyframes openSearchBar {
+    0% {
+       
+        transform:translateY(-500px);
+    }
+
+    100% {
+        transform:translateY(0px);
+
+    }
+}
+@keyframes closeSearchBar {
+    0% {
+
+        transform:translateY(0px);
+
+    }
+
+    100% {
+        
+        transform:translateY(-500px);
+
+    }
+}
+
+@media  (max-width: 1200.98px) {
+    
+}
+
+@media  (max-width: 992px) {
+    .lmcLogo{
+        display: none;
+    }
+    .lmcName{
+        display: block;
+        color: #354063;
+        padding: 0px;
+        margin-top: 3px;
+    }
+    .largDisplayStatus{
+        display: none;
+    }
+
+    .mainNav{
+        width: 100%;
+        padding: 0px;
+    }
+    .subMenu{
+        display: flex;
+    }
+    .searchBarSec{
+        display: none;
+    }
+    .responsiveSearch{
+        display: block;
+        padding: 0px 27px 0px 27px;
+    }
+    .navBarCollapeStyle{
+        max-height: 390px !important;
+    }
+    .logIn_responsive{
+        display: block;
+        border-width: 3px;
+        font-size: 18px;
+        font-family: Dana2;
+        width: 100%;
+        margin: 4px 0px 0px 0px;
+    }
+    .logIn_responsive:hover{
+        display: block;
+        border-width: 3px;
+        font-size: 18px;
+        font-family: Dana2;
+        margin: 4px 0px 0px 0px;
+
+    }
+    .showCategoriesOnHover{
+        display: none;
+    }
+
+
+    .linksDiv{
+        padding: 0px 18px 40px 18px !important;
+        display: block;
+        width: 100%;
+        max-width: 430px;
+        margin: 0px auto 0px auto;
+    }
+    .categoryListSec{
+        margin-top: 80px;
+        display: block;   
+    }
+
+    .normalSearchOvDiv{
+        display: none;
+    }
+    .logInDropDownResPonsive{
+        display: block;
+        margin: 0px auto 0px auto;
+    }
+    
+}
+
+@media (max-width: 768.98px) {
+
+ }
+
+ @media only screen and (max-width: 576px) {
+
+    .searchResult{
+        width: 80%;
+    }
+    .linksDiv{
+        width: 100%;
+        padding: 0px 35px 0px 35px;
+        max-width: 430px;
+        margin: 0px auto 0px auto;
+    }
+}
+
+ 
+
+ @media only screen and (max-width: 356px) {
+    .searchResult{
+        width: 76%;
+    }
+ }
+
