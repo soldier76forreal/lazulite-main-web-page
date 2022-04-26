@@ -16,11 +16,13 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import AxiosGlobal from '../../../store/axiosGlobal';
 import LogInNoModal from './logInNoModal';
 import ActivePage from '../../../store/activePage';
+import Language from '../../../store/language';
 
 const SignUp = (props) =>{
     const axiosGlobal = useContext(AxiosGlobal);
     const navigate = useNavigate();
     const activePage = useContext(ActivePage);
+    const langCtx = useContext(Language);
     useEffect(() => {
         document.title = "ثبت نام"
     }, []);
@@ -109,30 +111,29 @@ const SignUp = (props) =>{
                                 <Col style={{backgroundImage:`url(${blg})`}}  className={Style.sideImg}  xs={0} md={7} lg={6} xl={5} >
                                 </Col>
                                 
-                                <Col dir='rtl' className={Style.signUpForm} sm={9} xs={10} md={5} lg={4} xl={3} >
+                                <Col dir={langCtx.language === 'english' ?'ltr':'rtl'} className={Style.signUpForm} sm={9} xs={10} md={5} lg={4} xl={3} >
                                     <form className={Style.form} onSubmit={signUpData}>
                                         <div className={Style.signUpDiv}>
 
                                                 <h5 className={Style.signUpHeader}>
-                                                    ثبت نام
+                                                    {langCtx.language === 'english' ?'Sign Up':'ثبت نام'}
                                                 </h5>
-
                                             <div className={Style.inputDiv}> 
-                                            <PersonOutlineIcon fontSize='medium' className={Style.icon}></PersonOutlineIcon>
-                                                <input onChange={gettingName} autoComplete='false' type='text' placeholder="نام" className={Style.input}></input>
+                                                <PersonOutlineIcon style={langCtx.language === 'english' ?{marginLeft:'11px', marginTop:'13px', marginRight:'0px' }:{marginLeft:'0px', marginRight:'13px'}} fontSize='medium' className={Style.icon}></PersonOutlineIcon>
+                                                <input style={langCtx.language === 'english' ?{textAlign:'left',padding:'13px 20px 13px 38px'}:{padding:'13px 38px 13px 20px' ,textAlign:'right'}} onChange={gettingName} autoComplete='false' type='text' placeholder={langCtx.language === 'english' ?"Name":'نام'} className={Style.input}></input>
                                             </div>
                                             <div className={Style.inputDiv}> 
-                                            <PeopleOutlineIcon   fontSize='medium' className={Style.icon}></PeopleOutlineIcon>
-                                                <input onChange={gettingLastName} autoComplete='false' type='text' placeholder="نام خانوادگی" className={Style.input}></input>
+                                                <PeopleOutlineIcon style={langCtx.language === 'english' ?{marginLeft:'11px', marginTop:'13px', marginRight:'0px' }:{marginLeft:'0px', marginRight:'13px'}} fontSize='medium' className={Style.icon}></PeopleOutlineIcon>
+                                                <input style={langCtx.language === 'english' ?{textAlign:'left',padding:'13px 20px 13px 38px'}:{padding:'13px 38px 13px 20px' ,textAlign:'right'}} onChange={gettingLastName} autoComplete='false' type='text' placeholder={langCtx.language === 'english' ?"Last Name":'نام خانوادگی'} className={Style.input}></input>
                                             </div>
                                             <div className={Style.inputDiv}> 
-                                            <MailOutlineIcon fontSize='medium' className={Style.icon}></MailOutlineIcon>
-                                                <input onChange={gettingEmail} type='email' autoComplete='false'  placeholder="ایمیل" className={Style.input}></input>
+                                                <MailOutlineIcon fontSize='medium' style={langCtx.language === 'english' ?{marginLeft:'11px', marginTop:'13px', marginRight:'0px' }:{marginLeft:'0px', marginRight:'13px'}} className={Style.icon}></MailOutlineIcon>
+                                                <input onChange={gettingEmail} type='email' autoComplete='false' style={langCtx.language === 'english' ?{textAlign:'left',padding:'13px 20px 13px 38px'}:{padding:'13px 38px 13px 20px' ,textAlign:'right'}}  placeholder={langCtx.language === 'english' ?"Email":'ایمیل'} className={Style.input}></input>
                                             </div>
                                             <div className={Style.inputDiv}> 
-                                                <VpnKeyIcon  fontSize='medium' className={Style.icon}></VpnKeyIcon>
-                                                    <input onChange={gettingPassword} autoComplete='false' type={passwordVisibiltyStatus === false ?'password' :passwordVisibiltyStatus === true ? 'text':null} placeholder="کلمه عبور" className={Style.input}></input>
-                                                <VisibilityIcon onClick={passwordVisibil}  fontSize='medium' className={passwordVisibiltyStatus === true ? `${Style.activeVisibility} ${Style.visibilityIconStyle}` : passwordVisibiltyStatus === false ? `${Style.visibilityIconStyle}`:null}></VisibilityIcon>
+                                                <VpnKeyIcon style={langCtx.language === 'english' ?{marginLeft:'11px', marginTop:'13px', marginRight:'0px' }:{marginLeft:'0px', marginRight:'13px'}}  fontSize='medium' className={Style.icon}></VpnKeyIcon>
+                                                    <input style={langCtx.language === 'english' ?{textAlign:'left',padding:'13px 20px 13px 38px'}:{padding:'13px 38px 13px 20px' ,textAlign:'right'}} onChange={gettingPassword} autoComplete='false' type={passwordVisibiltyStatus === false ?'password' :passwordVisibiltyStatus === true ? 'text':null} placeholder={langCtx.language === 'english' ?"Password":'کمه عبور'} className={Style.input}></input>
+                                                <VisibilityIcon onClick={passwordVisibil} style={langCtx.language === 'english' ?{right:'0px' , left:'auto' , marginRight:'10px'}:{right:'auto' , left:'0px' , marginLeft:'0px'}} fontSize='medium' className={passwordVisibiltyStatus === true ? `${Style.activeVisibility} ${Style.visibilityIconStyle}` : passwordVisibiltyStatus === false ? `${Style.visibilityIconStyle}`:null}></VisibilityIcon>
 
                                             </div>           
                                             <div className={Style.errorDiv}>
@@ -140,11 +141,11 @@ const SignUp = (props) =>{
                                                     {signUpError === true ? <h4>{signUpErrorMsg}</h4> : ''}
                                               </div>                                
                                             <div className={Style.signUpBtnDiv}>
-                                                <button type='submit' className={Style.signUpBtn}>{loadingStatus === true ? <Loader marginBottom={'2px'} borderTop={'3px solid #1043A9'} border={'#fff 3px solid'} width={'22px'} height={'22px'}></Loader> : 'ثبت نام'}</button>
+                                                <button type='submit' className={Style.signUpBtn}>{loadingStatus === true ? <Loader marginBottom={'2px'} borderTop={'3px solid #1043A9'} border={'#fff 3px solid'} width={'22px'} height={'22px'}></Loader> : langCtx.language === 'english' ?'Sign Up':'ثبت نام'}</button>
                                             </div>
                                                 <div className={Style.logInDiv}>
-                                                    <h5>قبلا ثبت نام کرده اید؟</h5>
-                                                    <Link to='/login'><h5 className={Style.logInBtn}>ورود</h5></Link>
+                                                    <h5>{langCtx.language === 'english' ?'Already have an account?':'قبلا ثبت نام کرده اید؟'}</h5>
+                                                    <Link to='/login'><h5 className={Style.logInBtn}>{langCtx.language === 'english' ?'Log In':'ورود'}</h5></Link>
                                                 </div>
                                             </div>
  

@@ -11,7 +11,7 @@ export const ActivePageProvider = (props) =>{
     const  activePageFn =  (data) =>{
         setActivePage(data);
     }
-    var nav = '';
+    var nav = '/';
     return <ActivePage.Provider value={{activePage:activePage , activePageFn:activePageFn ,  nav:nav}}>{props.children}</ActivePage.Provider>
 }
 export default ActivePage;

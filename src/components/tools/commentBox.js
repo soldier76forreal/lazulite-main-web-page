@@ -13,9 +13,12 @@ import LogIn from './auth/login';
 import FailedMsg from './failedMsg';
 import SuccessMsg from './successMsg'
 import jwtDecode from 'jwt-decode';
+import Language from '../../store/language';
+
 const CommentBox = (props)=>{
   const axiosGlobal = useContext(AxiosGlobal);
   const authCtx = useContext(AuthContext);
+  const langCtx = useContext(Language);
   const [commentItSelf , setCommentItSelf] = useState('');
   const [showLogInModal , setShowLogInModal] = useState(false);
   const [rating , setRating] = useState(null);
@@ -103,8 +106,8 @@ const CommentBox = (props)=>{
           <Col  className="commentSectionCol"  xs={12} md={12} lg={12}>
             <div className="commentSection">
               <div  className="commentHeaderSection">
-                  <div dir="rtl" className="commentCounter">
-                    <h3><span>{props.commentCount}</span> دیدگاه</h3>
+                  <div dir={langCtx.language === 'english' ?'ltr':'rtl'} className="commentCounter">
+                    <h3 style={langCtx.language === 'english' ?{textAlign:'left'}:{textAlign:'right'}}><span>{props.commentCount}</span> {langCtx.language === 'english' ?'comment':'دیدگاه ها'}</h3>
                   </div> 
                   {ratedBefore !== null ?
                   <div className="charCounter">

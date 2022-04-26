@@ -1,5 +1,5 @@
 import Style from './productCardHorizon.module.css';
-import { Fragment, useState } from "react";
+import { Fragment, useState , useContext } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import StarIcon from '@mui/icons-material/Star';
 import { Link } from 'react-router-dom';
@@ -9,17 +9,19 @@ import {Pagination,Navbar,Row  , Nav ,NavDropdown , Container ,Form ,FormControl
 import productImg from '../../assets/bg2.jpg';
 
 
+
 const ProductCardHorizon =(props)=>{
+
     return(
         <Fragment>
             
-            <div dir='rtl' className={Style.productCardDiv}>
+            <div  className={Style.productCardDiv}>
                 <Row style={{padding:'0px' , margin:'0px' , position:'relative'}}>
                     <Col style={{padding:'0px' , margin:'0px'}} xs={4} md={4} lg={4} xl={4} xxl={4}>
                         <Link target='_blank' to={`/showCase/${props.data._id}`}><img src={`${props.data.result.images[0]}`}></img></Link>
                     </Col>
                     <Col style={{padding:'0px' , margin:'0px' }} xs={8} md={8} lg={8} xl={8} xxl={8}>
-                        <div className={Style.productNameDiv}>
+                        <div  className={Style.productNameDiv}>
                             <Link target='_blank' to={`/showCase/${props.data._id}`}><h4>{props.data.result.title}</h4></Link>
                         </div>
                         <div  className={Style.cardInfo}>

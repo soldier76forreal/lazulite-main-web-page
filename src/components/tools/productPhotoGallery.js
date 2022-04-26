@@ -1,5 +1,5 @@
 //modules
-import { Fragment, useState , useEffect } from "react";
+import { Fragment, useState , useEffect , useContext } from "react";
 import Style from './productPhotoGallery.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { faStar} from '@fortawesome/free-regular-svg-icons';
@@ -12,9 +12,13 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import PlaceHolderImg from '../../assets/imagePlaceHolder.png'
 import BulletPoint from '../../assets/bullet.svg'
 import Slider from "react-slick";
+import Language from '../../store/language';
+
+
 const ProductPhotoGallery = (props) =>{
     const [currentImage , setCurrentImage] = useState(props.galleryImages[0]);
     const [selectedImage , setSelectedImage] = useState('تصویر محصول 1');
+    const langCtx  = useContext(Language);
     useEffect(() => {
         setCurrentImage(props.galleryImages[0]);
 
@@ -40,7 +44,11 @@ const ProductPhotoGallery = (props) =>{
             <Row>
                 <Col style={{ paddingLeft: '10px', paddingRight: '10px' }} xs={12} md={12} lg={12}>
                         <div className={Style.selectedPhotoDiv}>
-                            <div onClick={()=>{props.openFullViewFn(currentImage , selectedImage)}} className={Style.fullViewTip}><FullscreenIcon sx={{marginRight:'3px' , padding:'0px'}}></FullscreenIcon>نمایش کامل</div>
+                            {langCtx.language === 'english' ?
+                                <div style={{paddingLeft:'12px'}} onClick={()=>{props.openFullViewFn(currentImage , selectedImage)}} className={Style.fullViewTip}>Full view<FullscreenIcon sx={{marginLeft:'3px' , marginRight:'0px' , padding:'0px'}}></FullscreenIcon></div>
+                            :  
+                                <div onClick={()=>{props.openFullViewFn(currentImage , selectedImage)}} className={Style.fullViewTip}><FullscreenIcon sx={{marginRight:'3px' , padding:'0px'}}></FullscreenIcon>نمایش کامل</div>
+                            }
                             <img onClick={()=>{props.openFullViewFn(currentImage , selectedImage)}} src={props.galleryImages[0] === '' ? `${PlaceHolderImg}` : `${currentImage}`} className={Style.mainImg}></img>
                         </div>
                 </Col>

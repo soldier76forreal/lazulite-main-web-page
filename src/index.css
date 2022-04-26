@@ -16,6 +16,23 @@
   font-weight: lighter;
       
 }
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url("./woff/Roboto-Bold.ttf") format("ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Roboto-Medium";
+  src:   url("./woff/Roboto-Medium.ttf") format("ttf");
+  font-weight: normal;
+  
+  }
+@font-face {
+  font-family: "Roboto-Regular";
+  src:   url("./woff/Roboto-Regular.ttf") format("ttf");
+  font-weight: lighter;
+      
+}
 * {
   box-sizing: border-box;
 }

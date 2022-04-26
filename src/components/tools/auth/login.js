@@ -17,6 +17,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import jwtDecode from "jwt-decode";
 import AxiosGlobal from "../../../store/axiosGlobal";
 import CloseIcon from '@mui/icons-material/Close';
+import Language from "../../../store/language";
 const LogInModal = (props) =>{
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
@@ -26,8 +27,8 @@ const LogInModal = (props) =>{
     const [passwordVisibiltyStatus , setPasswordVisibilityStatus] = useState(false);
     const AuthCtx = useContext(AuthContext);
     const axiosGlobal = useContext(AxiosGlobal);
+    const langCtx = useContext(Language);
     const navigation = useNavigate();
-
     useEffect(() => {
         setSignUpError(false);
         setSignUpErrorMsg('');
@@ -91,31 +92,37 @@ const LogInModal = (props) =>{
                                 <Col xs={1} sm={1}  md={1} lg={1} xl={2}></Col>
                                             <Col style={{backgroundImage:`url(${blg})`}}  className={Style.sideImg}  xs={0} md={6} lg={6} xl={5}>
                                             </Col>
-                                            <Col dir='rtl' className={Style.signUpForm} sm={10} xs={10} md={4} lg={4} xl={3}>
+                                            <Col dir={langCtx.language === 'english' ?'ltr':'rtl'} className={Style.signUpForm} sm={10} xs={10} md={4} lg={4} xl={3}>
                                                 <CloseIcon onClick={props.closeLogInModal} className={Style.closeBtn}></CloseIcon>
                                                 <div className={Style.signUpDiv}>
                                                     <h5 className={Style.signUpHeader}>
-                                                        ورود
+                                                        {langCtx.language === 'english' ?'Log In':'ورود'}
                                                     </h5>
-                                                <div className={Style.inputDiv}> 
-                                                <MailOutlineIcon fontSize='medium' className={Style.icon}></MailOutlineIcon>
-                                                    <input onChange={getEmail} type='email' autoComplete='false'  placeholder="ایمیل" className={Style.input}></input>
-                                                </div>
-                                                <div className={Style.inputDiv}> 
-                                                        <VpnKeyIcon  fontSize='medium' className={Style.icon}></VpnKeyIcon>
-                                                            <input onChange={getPassword} autoComplete='false' type={passwordVisibiltyStatus === false ?'password' :passwordVisibiltyStatus === true ? 'text':null} placeholder="کلمه عبور" className={Style.input}></input>
-                                                        <VisibilityIcon onClick={passwordVisibil}  fontSize='medium' className={passwordVisibiltyStatus === true ? `${Style.activeVisibility} ${Style.visibilityIconStyle}` : passwordVisibiltyStatus === false ? `${Style.visibilityIconStyle}`:null}></VisibilityIcon>
-
-                                                </div>
-                                                <div className={Style.errorDiv}>
-                                                        {signUpError === true ?<h4>{signUpErrorMsg}</h4> : ''}
-                                                </div> 
-                                                <div className={Style.signUpBtnDiv}>
-                                                    <button onClick={sendLogIn} className={Style.signUpBtn}>{loadingStatus === true ?  <Loader marginBottom={'2px'} borderTop={'3px solid #1043A9'} border={'#fff 3px solid'} width={'25px'} height={'25px'}></Loader> : 'ورود'}</button>
-                                                </div>
+                                                    <div className={Style.inputDiv}> 
+                                                        <MailOutlineIcon style={langCtx.language === 'english' ?{marginLeft:'11px', marginTop:'13px', marginRight:'0px' }:{marginLeft:'0px', marginRight:'13px'}} fontSize='medium' className={Style.icon}></MailOutlineIcon>
+                                                        <input style={langCtx.language === 'english' ?{textAlign:'left',padding:'13px 20px 13px 38px'}:{padding:'13px 38px 13px 20px' ,textAlign:'right'}} onChange={getEmail} type='email' autoComplete='false'  placeholder={langCtx.language === 'english' ?"Email":'ایمیل'} className={Style.input}></input>
+                                                    </div>
+                                                    <div className={Style.inputDiv}> 
+                                                            <VpnKeyIcon style={langCtx.language === 'english' ?{marginLeft:'11px', marginTop:'13px', marginRight:'0px' }:{marginLeft:'0px', marginRight:'13px'}} fontSize='medium' className={Style.icon}></VpnKeyIcon>
+                                                                <input style={langCtx.language === 'english' ?{padding:'13px 20px 13px 38px' , textAlign:'left'}:{padding:'13px 38px 13px 20px' , textAlign:'right'}} onChange={getPassword} autoComplete='false' type={passwordVisibiltyStatus === false ?'password' :passwordVisibiltyStatus === true ? 'text':null} placeholder={langCtx.language === 'english' ?"password":'کلمه عبور'} className={Style.input}></input>
+                                                            <VisibilityIcon style={langCtx.language === 'english' ?{right:'0px' , left:'auto' , marginRight:'10px'}:{right:'auto' , left:'0px' , marginLeft:'0px'}} onClick={passwordVisibil}  fontSize='medium' className={passwordVisibiltyStatus === true ? `${Style.activeVisibility} ${Style.visibilityIconStyle}` : passwordVisibiltyStatus === false ? `${Style.visibilityIconStyle}`:null}></VisibilityIcon>
+                                                    </div>
                                                     <div className={Style.logInDiv}>
-                                                        <h5>هنوز ثبت نام نکرده اید؟</h5>
-                                                        <Link to='/signUp'><h5 className={Style.logInBtn}>ثبت نام</h5></Link>
+                                                        <Link to='/forgetPassword'>
+                                                            <h5 className={Style.logInBtn}>
+                                                                {langCtx.language === 'english' ?'Forgot your password?':'فراموشی کلمه عبور'}
+                                                            </h5>
+                                                        </Link>
+                                                    </div>
+                                                    <div className={Style.errorDiv}>
+                                                            {signUpError === true ?<h4>{signUpErrorMsg}</h4> : ''}  
+                                                    </div> 
+                                                    <div className={Style.signUpBtnDiv}>
+                                                        <button onClick={sendLogIn} className={Style.signUpBtn}>{loadingStatus === true ?  <Loader marginBottom={'2px'} borderTop={'3px solid #1043A9'} border={'#fff 3px solid'} width={'25px'} height={'25px'}></Loader> : langCtx.language === 'english' ?'Log In':'ورود'}</button>
+                                                    </div>
+                                                    <div className={Style.logInDiv}>
+                                                        <h5>{langCtx.language === 'english' ?"Don't have an account?":'هنوز ثبت نام نکرده اید؟'}</h5>
+                                                        <Link to='/signUp'><h5 className={Style.logInBtn}>{langCtx.language === 'english' ?"Sign up":'ثبت نام'}</h5></Link>
                                                     </div>
                                                 </div>
                                             </Col>

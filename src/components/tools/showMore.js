@@ -6,7 +6,6 @@ import Style from './showMore.module.css';
 export default class ShowMore extends React.Component {
 
     executeOnClick(isExpanded) {
-        console.log(isExpanded);
     }
 
     render() {

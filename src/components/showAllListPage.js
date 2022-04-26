@@ -109,7 +109,7 @@ const ShowAllListPage = () =>{
                         setPageLoading(true);
                         const response = await axios({
                             method: 'get',
-                            url: `${axiosGlobalCtx.defaultTargetApi}/product/productListByCategoryEn?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&id=${queryParams.get('id')}`,
+                            url: `${axiosGlobalCtx.defaultTargetApi}/product/productListForCardFullListMainEn?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&id=${queryParams.get('id')}`,
                             config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
                         })
                         const recivedData = response;

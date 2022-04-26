@@ -14,6 +14,9 @@ import SignUp from "./components/tools/auth/signup";
 import LogInNoModal from "./components/tools/auth/logInNoModal";
 import AuthContext from "./store/auth";
 import Cookies from "js-cookie";
+import ResetPassword from "./components/tools/auth/resetPassword";
+import ForgetPassword from "./components/tools/auth/forgetPassword";
+
 
 library.add(faTimes , faUpload , faCheckCircle, farStar  , faStar , faSearch , faPlus , faChevronRight , faChevronLeft , faExclamationCircle ,faThumbsUp ,faSignOutAlt, faFile ,faUser, faComments , faTags , faThumbsDown  , faReply ,faCaretDown , faQuestion ,faBars , faThLarge , faCheck ,faTimesCircle , faTrashAlt ,faEdit , faHeadset )
 function App() {
@@ -23,7 +26,9 @@ function App() {
           <Route path="/" element={<MainPage/>}></Route>
           <Route path="/productList" element={<ProductListPage/>}></Route>
           <Route path="/showCase/:productId" element={<ProductShowCase/>}></Route>
-          <Route path="/fullList" element={<ShowAllListPage/>}></Route>
+          <Route path="/fullList" element={<ShowAllListPage/>}></Route>\
+          <Route path="/resetPassword/:id/:token" element={<ResetPassword/>}></Route>
+          <Route path="/forgetPassword" element={<ForgetPassword/>}></Route>
           <Route path="/signUp" element={Cookies.get('accessToken') === undefined ?
             <SignUp/>
           :

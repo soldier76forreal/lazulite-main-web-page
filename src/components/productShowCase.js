@@ -134,13 +134,14 @@ const ProductShowCase = (props) =>{
                 }else if(langCtx.language === 'arabic'){
                     const response = await axios({
                         method:"get",
-                        url:`${authCtx.defaultTargetApi}/newProduct/getProductAr`,
+                        url:`${authCtx.defaultTargetApi}/newProduct/getProductForMainAr`,
                         params:{id:
                             params.productId
                         },
                         config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
                     })
                     const dataRes = response.data;
+                    setOveralRate(dataRes.productRate);
                     setProduct(dataRes.product);
                     setKeyFeature([...dataRes.product.keyFeatures]);
                     setPrice(dataRes.product.price);
@@ -153,13 +154,14 @@ const ProductShowCase = (props) =>{
                 }else if(langCtx.language === 'english'){
                     const response = await axios({
                         method:"get",
-                        url:`${authCtx.defaultTargetApi}/newProduct/getProductEn`,
-                        params:{
-                            id:params.productId,
+                        url:`${authCtx.defaultTargetApi}/newProduct/getProductForMainEn`,
+                        params:{id:
+                            params.productId
                         },
                         config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
                     })
                     const dataRes = response.data;
+                    setOveralRate(dataRes.productRate);
                     setProduct(dataRes.product);
                     setKeyFeature([...dataRes.product.keyFeatures]);
                     setPrice(dataRes.product.price);
@@ -266,7 +268,7 @@ const ProductShowCase = (props) =>{
                     {Object.keys(pContactBtn).length !== 0 ?
                          <PhoneCallModal data={pContactBtn} closeModalFn={()=>{setPhoneCallModal(false)}} showModal={phoneCallModal}></PhoneCallModal>
                     :null}
-                   <Container style={{maxWidth:'100%'}}>
+                   <Container dir={langCtx.language === 'english' ?'ltr':'rtl'} style={{maxWidth:'100%'}}>
                         <div style={{marginTop:'85px'}} className={Style.inndeDiv}>
                             <Row style={{margin:'0px auto 20px auto' , maxWidth:'1676px'}} >
                                 <Col xs={0} md={0} lg={1}>
@@ -286,15 +288,15 @@ const ProductShowCase = (props) =>{
                                     </Row>
                                     
                                     <Row>
-                                        <div  className={Style.responsiveTitle}>   
+                                        <div dir={langCtx.language === 'english' ?'ltr':'rtl'} style={langCtx.language === 'english' ?{textAlign:'left'}:{textAlign:'right'}} className={Style.responsiveTitle}>   
                                             {/*-------- product title --------*/}
-                                            <Col  dir="rtl" xs={12} md={12} lg={12}>
+                                            <Col  xs={12} md={12} lg={12}>
                                                 <div className={Style.productTitleDiv}>
                                                     <h4>{product.title}</h4>
                                                 </div>
                                             </Col>
                                             {/*-------- rate and functions --------*/}
-                                            <Col  dir="rtl" xs={12} md={12} lg={12}>
+                                            <Col xs={12} md={12} lg={12}>
                                                 <div  className={Style.productRatingDiv}>
                                                     {/* rate star */}
 
@@ -302,7 +304,7 @@ const ProductShowCase = (props) =>{
                                                         {overalRate === 0?
                                                             <div style={{display:'inline-block'}}>
                                                                 <FontAwesomeIcon color='#CE9800' style={{fontSize:'15px'}} icon='star'></FontAwesomeIcon>
-                                                                <h3 className={Style.rateTextStyle}>امتیاز این محصول : امتیازی ثبت نشده</h3>
+                                                                <h3 style={langCtx.language === 'english' ?{margin:'0px 0px 0px 5px'}:{margin:'0px 5px 0px 0px'}} className={Style.rateTextStyle}>{langCtx.language === 'english' ?"Product rate":"امتیاز این محصول"} : {langCtx.language === 'english' ?"not rated yet":"امتیازی ثبت نشده"}</h3>
                                                             </div>
                                                         :
                                                             <div style={{display:'inline-block'}}>
@@ -320,13 +322,13 @@ const ProductShowCase = (props) =>{
                                                                         </lable>
                                                                     )
                                                                 })}
-                                                                <h3 className={Style.rateTextStyle}>امتیاز این محصول : {overalRate}</h3>
+                                                                <h3 style={langCtx.language === 'english' ?{margin:'0px 0px 0px 5px'}:{margin:'0px 5px 0px 0px'}} className={Style.rateTextStyle}>{langCtx.language === 'english' ?"Product rate":"امتیاز این محصول"} : {overalRate}</h3>
                                                             
                                                             </div>
                                                             
                                                         }  
-                                                <h3 className={Style.horizonDiv}>|</h3>
-                                                <h3 className={Style.commentText}>{commentCount} دیدگاه</h3>
+                                                <h3 style={{margin:'0px 3px 0px 3px'}} className={Style.horizonDiv}>|</h3>
+                                                <h3 className={Style.commentText}>{commentCount} {langCtx.language === 'english' ?"comments":"دیدگاه"}</h3>
                                                 </div>
                                             </Col>
                                             {/*-------- Line --------*/}
@@ -339,12 +341,12 @@ const ProductShowCase = (props) =>{
                                         </div>
 
                                         {/*---------- product Brief ----------*/}
-                                        <Col  dir="rtl" xs={12} md={12} lg={6}>
+                                        <Col  dir={langCtx.language === 'english' ?'ltr':'rtl'} xs={12} md={12} lg={6}>
                                             <Row>
                                                 <div className={Style.productBriefDiv}>
-                                                    <div className={Style.normalTitle}> 
+                                                    <div  className={Style.normalTitle}> 
                                                         {/*-------- product title --------*/}
-                                                        <Col xs={12} md={12} lg={12}>
+                                                        <Col  xs={12} md={12} lg={12}>
                                                             <div className={Style.productTitleDiv}>
                                                                 <h4>{product.title}</h4>
                                                             </div>
@@ -359,7 +361,7 @@ const ProductShowCase = (props) =>{
                                                                 {overalRate === 0?
                                                                     <div style={{display:'inline-block'}}>
                                                                         <FontAwesomeIcon color='#CE9800' style={{fontSize:'15px'}} icon='star'></FontAwesomeIcon>
-                                                                        <h3 className={Style.rateTextStyle}>امتیاز این محصول : امتیازی ثبت نشده</h3>
+                                                                        <h3 style={langCtx.language === 'english' ?{margin:'0px 0px 0px 5px'}:{margin:'0px 5px 0px 0px'}} className={Style.rateTextStyle}>{langCtx.language === 'english' ?"Product rate":"امتیاز این محصول"} : {langCtx.language === 'english' ?"not rated yet":"امتیازی ثبت نشده"}</h3>
                                                                     </div>
                                                                 :
                                                                     <div style={{display:'inline-block'}}>
@@ -377,13 +379,13 @@ const ProductShowCase = (props) =>{
                                                                                 </lable>
                                                                             )
                                                                         })}
-                                                                        <h3 className={Style.rateTextStyle}>امتیاز این محصول : {overalRate}</h3>
+                                                                        <h3 style={langCtx.language === 'english' ?{marginleft:'5px'}:{marginleft:'0px'}} className={Style.rateTextStyle}>{langCtx.language === 'english' ?"Product rate":"امتیاز این محصول"} : {overalRate}</h3>
                                                                     
                                                                     </div>
                                                                     
                                                                 }                                                               
-                                                                 <h3 className={Style.horizonDiv}>|</h3>
-                                                                 <h3 className={Style.commentText}>{commentCount} دیدگاه</h3>
+                                                                 <h3 style={{margin:'0px 3px 0px 3px'}} className={Style.horizonDiv}>|</h3>
+                                                                 <h3 className={Style.commentText}>{commentCount} {langCtx.language === 'english' ?"comments":"دیدگاه"}</h3>
                                                             </div>
                                                         </Col>
                                                         {/*-------- Line --------*/}
@@ -393,60 +395,58 @@ const ProductShowCase = (props) =>{
                                                     </div>
                                                     <div className={Style.briefSecResponsive}>
                                                         {/*-------- features --------*/}
-                                                        <div className={Style.featuresAndPriceResponsive}>
-                                                            
+                                                        <div  className={Style.featuresAndPriceResponsive}>
                                                             <Col xs={12} md={12} lg={12}>
-                                                                <div className={Style.stockDivRes}>
+                                                                <div style={langCtx.language === 'english' ?{float:'right'}:{float:'left'}} dir={langCtx.language === 'english' ?'ltr':'rtl'} className={Style.stockDivRes}>
                                                                     {product.stock === true ?
-                                                                        <div className={Style.stockStyle}>
+                                                                        <div style={langCtx.language === 'english' ?{float:'right'}:{float:'left'}} className={Style.stockStyle}>
                                                                             <CheckCircleIcon className={Style.tikIcon} sx={{color:'#00CC81' , fontSize:'23px' , marginRight:'7px' , marginTop:'2px'}}></CheckCircleIcon>
-                                                                            <h4 className={Style.availableSurfaceDiv}>موجود در انبار:<span>{product.availableSurface}</span> متر</h4>
+                                                                            <h4 style={langCtx.language === 'english' ?{padding:'8px 7px 8px 0px'}:{padding:'8px 0px 8px 7px' , marginRight:'4px'}} className={Style.availableSurfaceDiv}>موجود در انبار:<span>{product.availableSurface}</span> متر</h4>
                                                                         </div>
                                                                     :
-                                                                        <div className={Style.stockStyle}>
+                                                                        <div style={langCtx.language === 'english' ?{float:'right'}:{float:'left'}} className={Style.stockStyle}>
                                                                             <ErrorIcon sx={{color:'#cc1800' , fontSize:'23px' , marginRight:'7px' , marginTop:'2px'}}></ErrorIcon>
-                                                                            <h4>اتمام موجودی</h4>
+                                                                            <h4 style={langCtx.language === 'english' ?{padding:'8px 7px 8px 0px'}:{padding:'8px 0px 8px 7px' , marginRight:'4px'}}>{langCtx.language === 'english' ?'out of stock':'اتمام موجودی'}</h4>
                                                                         </div>
                                                                     }
                                                                 </div>
-
-                                                                <div className={Style.featuresDiv}>
-                                                                    <h3>ویژگی ها</h3>
-                                                                    
-                                                                    <ul style={{listStyleImage : `url(${BulletPoint})`}} className={Style.featuresUl}>
-                                                                        
+                                                                <div dir={langCtx.language === 'english' ?'ltr':'rtl'} className={Style.featuresDiv}>
+                                                                    <h3 style={langCtx.language === 'english' ?{marginLeft:'5px' , marginBottom:'2px'}:{paddingRight:'5px' , marginBottom:'2px'}} >{langCtx.language === 'english' ?'Features':'ویژگی ها'}</h3>
+                                                                    <ul style={langCtx.language === 'english' ?{listStyleImage : `url(${BulletPoint})`, marginTop:'0px' , padding:'0px'}:{listStyleImage : `url(${BulletPoint})`, marginTop:'0px' , padding:'0px'}}  className={Style.featuresUl}> 
                                                                         {keyFeature.map(data=>{
                                                                             return(
                                                                                 <li>{data.title}:<span>{data.content}</span></li>
                                                                             )
                                                                         })}
-                                                                    
                                                                     </ul>
                                                                 </div>
                                                             </Col>
                                                             {/* price */}
                                                             <Col xs={12} md={12} lg={12}>
+                                                                <div style={{display:'inline-block'}} dir={langCtx.language === 'english' ?'ltr':'rtl'}>
                                                                     {price.price === null ?
-                                                                        <div className={Style.priceDiv}>
-                                                                            <div className={Style.meterDiv}><h4>قیمت</h4></div>
-                                                                            <div className={Style.priceItSelfDiv}><h4>تماس بگیرید</h4></div>
+                                                                        <div style={langCtx.language === 'english' ?{padding:'0px'}:{padding:'0px 0px 0px 7px'}} className={Style.priceDiv}>
+                                                                            <div className={Style.meterDiv}><h4>{langCtx.language === 'english' ?'Price':'قیمت'}</h4></div>
+                                                                            <div style={langCtx.language === 'english' ?{marginLeft:'5px'}:{marginRight:'5px'}} className={Style.priceItSelfDiv}><h4>{langCtx.language === 'english' ?'Contact Us':'تماس بگیرید'}</h4></div>
                                                                         </div>
                                                                     :
-                                                                        <div className={Style.priceDiv}>
+                                                                        <div style={langCtx.language === 'english' ?{padding:'0px'}:{padding:'0px 0px 0px 7px'}} className={Style.priceDiv}>
                                                                             <div className={Style.meterDiv}><h4>{price.measure}</h4></div>
-                                                                            <div className={Style.priceItSelfDiv}><h4>{parseInt(price.price).toLocaleString()}</h4><span className={Style.priceUnit}>تومان</span></div>
+                                                                            <div style={langCtx.language === 'english' ?{marginLeft:'5px'}:{marginRight:'5px'}} className={Style.priceItSelfDiv}><h4>{parseInt(price.price).toLocaleString()}</h4><span className={Style.priceUnit}>تومان</span></div>
                                                                         </div>
                                                                     }
-                                                                <div className={Style.stockDiv}>
+                                                                </div>
+                                                                <div style={langCtx.language === 'english' ?{float:'right'}:{float:'left'}} dir={langCtx.language === 'english' ?'ltr':'rtl'} className={Style.stockDiv}>
                                                                     {product.stock === true ?
                                                                         <div className={Style.stockStyle}>
                                                                             <CheckCircleIcon sx={{color:'#00CC81' , fontSize:'23px' , marginRight:'7px' , marginTop:'2px'}}></CheckCircleIcon>
-                                                                            <h4 className={Style.availableSurfaceDiv}>موجود در انبار:<span>{product.availableSurface}</span> متر</h4>
+                                                                            <h4 style={langCtx.language === 'english' ?{padding:'8px 7px 8px 0px'}:{padding:'8px 0px 8px 7px' , marginRight:'4px'}} 
+                                                                             className={Style.availableSurfaceDiv}>موجود در انبار:<span>{product.availableSurface}</span> متر</h4>
                                                                         </div>
                                                                     :
                                                                         <div className={Style.stockStyle}>
                                                                             <ErrorIcon sx={{color:'#cc1800' , fontSize:'23px' , marginRight:'7px' , marginTop:'2px'}}></ErrorIcon>
-                                                                            <h4>اتمام موجودی</h4>
+                                                                            <h4 style={langCtx.language === 'english' ?{padding:'8px 7px 8px 0px'}:{padding:'8px 0px 8px 7px' , marginRight:'4px'}}>{langCtx.language === 'english' ?'out of stock':'اتمام موجودی'}</h4>
                                                                         </div>
                                                                     }
                                                                 </div>
@@ -455,11 +455,11 @@ const ProductShowCase = (props) =>{
                                                         {/* contact btn */}
                                                         <Col xs={12} md={12} lg={12}>
                                                             <div  className={Style.purchaseDiv}>
-                                                                <div style={{display:'inline-block'}} className={Style.purchaseTitle}><h4>سفارش و مشاوره</h4></div>
-                                                                <div style={{display:'inline-block' , backgroundColor:'#354063' , color:'#fff' , padding:'3px 8px 3px 8px' , borderRadius:'6px' , float:'left' , margin:'6px 0px 0px 14px'}} className={Style.productRateDiv}>کد محصول:<span>{product.productCode}</span></div>
+                                                                <div style={langCtx.language === 'english' ?{display:'inline-block' , float:'left'}:{display:'inline-block' , float:'right'}} className={Style.purchaseTitle}><h4 style={langCtx.language === 'english' ?{paddingLeft:'14px'}:{paddingRight:'0px'}}>{langCtx.language === 'english' ? 'Consulting and orther':'سفارش و مشاوره'}</h4></div>
+                                                                <div style= {langCtx.language === 'english' ?{display:'inline-block' , backgroundColor:'#354063' , color:'#fff' , padding:'3px 8px 3px 8px' , borderRadius:'6px' , float:'right' , margin:'6px 14px 0px 0px'}:{display:'inline-block' , backgroundColor:'#354063' , color:'#fff' , padding:'3px 8px 3px 8px' , borderRadius:'6px' , float:'left' , margin:'6px 0px 0px 14px'}}  className={Style.productRateDiv}>{langCtx.language === 'english' ? 'Product Code:':'کد محصول:'}<span>{product.productCode}</span></div>
                                                                 <div className={Style.purchaseBtn}>
-                                                                    <button onClick={()=>{setPhoneCallModal(true)}} className={Style.contactBtn}>تماس</button>
-                                                                    <a target='blank' href={`https://api.whatsapp.com/send?phone=98${parseInt(waContactBtn.phoneNumber, 10)}`}><button className={Style.whatsAppBtn}>واتساپ</button></a>
+                                                                    <button onClick={()=>{setPhoneCallModal(true)}} className={Style.contactBtn}>{langCtx.language === 'english' ?'Call':'تماس'}</button>
+                                                                    <a target='blank' href={`https://api.whatsapp.com/send?phone=98${parseInt(waContactBtn.phoneNumber, 10)}`}><button className={Style.whatsAppBtn}>{langCtx.language === 'english' ?'Whats App':'واتساپ'}</button></a>
                                                                 </div>
                                                             </div>
                                                         </Col>
@@ -481,29 +481,32 @@ const ProductShowCase = (props) =>{
                             <Row style={{padding:'0px' , position: 'sticky' , top:'0'}} >
                                 {/*-------- navigation section --------*/}
                                     <Col  style={{padding:'0px'}} xs={12} md={12} lg={12}>
-                                        <div  dir="rtl" className={Style.productPostNavigation}>
+                                        <div  dir="ltr" className={Style.productPostNavigation}>
                                             <ul className={Style.unortherList}>
-                                                <li onClick={()=>{keyFeaturesRef.current.scrollIntoView()}} className={Style.unortherListActive}>مشخصات کلیدی</li>
-                                                <li onClick={()=>{riviewRef.current.scrollIntoView()}}>نقد و بررسی</li>
-                                                <li onClick={()=>{commentsRef.current.scrollIntoView()}}>دیدگاه کاربران</li>
+                                                <li onClick={()=>{keyFeaturesRef.current.scrollIntoView()}} className={Style.unortherListActive}>
+                                                    {langCtx.language === 'english' ?'Features':'مشخصات کلیدی'}
+                                                </li>
+                                                <li onClick={()=>{riviewRef.current.scrollIntoView()}}>{langCtx.language === 'english' ?'Review':'نقد و بررسی'}</li>
+                                                <li onClick={()=>{commentsRef.current.scrollIntoView()}}>{langCtx.language === 'english' ?'Comments':'دیدگاه کاربران'}</li>
                                             </ul>
                                         </div>
                                     </Col>
                             </Row>
-                            <Row style={{margin:'0px auto 20px auto' , maxWidth:'1676px'}}>
+                            <Row  style={{margin:'0px auto 20px auto' , maxWidth:'1676px'}}>
                                 <Col xs={0} md={1} lg={1}>
                                 </Col>
                                 {/*-------- navigation section --------*/}
-                                <Col xs={12} md={10} lg={10}>
+                                <Col  xs={12} md={10} lg={10}>
 
                                     {/* featuresTable */}
-                                    <div ref={keyFeaturesRef}   dir="rtl" className={Style.featuresTable}>
-                                        <NormalHeader fontFamily='Dana1' fontSize='22px' color='#354063'  header='مشخصات کلیدی'></NormalHeader>
+                                    <div dir={langCtx.language === 'english' ?'ltr':'rtl'} ref={keyFeaturesRef} className={Style.featuresTable}>
+                                        <NormalHeader fontFamily='Dana1' fontSize='22px' color='#354063'  
+                                        header={langCtx.language === 'english' ?'Features':'مشخصات کلیدی'}></NormalHeader>
                                         <ul  className={Style.featuresListUl}>
                                             {feature.map((data , i)=>{
                                                 return(
                                                     <div>
-                                                        <li><div className={Style.itemName}>{data.title}</div><div className={Style.itemValue}>{data.content}</div></li>
+                                                        <li style={langCtx.language === 'english' ?{margin:'0px 0px 0px 20px'}:{margin:'0px 20px 0px 0px'}}><div style={{margin:'0px'}} className={Style.itemName}>{data.title}</div><div className={Style.itemValue}>{data.content}</div></li>
                                                         {feature.length === i+1 ? <div style={{width:'0%' , height:'0px' , backgroundColor:'#d1d1d1'}}></div>:<div style={{width:'100%' , borderRadius:'50px' , height:'1px' , backgroundColor:'#d1d1d1'}}></div>}                                
                                                     </div>
                                                 )
@@ -516,33 +519,50 @@ const ProductShowCase = (props) =>{
                                     {/* <StarRating></StarRating> */}
                                     <div ref={riviewRef} className={Style.reviewDiv}>
                                         <div className={Style.reviewHeaderDiv}>
-                                            <h3>نقد و بررسی تخصصی</h3>
+                                            <h3>Product Review</h3>
                                             <h2>{product.title}</h2>
                                         </div>
-                                        <div onScroll={(e)=>{console.log(e);}} dir="rtl" className={Style.reviewContentDiv} dangerouslySetInnerHTML={{__html: `${product.productRiview}`}} />
+                                        <div  className={Style.reviewContentDiv} dangerouslySetInnerHTML={{__html: `${product.productRiview}`}} />
                                         {/* <div id="productRiview" dir="rtl" className={Style.reviewContentDiv}>
-                                        
                                         </div> */}
                                     </div>
 
                                     <div style={{width:'100%' , height:'2px' , marginTop:'12px' , backgroundColor:'#7B99D5'}}></div>
-                                    
-                                    <div  ref={commentsRef}  className={Style.commentSectionDiv}>
-                                        <div  className={Style.commentSectionHeaderDiv}>
-                                            {overalRate === 0?
-                                                <div className={Style.theRateItSelfDiv}>
-                                                    <h5>امتیازی ثبت نشده</h5>
-                                                </div>
-                                            :
-                                                <div className={Style.theRateItSelfDiv}>
-                                                    <h5>امتیاز این محصول: <span>{overalRate} </span>از 5</h5>
-                                                </div>
-                                            }
 
-                                            <div className={Style.theHeaderItSelfDiv}>
-                                                    <NormalHeader fontFamily='Dana1' fontSize='22px' color='#354063'  header='دیدگاه کاربران'></NormalHeader>
-                                            </div> 
-                                        </div>
+                                    <div  ref={commentsRef}  className={Style.commentSectionDiv}>
+ 
+                                        {langCtx.language === 'english' ?
+                                            <div  className={Style.commentSectionHeaderDiv}>
+                                                    <div style={{textAlign:"left"}} className={Style.theHeaderItSelfDiv}>
+                                                            <NormalHeader fontFamily='Dana1' fontSize='22px' color='#354063'  header='comments'></NormalHeader>
+                                                    </div>
+                                                {overalRate === 0?
+                                                    <div style={{float:"right"}} className={Style.theRateItSelfDiv}>
+                                                        <h5 style={{float:"right"}}>not rated yet</h5>
+                                                    </div>
+                                                :
+                                                    <div style={{float:"right"}} className={Style.theRateItSelfDiv}>
+                                                        <h5 style={{float:"right"}}>product rate: <span>{overalRate} </span>از 5</h5>
+                                                    </div>
+                                                }
+
+                                            </div>
+                                            :
+                                            <div  className={Style.commentSectionHeaderDiv}>
+                                                {overalRate === 0?
+                                                    <div className={Style.theRateItSelfDiv}>
+                                                        <h5>امتیازی ثبت نشده</h5>
+                                                    </div>
+                                                :
+                                                    <div className={Style.theRateItSelfDiv}>
+                                                        <h5>امتیاز این محصول: <span>{overalRate} </span>از 5</h5>
+                                                    </div>
+                                                }
+                                                <div className={Style.theHeaderItSelfDiv}>
+                                                        <NormalHeader fontFamily='Dana1' fontSize='22px' color='#354063'  header='دیدگاه کاربران'></NormalHeader>
+                                                </div> 
+                                            </div>
+                                            }
                                         <div className={Style.commentBoxDiv}>
                                             <CommentBox ratedBefore={ratedBefore} commentCount={commentCount} id={product._id}></CommentBox>
                                         </div>
@@ -561,7 +581,7 @@ const ProductShowCase = (props) =>{
                                         </div>
                                         :
                                         <div style={{borderRadius:'8px' , backgroundColor:'#EFEFEF' , width:'100%' , textAlign:'center'  , margin:'15px 0px 0px 0px' , padding:'40px 0px 40px 0px'}}>
-                                            <h5 style={{margin:'0px' , padding:'0px' , fontFamily:'Dana1' , fontSize:'15px' , color:'#666666'}}>!دیدگاهی وجود ندارد</h5>
+                                            <h5 style={{margin:'0px' , padding:'0px' , fontFamily:'Dana1' , fontSize:'15px' , color:'#666666'}}>{langCtx.language === 'english' ?'no comment!':'!دیدگاهی وجود ندارد'}</h5>
                                         </div>
                                             }
                                     </div>

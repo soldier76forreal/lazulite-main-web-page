@@ -28,7 +28,7 @@ const ProductListPage = () =>{
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const axiosGlobalCtx = useContext(AxiosGlobal);
-    const langCtx = useContext(Language)
+    const langCtx = useContext(Language);
     const params = useParams();
     useEffect(() => {
         document.title = queryParams.get('title');
@@ -86,7 +86,7 @@ const ProductListPage = () =>{
                         setPageLoading(true);
                         const response = await axios({
                             method: 'get',
-                            url: `${axiosGlobalCtx.defaultTargetApi}/product/productListByCategoryAndTagsArMain?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&id=${queryParams.get('id')}&state=${queryParams.get('state')}&filter=${queryParams.get('filter')}`,
+                            url: `${axiosGlobalCtx.defaultTargetApi}/product/productListByCategoryAndTagsMainAr?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&id=${queryParams.get('id')}&state=${queryParams.get('state')}&filter=${queryParams.get('filter')}`,
                             config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
                         })
                         const recivedData = response;
@@ -109,7 +109,7 @@ const ProductListPage = () =>{
                         setPageLoading(true);
                         const response = await axios({
                             method: 'get',
-                            url: `${axiosGlobalCtx.defaultTargetApi}/product/productListByCategoryEn?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&id=${queryParams.get('id')}`,
+                            url: `${axiosGlobalCtx.defaultTargetApi}/product/productListByCategoryAndTagsMainEn?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&id=${queryParams.get('id')}&state=${queryParams.get('state')}&filter=${queryParams.get('filter')}`,
                             config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
                         })
                         const recivedData = response;

@@ -11,7 +11,6 @@ import {PostForAllProvider} from './store/getPostForAll';
 import { ActivePageProvider } from './store/activePage';
 import { AuthContextProvider } from './store/auth';
 
-
 ReactDOM.render(
       <LanguageProvider>
           <AxiosGlobalProvider>
