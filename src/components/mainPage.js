@@ -13,13 +13,12 @@ import sample2 from '../assets/vs.jpg';
 import sample3 from '../assets/sm3.jpg';
 import FeaturesBriefCard from './tools/featuresBriefCard';
 import Footer from './footer';
-import PostForAll from '../store/getPostForAll';
 import ActivePage from '../store/activePage';
 import MdBanerUp from "../assets/mid banner - up.jpg";
 import MdBanerUp2 from "../assets/mid banner - up - 2.jpg";
 import MdBanerUp3 from "../assets/mid bottom.jpg";
-import MdBanerUp4 from "../assets/bottom - right .jpg";
-import MdBanerUp5 from "../assets/bottom - left .jpg";
+import MdBanerUp4 from "../assets/bottom-right.jpg";
+import MdBanerUp5 from "../assets/bottom-left.jpg";
 import Granite from '../assets/granite.jpg';
 import Marmar from '../assets/marmar.jpg'
 import Onix from '../assets/onix.jpg'
@@ -29,26 +28,29 @@ import Language from '../store/language';
 import axios from 'axios';
 import AxiosGlobal from '../store/axiosGlobal';
 import Cookies from 'js-cookie';
+import Loading from '../store/loading';
+import Loader from './tools/loader';
 
 ReactGa.initialize(process.env.GA_TRACKING_CODE);
 
-
-
-
 const MainPage = () =>{
     // --------------------------------------------Context api ------------------------------------------
-    const postForAll = useContext(PostForAll);
     const langCtx  = useContext(Language);
     const axiosGlobal = useContext(AxiosGlobal);
+    const loadingCtx = useContext(Loading);
+
     // --------------------------------------------States------------------------------------------
-    const [lastestPostForCard , setLastestPostForCard] = useState([...postForAll]);
-    const [saveAllData , setGetAllData] = useState([]);
+    const [getAllData , setGetAllData] = useState([]);
 
     const activePage = useContext(ActivePage)
 
     useEffect(() => {
         activePage.nav=window.location.pathname;
-        document.title = "لازولیت ماربل"
+        if(langCtx.language === 'persian'){
+            document.title = "لازولیت ماربل"
+        }else if(langCtx.language === 'english'){
+            document.title = "lazulite marble"
+        }
     }, []);
 
     // --------------------------------------------functions------------------------------------------
@@ -58,7 +60,6 @@ const MainPage = () =>{
     //         return new Date(a.insertDate) - new Date(b.insertDate)
     //       })
     //       setLastestPostForCard([...tempArr])
-          
     // }
     useEffect(() => {
         activePage.activePageFn('home');
@@ -95,8 +96,8 @@ const MainPage = () =>{
                     config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
                 })
                 const data = response.data; 
-                setGetAllData([...data.rs])
-                
+                setGetAllData([...data.rs]);
+                loadingCtx.loadingStatus(true);
             }else if(langCtx.language === 'arabic'){
                 const response = await axios({
                     method:"get",
@@ -113,16 +114,18 @@ const MainPage = () =>{
                 })
                 const data = response.data; 
                 setGetAllData([...data.rs])
-            }
+                loadingCtx.loadingStatus(true);
 
-        
+            }
         }catch(error){
             console.log(error);
         }
     }
     useEffect(() => {
         getData()
-    }, [Cookies.get('currentLang')]);
+    }, [langCtx.language]);
+
+    if(loadingCtx.loading === true){
     return(
         <Fragment>
             {/* portals */}
@@ -160,16 +163,15 @@ const MainPage = () =>{
                     </Row>
                 </div>
                 <div className={Style.cardSliderDiv}>
-                    {saveAllData.length !== 0?
-                         <CardSlider listType='last' cardName={langCtx.language === 'english' ?'Latest Products':'جدید ترین محصولات'} data={postForAll}></CardSlider>
-                    :null
-                }
+                    {getAllData.length !== 0?
+                            <CardSlider listType='last' cardName={langCtx.language === 'english' ?'Latest Products':'جدید ترین محصولات'} data={getAllData}></CardSlider>
+                        :null
+                    }
                 </div>
 
                 <div className={Style.aboutUsTilesDiv}>
                     <h5>{langCtx.language === 'english' ?'What do you know about lazulite marble?':'با لازولیت ماربل آشنایی داری؟'}</h5>
                     <Row>
-
                         <Col style={{padding:'0px'}} sm={6} xs={6} md={6} lg={6} xl={6}>
                             <div className={Style.firstAboutUsTilesDiv}>
                                 <img src={`${MdBanerUp}`}></img>
@@ -180,7 +182,6 @@ const MainPage = () =>{
                                 <img src={`${MdBanerUp2}`}></img>
                             </div>
                         </Col>
-
                     </Row>
                     <Row>
                         <Col style={{padding:'0px'}} sm={12} xs={12} md={12} lg={12} xl={12}>
@@ -195,20 +196,28 @@ const MainPage = () =>{
                     <Row>
                         <Col className={Style.firstOpratorCol} sm={6} xs={6} md={6} lg={6} xl={6}>
                             <div className={Style.firstOpratorDiv}>
-                                <img src={`${MdBanerUp4}`}></img>
+                                <a href="tel:+98913 565 3700"><img src={`${MdBanerUp4}`}></img></a>
                             </div>
                         </Col>
                         <Col className={Style.secondOpratorCol} sm={6} xs={6} md={6} lg={6} xl={6}>
                             <div className={Style.secondOpratorDiv}>
-                                <img src={`${MdBanerUp5}`}></img>
+                                <a target='blank' href={`https://api.whatsapp.com/send?phone=98${parseInt("09135653700", 10)}`}>
+                                    <img src={`${MdBanerUp5}`}></img>
+                                </a>
                             </div>
                         </Col>
                     </Row>
                 </div>
-                
         </Fragment>
-    )
 
+    )
+    }else if(loadingCtx.loading === false){
+        return(
+            <div className={Style.loaderDiv} >
+                 <Loader marginBottom={'2px'} borderTop={'4px solid #F8FBFE'} border={'#1043A9 4px solid'} width={'60px'} height={'60px'}></Loader>
+            </div>
+        )
+    }
 }
 
 export default MainPage;

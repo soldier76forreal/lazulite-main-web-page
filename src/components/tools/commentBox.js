@@ -144,11 +144,15 @@ const CommentBox = (props)=>{
                               </div> */}
                             {Cookies.get('accessToken') !== undefined ?
                                   <div className="commentSendBtn">
-                                    <NormalBtn  onClick={sendComment} send={props.sendComment}  btnName="ارسال"></NormalBtn>
+                                    <NormalBtn  onClick={sendComment} send={props.sendComment}  btnName={langCtx.language === 'english' ?'send':'ارسال'}></NormalBtn>
                                   </div>   
                             :Cookies.get('accessToken') === undefined ?
                                   <div className="commentSendBtn">
-                                    <button onClick={()=>{setShowLogInModal(true)}} className='commentBoxLogInBtn'>برای نظر دهی وارد <span>حساب کاربری</span> شوید</button>
+                                    {langCtx.language === 'english' ?
+                                      <button  onClick={()=>{setShowLogInModal(true)}} className='commentBoxLogInBtn'><span>Log in</span> to post a comment</button>
+                                    :
+                                      <button  onClick={()=>{setShowLogInModal(true)}} className='commentBoxLogInBtn'>برای نظر دهی وارد <span>حساب کاربری</span> شوید</button>
+                                    }
                                   </div>
                             :null}
                     

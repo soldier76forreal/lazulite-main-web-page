@@ -7,9 +7,11 @@ import { useContext } from 'react';
 import Language from '../../store/language';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import jsCookie from 'js-cookie';
+import Loading from '../../store/loading';
+
 const LangSelect = (props) =>{
     const [openMenu , setOpenMenu] = useState(false);
-    
+    const loadingCtx = useContext(Loading);
     const openList = () =>{
         if(props.closeLangPicker === true){
             setOpenMenu(false);
@@ -26,6 +28,7 @@ const LangSelect = (props) =>{
         langCtx.activeLangFn(e.currentTarget.value);  
         setOpenMenu(false);  
         props.setCloseLangPicker(false);
+        loadingCtx.loadingStatus(false);
     }
     const list = [{showName:'فارسی' , value:'persian' , icon:Pr} , {showName:'English' , value:'english' , icon:En} , {showName:'عربی' , value:'arabic' , icon:Ar} ]
     const langCtx = useContext(Language);

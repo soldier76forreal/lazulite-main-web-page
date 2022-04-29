@@ -10,20 +10,23 @@ import { AxiosGlobalProvider } from './store/axiosGlobal';
 import {PostForAllProvider} from './store/getPostForAll';
 import { ActivePageProvider } from './store/activePage';
 import { AuthContextProvider } from './store/auth';
+import { LoadingProvider } from './store/loading';
 
 ReactDOM.render(
       <LanguageProvider>
-          <AxiosGlobalProvider>
-                <PostForAllProvider>
-                  <BrowserRouter>
-                        <AuthContextProvider>
-                              <ActivePageProvider>
-                                    <App />
-                              </ActivePageProvider>
-                        </AuthContextProvider>
-                  </BrowserRouter>
-                </PostForAllProvider>
-          </AxiosGlobalProvider>
+            <LoadingProvider>
+                  <AxiosGlobalProvider>
+                        <PostForAllProvider>
+                              <BrowserRouter>
+                                    <AuthContextProvider>
+                                          <ActivePageProvider>
+                                                <App />
+                                          </ActivePageProvider>
+                                    </AuthContextProvider>
+                              </BrowserRouter>
+                        </PostForAllProvider>
+                  </AxiosGlobalProvider>
+            </LoadingProvider>
       </LanguageProvider>
 
 
