@@ -6,7 +6,7 @@ const NoDataFigure = (props) =>{
     return(
 
             <div className={Style.noDataDiv}>
-                <img className={Style.img} src={`${noDataImg}`}></img>
+                <img alt='no data figur' title='no data figur' className={Style.img} src={`${noDataImg}`}></img>
                 <h4 className={Style.msg}>{props.msg}</h4>
             </div>
     )

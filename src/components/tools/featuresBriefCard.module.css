@@ -29,15 +29,12 @@
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
 }
-
-
 .briefCardRiviewText{
    text-align: right;
    padding-top: 25px;
 }
-.briefCardRiviewText h4{
+.briefCardRiviewText h2{
     color:#FFFFFF;
-    font-size: 33px;
     font-family: Dana1;
     margin-right: 40px;
 
@@ -115,7 +112,7 @@
         border-top-left-radius: 20px;
     }
     
-    .briefCardRiviewText h4{
+    .briefCardRiviewText h2{
         color:#FFFFFF;
         font-size: 26px;
         font-family: Dana1;
@@ -175,7 +172,6 @@
 
     .briefCardRiviewText h4{
         color:#FFFFFF;
-        font-size: 24px;
         font-family: Dana1;
         margin-right: 30px;
         margin-top: 10px;
@@ -232,9 +228,8 @@
      h4{
          margin: 0px;
      }
-    .briefCardRiviewText h4{
+    .briefCardRiviewText h2{
         color:#FFFFFF;
-        font-size: 20px;
         font-family: Dana1;
         margin-right: 35px;
         margin-top: 19px;
@@ -328,7 +323,7 @@
      h4{
          margin: 0px;
      }
-    .briefCardRiviewText h4{
+    .briefCardRiviewText h2{
         color:#FFFFFF;
         font-size: 18px;
         font-family: Dana1;
@@ -436,7 +431,7 @@
      h4{
          margin: 0px;
      }
-    .briefCardRiviewText h4{
+    .briefCardRiviewText h2{
         color:#FFFFFF;
         font-size: 15px;
         font-family: Dana1;

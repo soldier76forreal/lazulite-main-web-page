@@ -107,7 +107,7 @@ const CommentBox = (props)=>{
             <div className="commentSection">
               <div  className="commentHeaderSection">
                   <div dir={langCtx.language === 'english' ?'ltr':'rtl'} className="commentCounter">
-                    <h3 style={langCtx.language === 'english' ?{textAlign:'left'}:{textAlign:'right'}}><span>{props.commentCount}</span> {langCtx.language === 'english' ?'comment':'دیدگاه ها'}</h3>
+                    <h3 style={langCtx.language === 'english' ?{textAlign:'left'}:{textAlign:'right'}}><span>{props.commentCount}</span> {langCtx.language === 'english' ?'comment':'دیدگاه'}</h3>
                   </div> 
                   {ratedBefore !== null ?
                   <div className="charCounter">

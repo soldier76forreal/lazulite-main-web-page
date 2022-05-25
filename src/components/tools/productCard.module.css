@@ -22,7 +22,8 @@
     border-radius: 15px;
     border: #CCD9F7 4px solid;
 }
-.productCardDiv h4{
+
+.productCardDiv h3{
     font-size: 17px;
     text-align: right;
     font-family: Dana1;
@@ -35,6 +36,7 @@
     width: 100%;
     
 }
+
 .measure h4{
     padding: 4px 8px 4px 8px;
     color: #EFEFEF;

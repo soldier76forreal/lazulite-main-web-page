@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { LanguageProvider} from './store/language';
 import { AxiosGlobalProvider } from './store/axiosGlobal';
-import {PostForAllProvider} from './store/getPostForAll';
 import { ActivePageProvider } from './store/activePage';
 import { AuthContextProvider } from './store/auth';
 import { LoadingProvider } from './store/loading';
@@ -16,7 +15,7 @@ ReactDOM.render(
       <LanguageProvider>
             <LoadingProvider>
                   <AxiosGlobalProvider>
-                        <PostForAllProvider>
+                      
                               <BrowserRouter>
                                     <AuthContextProvider>
                                           <ActivePageProvider>
@@ -24,7 +23,7 @@ ReactDOM.render(
                                           </ActivePageProvider>
                                     </AuthContextProvider>
                               </BrowserRouter>
-                        </PostForAllProvider>
+                        
                   </AxiosGlobalProvider>
             </LoadingProvider>
       </LanguageProvider>

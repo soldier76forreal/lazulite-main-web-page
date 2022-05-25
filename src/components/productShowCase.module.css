@@ -121,7 +121,7 @@ height: 100px;
     display: block;
 }
 
-.productTitleDiv h4{
+.productTitleDiv h1{
     font-family: Dana1;
     color: #354063;
 }
@@ -532,8 +532,8 @@ text-align: justify;
 }
 @media only screen and (max-width: 992.98px) {
 stockStyle
-    .productTitleDiv h4{
-        font-size:22px;
+    .productTitleDiv h1{
+        
         padding-bottom: 4px;
     }
     .rateTextStyle{
@@ -719,6 +719,10 @@ stockStyle
  }
 
  @media only screen and (max-width: 576.98px) {
+    .productTitleDiv h1{
+        font-size: 22px;
+        padding-bottom: 4px;
+    }
     .purchaseTitle h4{
         font-size: 14px;
         margin-top: 10px;

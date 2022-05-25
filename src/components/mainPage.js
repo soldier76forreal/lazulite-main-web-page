@@ -1,4 +1,4 @@
-import { Fragment  , useContext , useState , useEffect} from 'react';
+import { Fragment  , useContext , useState , useEffect , React} from 'react';
 import Style from './mainPage.module.css';
 import MainNav from './tools/mainNav';
 import CarouselBanner from '../components/tools/carouselBanner';
@@ -23,7 +23,6 @@ import Granite from '../assets/granite.jpg';
 import Marmar from '../assets/marmar.jpg'
 import Onix from '../assets/onix.jpg'
 import Travertine from '../assets/travertine.jpg'
-import ReactGa from "react-ga";
 import Language from '../store/language';
 import axios from 'axios';
 import AxiosGlobal from '../store/axiosGlobal';
@@ -31,7 +30,6 @@ import Cookies from 'js-cookie';
 import Loading from '../store/loading';
 import Loader from './tools/loader';
 
-ReactGa.initialize(process.env.GA_TRACKING_CODE);
 
 const MainPage = () =>{
     // --------------------------------------------Context api ------------------------------------------
@@ -42,7 +40,7 @@ const MainPage = () =>{
     // --------------------------------------------States------------------------------------------
     const [getAllData , setGetAllData] = useState([]);
 
-    const activePage = useContext(ActivePage)
+    const activePage = useContext(ActivePage);
 
     useEffect(() => {
         activePage.nav=window.location.pathname;
@@ -83,40 +81,18 @@ const MainPage = () =>{
         background: "rgb(243,143,151)",
         background: "linear-gradient(99deg, rgba(243,143,151,1) 0%, rgba(236,97,94,1) 100%)"
     }
-    useEffect(() => {
-        ReactGa.pageview(window.location.pathname + window.location.search);
-    }, []);
 
     const getData =async()=>{
         try{
-            if(langCtx.language === 'persian'){
-                const response = await axios({
-                    method:"get",
-                    url:`${axiosGlobal.defaultTargetApi}/product/getAllProductsForMain`,
-                    config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                })
-                const data = response.data; 
-                setGetAllData([...data.rs]);
-                loadingCtx.loadingStatus(true);
-            }else if(langCtx.language === 'arabic'){
-                const response = await axios({
-                    method:"get",
-                    url:`${axiosGlobal.defaultTargetApi}/product/getAllProductsForMainAr`,
-                    config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                })
-                const data = response.data; 
-                setGetAllData([...data.rs])
-            }else if(langCtx.language === 'english'){
-                const response = await axios({
-                    method:"get",
-                    url:`${axiosGlobal.defaultTargetApi}/product/getAllProductsForMainEn`,
-                    config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                })
-                const data = response.data; 
-                setGetAllData([...data.rs])
-                loadingCtx.loadingStatus(true);
-
-            }
+            const response = await axios({
+                method:"get",
+                params:{language:langCtx.language},
+                url:`${axiosGlobal.defaultTargetApi}/product/getAllProductsForMain`,
+                config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
+            })
+            const data = response.data; 
+            setGetAllData([...data.rs]);
+            loadingCtx.loadingStatus(true);
         }catch(error){
             console.log(error);
         }
@@ -136,12 +112,14 @@ const MainPage = () =>{
                     </CarouselBanner>
                 </div>
                 <div  className={Style.briefCardDiv}>
+                
                     <Row >
                         <Col className={Style.briefCardFirstCol}  xs={12} sm={12} md={6} lg={12} xl={6}>
                             <FeaturesBriefCard id='620ad4f3590f8461838825cc' bg={Travertine} name={langCtx.language === 'english' ?'Teraverten':'تراورتن'}
-                            content='سنگ تراورتن در تمامی قسمت های یک ساختمان مورد استفاده قرار
-                            می گیرد معروف ترین رنگ های تراورتن عبارتند از:سفید، قهوه ای مایل به قرمز، قهوه ای، کرم و طلایی. تراورتن امروزه بیشتر برای کف ها و دیوار ها مورد استفاده قرار می گیرید .'
-                             customColor={blackCard}></FeaturesBriefCard>
+                            content="سنگ تراورتن در تمامی قسمت های یک ساختمان مورد استفاده قرار
+                            می گیرد معروف ترین رنگ های تراورتن عبارتند از:سفید، قهوه ای مایل به قرمز، قهوه ای، کرم و طلایی. تراورتن امروزه بیشتر برای کف ها و دیوار ها مورد استفاده قرار می گیرید ."
+                             customColor={blackCard}
+                             ></FeaturesBriefCard>
                         </Col>
                         <Col className={Style.briefCardSecondCol}  xs={12} sm={12} md={6} lg={12} xl={6}>
                             <FeaturesBriefCard id='620b80425779ab2413f5036b' bg={Granite} name={langCtx.language === 'english' ?'Granite':'گرانیت'} 
@@ -155,10 +133,9 @@ const MainPage = () =>{
                             content='سنگ اونیکس بیشتر جنبه دکوراتیو دارد و در بخش های تزئینی استفاده می شود.یکی از ویژگی ها سنگ های اونیکس شفاف بودن و انتقال نور آن است.سنگ اونیکس قیمت بالایی دارد و در نقش ها و رنگ های زیادی یافت می شود.' customColor={lightBlueCard}></FeaturesBriefCard>
                         </Col>
                         <Col className={Style.briefCardFourthCol}   xs={12} sm={12} md={6} lg={12} xl={6}>
-                             <FeaturesBriefCard id='621a40a25779ab2413f50377' bg={Marmar} name={langCtx.language === 'english' ?'MarMar':'مرمر'}
+                             <FeaturesBriefCard id='6242fe6c520e1dda73fc89b1' bg={Marmar} name={langCtx.language === 'english' ?'MarMar':'مرمریت'}
                              content='سنگ مرمر به دلیل ویژگی های خاص مانند تحمل فشار، جذب آب، تخلل و کمیابی بیشتر به صورت دکوراتیو مورد استفاده قرار می گیرد. انواع سنگ مرمر در ایران عبارتند از: مرمر سبز، مرمر سفید، مرمر صورتی، مرمر عسلی، مرمر پرتقالی، مرمر قرمز، مرمر آبی...'
                               customColor={peachi}></FeaturesBriefCard>
-
                         </Col>
                     </Row>
                 </div>
@@ -170,7 +147,7 @@ const MainPage = () =>{
                 </div>
 
                 <div className={Style.aboutUsTilesDiv}>
-                    <h5>{langCtx.language === 'english' ?'What do you know about lazulite marble?':'با لازولیت ماربل آشنایی داری؟'}</h5>
+                    <h2>{langCtx.language === 'english' ?'What do you know about lazulite marble?':'با لازولیت ماربل آشنایی داری؟'}</h2>
                     <Row>
                         <Col style={{padding:'0px'}} sm={6} xs={6} md={6} lg={6} xl={6}>
                             <div className={Style.firstAboutUsTilesDiv}>
@@ -192,17 +169,17 @@ const MainPage = () =>{
                     </Row>
                 </div>
                 <div className={Style.opratorsSecDiv}>
-                    <h5>{langCtx.language === 'english' ?'Contact us':'همین حالا با ما تماس بگیر'}</h5>
+                    <h2>{langCtx.language === 'english' ?'Contact us':'همین حالا با ما تماس بگیر'}</h2>
                     <Row>
                         <Col className={Style.firstOpratorCol} sm={6} xs={6} md={6} lg={6} xl={6}>
                             <div className={Style.firstOpratorDiv}>
-                                <a href="tel:+98913 565 3700"><img src={`${MdBanerUp4}`}></img></a>
+                                <a href="tel:+98913 565 3700"><img title='phone call' alt='phone call' src={`${MdBanerUp4}`}></img></a>
                             </div>
                         </Col>
                         <Col className={Style.secondOpratorCol} sm={6} xs={6} md={6} lg={6} xl={6}>
                             <div className={Style.secondOpratorDiv}>
                                 <a target='blank' href={`https://api.whatsapp.com/send?phone=98${parseInt("09135653700", 10)}`}>
-                                    <img src={`${MdBanerUp5}`}></img>
+                                    <img title='whats app' alt='whats app' src={`${MdBanerUp5}`}></img>
                                 </a>
                             </div>
                         </Col>

@@ -22,12 +22,12 @@ const FeaturesBriefCard =(props)=>{
         <Row>
             <Col className={Style.briefCardCol} xs={5} sm={5} md={12} lg={5} xl={5}>
                 <div className={Style.briefCardRiviewImage}>
-                    <img src={`${props.bg}`}></img>
+                    <img alt={props.name} title={props.name} src={`${props.bg}`}></img>
                 </div>
             </Col>
             <Col style={{padding:'0px'}}  xs={7} sm={7} md={12} lg={7} xl={7}>
                 <div className={Style.briefCardRiviewText}>
-                    <h4 style={langCtx.language === 'english' ?{textAlign:'left' , textJustify:'left' , marginRight:'0px' , marginLeft:'18px'}:null}>{props.name}</h4>
+                    <h2 style={langCtx.language === 'english' ?{textAlign:'left' , textJustify:'left' , marginRight:'0px' , marginLeft:'18px'}:null}>{props.name}</h2>
                     <div className={Style.responsive}>
                         <ShowMore
                             text={

@@ -30,7 +30,7 @@ const LangSelect = (props) =>{
         props.setCloseLangPicker(false);
         loadingCtx.loadingStatus(false);
     }
-    const list = [{showName:'فارسی' , value:'persian' , icon:Pr} , {showName:'English' , value:'english' , icon:En} , {showName:'عربی' , value:'arabic' , icon:Ar} ]
+    const list = [{showName:'فارسی' , value:'persian' , icon:Pr} , {showName:'English' , value:'english' , icon:En} , {showName:'العربی' , value:'arabic' , icon:Ar} ]
     const langCtx = useContext(Language);
     return(
         <Fragment>
@@ -40,9 +40,8 @@ const LangSelect = (props) =>{
                     if(data.value === langCtx.language){
                         return(
                             <button value={data.value} onClick={openList} dir='rtl' className={Style.selectLangBtn}>
-                                <img src={data.icon}></img>
+                                <img alt={data.showName} title={data.showName} src={data.icon}></img>
                                      <span className={Style.name}>{data.showName}</span>
-
                                 <div className={Style.arrowIconDiv}>
                                      <span className={Style.arrowIcon}><ArrowDropDownIcon  style={props.closeLangPicker === true?{transform:'rotate(180deg)'}:props.closeLangPicker === false?{transform:'rotate(0deg)'}:null} sx={{color:'#fff'}}></ArrowDropDownIcon></span>
                                 </div>

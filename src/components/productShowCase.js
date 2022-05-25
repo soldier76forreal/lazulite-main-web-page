@@ -7,7 +7,6 @@ import {faStar} from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory , useLocation , useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-
 import {Pagination,Navbar,Row  , Nav ,NavDropdown , Container ,Form ,FormControl ,Button, Col} from 'react-bootstrap';
 //components
 import NormalHeader from "./tools/normalHeader";
@@ -29,6 +28,7 @@ import jwtDecode from "jwt-decode";
 import ActivePage from "../store/activePage";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
+import {Helmet} from "react-helmet";
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop) 
 const ProductShowCase = (props) =>{
     const keyFeaturesRef = useRef();
@@ -42,12 +42,8 @@ const ProductShowCase = (props) =>{
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const activePage = useContext(ActivePage)
-
     activePage.nav = window.location.pathname;
     
-    const executeScroll = () => scrollToRef(riviewRef);
-    console.log(executeScroll);
-
     //------------------------------states------------------------------
     const [productRate , setProductRate]  =  useState(3);
     const [product , setProduct] = useState({});
@@ -57,9 +53,7 @@ const ProductShowCase = (props) =>{
     const [feature , setFeature] = useState([]);
     const [waContactBtn , setWaContactBtn] = useState({});
     const [pContactBtn , setpContactBtn] = useState({});
-
     const [pageLoading , setPageLoading] = useState(true);
-
     const [phoneCallModal , setPhoneCallModal] = useState(false);
     const [isOpen , setIsOpen]  = useState(false);
     const [imageToShow , setImageToShow] = useState()
@@ -69,6 +63,7 @@ const ProductShowCase = (props) =>{
     const [commentCount , setCommentCount] = useState('');
     const [overalRate , setOveralRate] = useState(0);
     const [ratedBefore , setRatedBefore] =useState({});
+    
     //------------------------------listners-----------------------------
 
         const handleClose = () => {
@@ -100,79 +95,30 @@ const ProductShowCase = (props) =>{
         let options = {
             closeOnScroll: false
           };
-
-          useEffect(() => {
-            document.title = product.title;
-        }, []);
     //------------------------------axios listner------------------------------
         //get tags
     const getProduct = async () =>{
 
             try{
-                if(langCtx.language === 'persian'){
-                    const response = await axios({
-                        method:"get",
-                        url:`${authCtx.defaultTargetApi}/newProduct/getProductForMain`,
-                        params:{id:
-                            params.productId
-                        },
-                        config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                    })
-                    const dataRes = response.data;
-                    setOveralRate(dataRes.productRate);
-                    setProduct(dataRes.product);
-                    setKeyFeature([...dataRes.product.keyFeatures]);
-                    setPrice(dataRes.product.price);
-                    setImageGallery([...dataRes.product.images]);
-                    setFeature([...dataRes.product.features]);
-                    setWaContactBtn(dataRes.phoneContacts[0]);
-                    setpContactBtn(dataRes.phoneContacts[1]);
-                    setPageLoading(false);
-                    document.title = dataRes.product.title;
-                    
-                    
-                }else if(langCtx.language === 'arabic'){
-                    const response = await axios({
-                        method:"get",
-                        url:`${authCtx.defaultTargetApi}/newProduct/getProductForMainAr`,
-                        params:{id:
-                            params.productId
-                        },
-                        config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                    })
-                    const dataRes = response.data;
-                    setOveralRate(dataRes.productRate);
-                    setProduct(dataRes.product);
-                    setKeyFeature([...dataRes.product.keyFeatures]);
-                    setPrice(dataRes.product.price);
-                    setImageGallery([...dataRes.product.images]);
-                    setFeature([...dataRes.product.features]);
-                    setWaContactBtn(dataRes.phoneContacts[0]);
-                    setpContactBtn(dataRes.phoneContacts[1]);
-                    setPageLoading(false);
-                    document.title = dataRes.product.title;
-                }else if(langCtx.language === 'english'){
-                    const response = await axios({
-                        method:"get",
-                        url:`${authCtx.defaultTargetApi}/newProduct/getProductForMainEn`,
-                        params:{id:
-                            params.productId
-                        },
-                        config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                    })
-                    const dataRes = response.data;
-                    setOveralRate(dataRes.productRate);
-                    setProduct(dataRes.product);
-                    setKeyFeature([...dataRes.product.keyFeatures]);
-                    setPrice(dataRes.product.price);
-                    setImageGallery([...dataRes.product.images]);
-                    setFeature([...dataRes.product.features]);
-                    setWaContactBtn(dataRes.phoneContacts[0]);
-                    setpContactBtn(dataRes.phoneContacts[1]);
-                    setPageLoading(false);
-                    document.title = dataRes.product.title;
-                }
-
+                const response = await axios({
+                    method:"get",
+                    url:`${authCtx.defaultTargetApi}/newProduct/getProductForMain`,
+                    params:{id:
+                        params.productId,
+                        language:langCtx.language
+                    },
+                    config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
+                })
+                const dataRes = response.data;
+                setOveralRate(dataRes.productRate);
+                setProduct(dataRes.product);
+                setKeyFeature([...dataRes.product.keyFeatures]);
+                setPrice(dataRes.product.price);
+                setImageGallery([...dataRes.product.images]);
+                setFeature([...dataRes.product.features]);
+                setWaContactBtn(dataRes.phoneContacts[0]);
+                setpContactBtn(dataRes.phoneContacts[1]);
+                setPageLoading(false);
             }catch(err){
                           
             }       
@@ -256,6 +202,10 @@ const ProductShowCase = (props) =>{
     }else if(pageLoading === false){
         return(
                 <Fragment>  
+                        <Helmet>
+                            <title>{product.pageTitle}</title>
+                            <meta name="description" content={product.pageDescription} />
+                        </Helmet>
                     <div className={Style.photoSwipeDiv}>
                         <PhotoSwipe  isOpen={isOpen} items={items} options={options} onClose={handleClose}/>
                     </div>
@@ -268,7 +218,7 @@ const ProductShowCase = (props) =>{
                     {Object.keys(pContactBtn).length !== 0 ?
                          <PhoneCallModal data={pContactBtn} closeModalFn={()=>{setPhoneCallModal(false)}} showModal={phoneCallModal}></PhoneCallModal>
                     :null}
-                   <Container dir={langCtx.language === 'english' ?'ltr':'rtl'} style={{maxWidth:'100%'}}>
+                   <Container style={{maxWidth:'100%'}}>
                         <div style={{marginTop:'85px'}} className={Style.inndeDiv}>
                             <Row style={{margin:'0px auto 20px auto' , maxWidth:'1676px'}} >
                                 <Col xs={0} md={0} lg={1}>
@@ -288,11 +238,11 @@ const ProductShowCase = (props) =>{
                                     </Row>
                                     
                                     <Row>
-                                        <div dir={langCtx.language === 'english' ?'ltr':'rtl'} style={langCtx.language === 'english' ?{textAlign:'left'}:{textAlign:'right'}} className={Style.responsiveTitle}>   
+                                        <div  className={Style.responsiveTitle}>   
                                             {/*-------- product title --------*/}
                                             <Col  xs={12} md={12} lg={12}>
                                                 <div className={Style.productTitleDiv}>
-                                                    <h4>{product.title}</h4>
+                                                    <h1>{product.title}</h1>
                                                 </div>
                                             </Col>
                                             {/*-------- rate and functions --------*/}
@@ -333,30 +283,28 @@ const ProductShowCase = (props) =>{
                                             </Col>
                                             {/*-------- Line --------*/}
                                                         {/*-------- photo gallery --------*/}
-                                            <Col className={Style.photoGalleryNormalResponsive} style={{float:'right'}} xs={12} md={12} lg={6}>
+                                            <Col  className={Style.photoGalleryNormalResponsive} style={{float:'right'}} xs={12} md={12} lg={6}>
                                                 <div  className={Style.imageGalleryDiv}> 
-                                                    <ProductPhotoGallery openFullViewFn={openFullView} galleryImages={imageGallery}></ProductPhotoGallery>
+                                                    <ProductPhotoGallery title={product.title} openFullViewFn={openFullView} galleryImages={imageGallery}></ProductPhotoGallery>
                                                 </div>
                                             </Col>
                                         </div>
 
                                         {/*---------- product Brief ----------*/}
-                                        <Col  dir={langCtx.language === 'english' ?'ltr':'rtl'} xs={12} md={12} lg={6}>
+                                        <Col xs={12} md={12} lg={6}>
                                             <Row>
-                                                <div className={Style.productBriefDiv}>
+                                                <div dir={langCtx.language === 'english' ?'ltr':'rtl'} style={{float:'right'}} className={Style.productBriefDiv}>
                                                     <div  className={Style.normalTitle}> 
                                                         {/*-------- product title --------*/}
                                                         <Col  xs={12} md={12} lg={12}>
                                                             <div className={Style.productTitleDiv}>
-                                                                <h4>{product.title}</h4>
+                                                                <h1>{product.title}</h1>
                                                             </div>
                                                         </Col>
                                                         {/*-------- rate and functions --------*/}
                                                         <Col xs={12} md={12} lg={12}>
                                                             <div  className={Style.productRatingDiv}>
                                                                 {/* rate star */}
- 
-
                                                                 {/* rate info */}
                                                                 {overalRate === 0?
                                                                     <div style={{display:'inline-block'}}>
@@ -468,9 +416,9 @@ const ProductShowCase = (props) =>{
                                             </Row>
                                         </Col>
                                         {/*-------- photo gallery --------*/}
-                                        <Col className={Style.photoGalleryNormal} style={{float:'right'}} xs={12} md={12} lg={6}>
-                                            <div  className={Style.imageGalleryDiv}> 
-                                                <ProductPhotoGallery openFullViewFn={openFullView} galleryImages={imageGallery}></ProductPhotoGallery>
+                                        <Col dir={langCtx.language === 'english' ?'ltr':'rtl'} className={Style.photoGalleryNormal} xs={12} md={12} lg={6}>
+                                            <div className={Style.imageGalleryDiv}> 
+                                                <ProductPhotoGallery title={product.title} openFullViewFn={openFullView} galleryImages={imageGallery}></ProductPhotoGallery>
                                             </div>
                                         </Col>
                                     </Row>
@@ -481,7 +429,7 @@ const ProductShowCase = (props) =>{
                             <Row style={{padding:'0px' , position: 'sticky' , top:'0'}} >
                                 {/*-------- navigation section --------*/}
                                     <Col  style={{padding:'0px'}} xs={12} md={12} lg={12}>
-                                        <div  dir="ltr" className={Style.productPostNavigation}>
+                                        <div  dir={langCtx.language === 'english' ?'ltr':'rtl'} className={Style.productPostNavigation}>
                                             <ul className={Style.unortherList}>
                                                 <li onClick={()=>{keyFeaturesRef.current.scrollIntoView()}} className={Style.unortherListActive}>
                                                     {langCtx.language === 'english' ?'Features':'مشخصات کلیدی'}
@@ -548,13 +496,14 @@ const ProductShowCase = (props) =>{
 
                                             </div>
                                             :
+
                                             <div  className={Style.commentSectionHeaderDiv}>
                                                 {overalRate === 0?
-                                                    <div className={Style.theRateItSelfDiv}>
+                                                    <div dir={langCtx.language === 'english' ?'ltr':'rtl'} className={Style.theRateItSelfDiv}>
                                                         <h5>امتیازی ثبت نشده</h5>
                                                     </div>
                                                 :
-                                                    <div className={Style.theRateItSelfDiv}>
+                                                    <div  className={Style.theRateItSelfDiv}>
                                                         <h5>امتیاز این محصول: <span>{overalRate} </span>از 5</h5>
                                                     </div>
                                                 }
@@ -571,7 +520,7 @@ const ProductShowCase = (props) =>{
                                             {comments.map(dt=>{
                                                 return(
                                                     <div className={Style.commentDiv}>
-                                                        <CommentItself setUpdateComments={setUpdateComments} comment={dt}></CommentItself>
+                                                        <CommentItself setUpdateComments={setUpdateComments} targetedPostId={product._id} comment={dt}></CommentItself>
                                                     </div>
                                                 )
                                             })}

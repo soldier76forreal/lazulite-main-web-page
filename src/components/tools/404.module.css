@@ -1,0 +1,74 @@
+.oppsImg{
+    max-width: 350px;
+    max-height: 350px;
+    height: 100%;
+    width: 100%;
+    margin: 0px auto 0px auto;
+
+}
+.errorDiv{
+    width: 100%;
+    margin-top: 150px;
+}
+.imageDiv{
+    width: 100%;
+    text-align: center;
+}
+.errorText{
+    font-family: Roboto;
+    text-align: center;
+    margin-top: 20px;
+}
+.errorText h1{
+    font-weight: 900;
+    font-size: 40px;
+    color: #1043A9;
+}
+
+.errorText h3{
+    font-size: 24px;
+    font-family: Dana2;
+    color: #2f68da;
+
+}
+.backToHome{
+    text-align: center;
+    margin-top: 30px;
+}
+.backToHome button{
+    background-color: #1043A9;
+    border: none;
+    color:aliceblue;
+    padding: 3px 13px 3px 13px;
+    font-size: 15px;
+    border-radius: 5px;
+    transition: 0.2s all ease-in-out;
+}
+.backToHome button:hover{
+    background-color: #346ad6;
+}
+
+
+
+@media only screen and (max-width: 768.98px) {
+    .oppsImg{
+        max-width: 200px;
+        max-height: 200px;
+        height: 100%;
+        width: 100%;
+        margin: 0px auto 0px auto;
+    
+    }
+    .errorText h1{
+        font-weight: 900;
+        font-size: 33px;
+        color: #1043A9;
+    }
+    
+    .errorText h3{
+        font-size: 17px;
+        font-family: Dana2;
+        color: #2f68da;
+    
+    }
+}

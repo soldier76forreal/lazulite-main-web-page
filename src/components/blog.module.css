@@ -1,0 +1,212 @@
+.wapper{
+    margin-top: 100px;
+    padding: 0px 30px 0px 30px;
+    animation: openModal ease-in-out 0.5s forwards;
+
+}
+.topFilterSectionDiv{
+    border-bottom: 2px solid #c7c7c7;
+    margin-bottom: 13px;
+    display: block;
+}
+
+.loaderDiv{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.loaderDiv2{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 18px;
+}
+.navigation{
+    position: sticky !important;
+    top: 0px !important;
+    z-index: 8;
+    animation: openModal ease-in-out 0.5s forwards;
+    
+}
+.navigation nav{
+
+    margin-bottom: 20px;
+    border-bottom: rgb(24, 24, 24) 2px dashed ;
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.sideBarDiv{
+    display: block;
+}
+
+.topToolTip{
+    display: none;
+    margin: 10px 0px 10px 0px;
+    padding: 0px;
+    border-bottom: 1px solid #c7c7c7;
+}
+.topToolTip button{
+    font-size: 15px;
+    background: none;
+    border: none;
+    margin-left: 2px;
+}
+.topToolTip button h5{ 
+    font-size: 15px;
+    background: none;
+    border: none;
+    margin-left: 4px;
+    color: #354063;
+    display: inline-block;
+    padding: 0px 1px 0px 0px;
+    transition: 0.3s all ease-in-out;
+
+}
+.topToolTip button h5:hover{
+
+    color: #4D76C8;
+}
+.normalList{
+
+    display: flex;
+}
+.normalListResponsive{
+
+    display: none;
+}
+.noDataFigureDiv{
+    height: 300px;
+    display: flex;
+    text-align: center;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+}
+/* price Limiter */
+
+@keyframes openModal {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+
+
+
+@media only screen and (max-width: 1200.98px) {
+
+    .wapper{
+        margin-top: 100px;
+        padding: 0px 30px 0px 30px;
+        animation: openModal ease-in-out 0.5s forwards;
+    
+    }
+}
+
+
+@media only screen and (max-width: 992.98px) {
+    .wapper{
+        margin-top: 100px;
+        padding: 0px 30px 0px 30px;
+        animation: openModal ease-in-out 0.5s forwards;
+    
+    }
+    .sideBarDiv{
+        display: none;
+    }
+    .topFilterSectionDiv{
+        border-bottom: 2px solid #c7c7c7;
+        margin-bottom: 13px;
+        display: none;
+    }
+    .topToolTip{
+        display: block;
+        margin: 10px 0px 10px 0px;
+        padding: 0px;
+        border-bottom: 1px solid #c7c7c7;
+    }
+    
+}
+
+@media only screen and (max-width: 768.98px) {
+
+    .wapper{
+        margin-top: 100px;
+        padding: 0px 30px 0px 30px;
+        animation: openModal ease-in-out 0.5s forwards;
+    
+    }
+ }
+
+ @media only screen and (max-width: 576.98px) {
+
+    .normalList{
+
+        display: none;
+    }
+    .normalListResponsive{
+    
+        display: flex;
+    }
+    .wapper{
+        margin-top: 100px;
+        padding: 0px 10px 0px 10px;
+        animation: openModal ease-in-out 0.5s forwards;
+    
+    }
+
+
+
+    
+ }
+
+ @media only screen and (max-width: 356.98px) {
+
+    
+
+ }
+
+
+
+
+
+
+
+
+ .listDiv ul{
+    list-style: none;
+    padding: 0px !important;
+
+}
+.listDiv ul li{
+    margin-top: 10px;
+}
+.lineDiv{
+    width: 96%;
+    height: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #354063;
+    margin-top: 15px;
+    margin-bottom: 18px;
+
+}
+
+

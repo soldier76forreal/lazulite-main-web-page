@@ -18,7 +18,7 @@ const ProductCardHorizon =(props)=>{
             <div  className={Style.productCardDiv}>
                 <Row style={{padding:'0px' , margin:'0px' , position:'relative'}}>
                     <Col style={{padding:'0px' , margin:'0px'}} xs={4} md={4} lg={4} xl={4} xxl={4}>
-                        <Link target='_blank' to={`/showCase/${props.data._id}`}><img src={`${props.data.result.images[0]}`}></img></Link>
+                        <Link target='_blank' to={`/showCase/${props.data._id}`}><img title={props.data.result.title} alt={props.data.result.title} src={`${props.data.result.images[0]}`}></img></Link>
                     </Col>
                     <Col style={{padding:'0px' , margin:'0px' }} xs={8} md={8} lg={8} xl={8} xxl={8}>
                         <div  className={Style.productNameDiv}>
@@ -48,7 +48,7 @@ const ProductCardHorizon =(props)=>{
                             :
                                 <h4>{props.data.rate}</h4>
                             }
-                                                   <StarIcon sx={{ fontSize: 24,color: '#CE9800' ,iconHover:'#3e76e6' }}></StarIcon>
+                                <StarIcon sx={{ fontSize: 24,color: '#CE9800' ,iconHover:'#3e76e6' }}></StarIcon>
                             </div>
                         </div>
                     </Col>

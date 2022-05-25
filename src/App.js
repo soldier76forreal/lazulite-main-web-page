@@ -16,19 +16,28 @@ import AuthContext from "./store/auth";
 import Cookies from "js-cookie";
 import ResetPassword from "./components/tools/auth/resetPassword";
 import ForgetPassword from "./components/tools/auth/forgetPassword";
-
+import ReactGA from 'react-ga';
+import usePageTracking from "./components/reactGA/pageTracker";
+import Error404 from "./components/tools/404";
+import BlogPost from "./components/blog";
+import ShowBlog from "./components/showBlog";
 
 library.add(faTimes , faUpload , faCheckCircle, farStar  , faStar , faSearch , faPlus , faChevronRight , faChevronLeft , faExclamationCircle ,faThumbsUp ,faSignOutAlt, faFile ,faUser, faComments , faTags , faThumbsDown  , faReply ,faCaretDown , faQuestion ,faBars , faThLarge , faCheck ,faTimesCircle , faTrashAlt ,faEdit , faHeadset )
 function App() {
-  const navigate = useNavigate();
+  usePageTracking();
+
   return (
     <Routes>
           <Route path="/" element={<MainPage/>}></Route>
           <Route path="/productList" element={<ProductListPage/>}></Route>
           <Route path="/showCase/:productId" element={<ProductShowCase/>}></Route>
-          <Route path="/fullList" element={<ShowAllListPage/>}></Route>\
+          <Route path="/fullList" element={<ShowAllListPage/>}></Route>
           <Route path="/resetPassword/:id/:token" element={<ResetPassword/>}></Route>
           <Route path="/forgetPassword" element={<ForgetPassword/>}></Route>
+          <Route path="/blog" element={<BlogPost/>}></Route>
+          <Route path="/blog/showBlog/:blogId" element={<ShowBlog/>}></Route>
+          <Route path="*" element={<Error404/>}></Route>
+
           <Route path="/signUp" element={Cookies.get('accessToken') === undefined ?
             <SignUp/>
           :

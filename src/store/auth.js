@@ -15,7 +15,8 @@ const AuthContext = React.createContext({
     login:(token)=>{},
     logout:()=>{},
     jwtInst : null,
-    defaultTargetApi:''
+    defaultTargetApi:'',
+    logedInUserId:''
 })
 
 
@@ -23,6 +24,8 @@ export const AuthContextProvider = (props) =>{
     const savedToken = Cookies.get('accessToken');
     const axiosGlobal = useContext(AxiosGlobal);
     const [token , setToken] = useState(savedToken);
+    const [logedInUserId , setLogedInUserId] = useState(savedToken);
+
     const activePage = useContext(ActivePage);
     const userIsLoggedIn = !!token;
     const navigation = useNavigate();
@@ -38,7 +41,7 @@ export const AuthContextProvider = (props) =>{
     const logInHandler = async(token) =>{
         Cookies.set('accessToken' , token ,{sameSite: 'strict', secure: true});
         setToken(token);
-        
+        setLogedInUserId(decoded.id);
         
     }
     const jwt = axios.create(
@@ -57,6 +60,7 @@ export const AuthContextProvider = (props) =>{
         logout:logOutHandler,
         jwtInst:jwt,
         decoded,
+        logedInUserId:logedInUserId,
         defaultTargetApi:`${axiosGlobal.defaultTargetApi}`
     };
 

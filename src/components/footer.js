@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 import Language from '../store/language';
 import { textAlign } from '@mui/system';
 import { BorderRight } from '@mui/icons-material';
-
+import FacebookIcon from '@mui/icons-material/Facebook';
 const FooterPortal =(props)=>{
     const langCtx = useContext(Language);
     return(
@@ -99,6 +99,9 @@ const FooterPortal =(props)=>{
                                     <div style={{marginTop:'10px'}}>
                                         <a target='_blank' href='https://www.instagram.com/lmc.iran/'><button><div><InstagramIcon sx={{color:'#1043A9',fontSize:'26px'  }}></InstagramIcon></div>lmc.iran</button></a>
                                     </div>
+                                    <div style={{marginTop:'10px'}}>
+                                        <a target='_blank' href='https://www.facebook.com/lazulit.marble/'><button><div><FacebookIcon sx={{color:'#1043A9',fontSize:'26px'  }}></FacebookIcon></div>lazulitemarble</button></a>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -107,7 +110,7 @@ const FooterPortal =(props)=>{
                     </Col>
                     <Col sm={12} xs={12} md={12} lg={4} xl={4}>
                         <div style={{display:'flex' , alignItems:'center' , justifyContent:'center'}} className={Style.footerLogo}>
-                            <Link to='/'><img style={{margin:'auto'}} src={Logo}></img></Link>
+                            <Link to='/'><img alt='lazulite marble' title='lazulite marble' style={{margin:'auto'}} src={Logo}></img></Link>
                         </div>
                     </Col>
                 </Row>

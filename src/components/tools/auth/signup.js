@@ -1,5 +1,5 @@
 import Style from './signup.module.css';
-import { Fragment , useState , useEffect , useContext } from 'react';
+import { Fragment , useState , useEffect , useContext ,React} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
@@ -17,6 +17,7 @@ import AxiosGlobal from '../../../store/axiosGlobal';
 import LogInNoModal from './logInNoModal';
 import ActivePage from '../../../store/activePage';
 import Language from '../../../store/language';
+
 
 const SignUp = (props) =>{
     const axiosGlobal = useContext(AxiosGlobal);

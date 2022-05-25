@@ -59,76 +59,29 @@ const ShowAllListPage = () =>{
             // get products
             const getProducts = async() =>{
                 try{
-                    if(langCtx.language === 'persian'){
-                        setPageLoading(true);
-                        const response = await axios({
-                            method: 'get',
-                            url: `${axiosGlobalCtx.defaultTargetApi}/product/productListForCardFullListMain?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&lable=${queryParams.get('lable')}`,
-                            config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                        })
-                        const recivedData = response;
-                        if(recivedData.data.now.total<9){
-                            setMaxPage(recivedData.data.now.total);
-                        }else{
-                            setMaxPage(9);
-                        }
-                        setCurrentPage(recivedData.data.now.page);
-                        setTotalPage(recivedData.data.now.total);
-                        if(recivedData.data.previous !== undefined){
-                            setPrevPage(recivedData.data.previous.page);
-                        }
-                        if(recivedData.data.next !== undefined){
-                            setNextPage(recivedData.data.next.page);
-                        }
-                        setPageLoading(false);
-                        setProducts(recivedData.data.results);
-                    }else if(langCtx.language === 'arabic'){
-                        setPageLoading(true);
-                        const response = await axios({
-                            method: 'get',
-                            url: `${axiosGlobalCtx.defaultTargetApi}/product/productListByCategoryAndTagsArMain?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&id=${queryParams.get('id')}&state=${queryParams.get('state')}&filter=${queryParams.get('filter')}`,
-                            config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                        })
-                        const recivedData = response;
-                        if(recivedData.data.now.total<9){
-                            setMaxPage(recivedData.data.now.total);
-                        }else{
-                            setMaxPage(9);
-                        }
-                        setCurrentPage(recivedData.data.now.page);
-                        setTotalPage(recivedData.data.now.total);
-                        if(recivedData.data.previous !== undefined){
-                            setPrevPage(recivedData.data.previous.page);
-                        }
-                        if(recivedData.data.next !== undefined){
-                            setNextPage(recivedData.data.next.page);
-                        }
-                        setPageLoading(false);
-                        setProducts(recivedData.data.results);
-                    }else if(langCtx.language === 'english'){
-                        setPageLoading(true);
-                        const response = await axios({
-                            method: 'get',
-                            url: `${axiosGlobalCtx.defaultTargetApi}/product/productListForCardFullListMainEn?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&id=${queryParams.get('id')}`,
-                            config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                        })
-                        const recivedData = response;
-                        if(recivedData.data.now.total<9){
-                            setMaxPage(recivedData.data.now.total);
-                        }else{
-                            setMaxPage(9);
-                        }
-                        setCurrentPage(recivedData.data.now.page);
-                        setTotalPage(recivedData.data.now.total);
-                        if(recivedData.data.previous !== undefined){
-                            setPrevPage(recivedData.data.previous.page);
-                        }
-                        if(recivedData.data.next !== undefined){
-                            setNextPage(recivedData.data.next.page);
-                        }
-                        setPageLoading(false);
-                        setProducts(recivedData.data.results);
+                    setPageLoading(true);
+                    const response = await axios({
+                        method: 'get',
+                        params:{language:langCtx.language},
+                        url: `${axiosGlobalCtx.defaultTargetApi}/product/productListForCardFullListMain?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&lable=${queryParams.get('lable')}`,
+                        config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
+                    })
+                    const recivedData = response;
+                    if(recivedData.data.now.total<9){
+                        setMaxPage(recivedData.data.now.total);
+                    }else{
+                        setMaxPage(9);
                     }
+                    setCurrentPage(recivedData.data.now.page);
+                    setTotalPage(recivedData.data.now.total);
+                    if(recivedData.data.previous !== undefined){
+                        setPrevPage(recivedData.data.previous.page);
+                    }
+                    if(recivedData.data.next !== undefined){
+                        setNextPage(recivedData.data.next.page);
+                    }
+                    setPageLoading(false);
+                    setProducts(recivedData.data.results);
 
                 }catch(error){
         

@@ -14,9 +14,9 @@ const ProductCard =(props)=>{
     return(
         <Fragment>
             <div style={langCtx.language === 'english' ?{textAlign:'left'}:{textAlign:'right'}} className={Style.productCardDiv}>
-                    <Link target='_blank' to={`/showCase/${props.data.result._id}`}><img src={`${props.data.result.images[0]}`}></img></Link>
+                    <Link target='_blank' to={`/showCase/${props.data.result._id}`}><img alt={props.data.result.title} title={props.data.result.title} src={`${props.data.result.images[0]}`}></img></Link>
                 <div className={Style.productNameDiv}>
-                    <Link target='_blank' to={`/showCase/${props.data.result._id}`}><h4>{props.data.result.title}</h4></Link>
+                    <Link target='_blank' to={`/showCase/${props.data.result._id}`}><h3>{props.data.result.title}</h3></Link>
                 </div>
 
                 <div style={langCtx.language === 'english' ?{float:'left' , padding:'2px 0px 0px 8px'} :{float:'right'}} dir={langCtx.language === 'english' ?"ltr":"rtl"} className={Style.cardInfo}>

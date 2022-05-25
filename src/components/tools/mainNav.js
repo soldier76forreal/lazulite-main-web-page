@@ -21,6 +21,8 @@ import AuthContext from "../../store/auth";
 import Cookies from "js-cookie";
 import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
+import SitemapUrls from "./sitemapUrls";
+
 const MainNavPortal = (props) =>{
     const [searchBarStatus , setSearchBarStatus] = useState(false);
     const [showMegaMenu , setShowMegaMenu] = useState(false);
@@ -69,32 +71,14 @@ const MainNavPortal = (props) =>{
     //tags and categories section
     const getCategoriesAndTags = async() =>{
         try{
-            if(langCtx.language === 'persian'){
-                const response  = await axios({
-                    method :'get',
-                    url:`${axiosGlobalCtx.defaultTargetApi}/tagAndCategory/getAllCategoriesWithTagsForMainPage`,
-                    config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                })
-                const data = await response.data;
-                setCategoriesData([...data.rs]);
-            }else if(langCtx.language === 'arabic'){
-                const response  = await axios({
-                    method :'get',
-                    url:`${axiosGlobalCtx.defaultTargetApi}/tagAndCategory/getAllCategoriesWithTagsForMainPageAr`,
-                    config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                })
-                const data = await response.data;
-                setCategoriesData([...data.rs]);
-            }else if(langCtx.language === 'english'){
-                const response  = await axios({
-                    method :'get',
-                    url:`${axiosGlobalCtx.defaultTargetApi}/tagAndCategory/getAllCategoriesWithTagsForMainPageEn`,
-                    config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                })
-                const data = await response.data;
-                setCategoriesData([...data.rs]);
-            }
-
+            const response  = await axios({
+                method :'get',
+                params:{language:langCtx.language},
+                url:`${axiosGlobalCtx.defaultTargetApi}/tagAndCategory/getAllCategoriesWithTagsForMainPage`,
+                config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
+            })
+            const data = await response.data;
+            setCategoriesData([...data.rs]);
         }catch{
 
         }
@@ -112,43 +96,21 @@ const MainNavPortal = (props) =>{
         setSearchInputField(e.target.value);
     }
     const searchForData = async(e) =>{
-        const searching = {searching:searchInputField};
+        const searching = {searching:searchInputField , language:langCtx.language};
         if(searchInputField === ''){
             setSearchLoading(false); 
         }
         if(searchInputField !== ''){
             try{
-                if(langCtx.language === 'persian'){
-                    const response  = await axios({
-                        method :'get',
-                        url:`${axiosGlobalCtx.defaultTargetApi}/product/searchForMainThing`,
-                        params:searching,
-                        config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                    })
-                    const data = await response.data;
-                    setSearchedData([...data]);
-                    setSearchLoading(false); 
-                }else if(langCtx.language === 'arabic'){
-                    const response  = await axios({
-                        method :'get',
-                        url:`${axiosGlobalCtx.defaultTargetApi}/product/searchForMainThingAr`,
-                        params:searching,
-                        config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                    })
-                    const data = await response.data;
-                    setSearchedData([...data]);
-                    setSearchLoading(false); 
-                }else if(langCtx.language === 'english'){
-                    const response  = await axios({
-                        method :'get',
-                        url:`${axiosGlobalCtx.defaultTargetApi}/product/searchForMainThingEn`,
-                        params:searching,
-                        config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
-                    })
-                    const data = await response.data;
-                    setSearchedData([...data]);
-                    setSearchLoading(false); 
-                }
+                const response  = await axios({
+                    method :'get',
+                    url:`${axiosGlobalCtx.defaultTargetApi}/product/searchForMainThing`,
+                    params:searching,
+                    config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
+                })
+                const data = await response.data;
+                setSearchedData([...data]);
+                setSearchLoading(false); 
             }catch(err){
                 console.log(err);
             }
@@ -205,7 +167,7 @@ const MainNavPortal = (props) =>{
             <Navbar style={{zIndex:'11'}} fixed="top" className={Style.mainNav} expand="lg">
                 <Container  className={Style.MainNavContainer} fluid>
                     <Navbar.Brand className={Style.lmcName} href="/">Lazulite marble company</Navbar.Brand>
-                    <Navbar.Brand className={Style.lmcLogo} href="/"><img src={logo}></img></Navbar.Brand>
+                    <Navbar.Brand className={Style.lmcLogo} href="/"><img alt="لازولیت ماربل" title="لازولیت ماربل" src={logo}></img></Navbar.Brand>
                     <Navbar.Toggle onClick={toggleClick} style={{padding:'0px' , border:'none'}} aria-controls="basic-navbar-nav">
                         <div onClick={menuDropDown}>
                             <Hamburger  style={{height:'10px !importain'}}  color="#354063" size={29}></Hamburger>
@@ -262,8 +224,13 @@ const MainNavPortal = (props) =>{
                                 <Nav.Link  style={showMegaMenu===true?{color: '#8996c2'}:null}  onMouseEnter={() => setShowMegaMenu(true)} onMouseLeave={() => setShowMegaMenu(false)} className={activePage.activePage==='home' ? `${Style.navLink} ${Style.active} ${Style.showCategoriesOnHover}` : `${Style.navLink} ${Style.showCategoriesOnHover}`} href="#action1">{langCtx.language === 'english' ?"Products":"محصولات"}</Nav.Link>
                                 <Nav.Link style={langCtx.language === 'english' ?{textAlign:'left'}:null} className={`${Style.navLink}`}  href="#action2">{langCtx.language === 'english' ?"Branches":"شعبه ها"}</Nav.Link>
                                 <Nav.Link style={langCtx.language === 'english' ?{textAlign:'left'}:null} className={Style.navLink} href="#action2">{langCtx.language === 'english' ?"Projects":"پروژه ها"}</Nav.Link>
-                                <Nav.Link style={langCtx.language === 'english' ?{textAlign:'left'}:null} className={Style.navLink} href="#action2">{langCtx.language === 'english' ?"About us":"درباره ما"}</Nav.Link>   
-                                <div style={{margin:'-4px 0px 0px 0px'}}   className={dropDownResponsiveMenu === true ?`${Style.logInDropDownResPonsive} ${Style.logInDropDownResPonsiveActive}` : `${Style.logInDropDownResPonsive} ${Style.logInDropDownResPonsiveNotActive}`}> 
+                                <Nav.Link style={langCtx.language === 'english' ?{textAlign:'left'}:null} className={Style.navLink} href="#action2">{langCtx.language === 'english' ?"About us":"درباره ما"}</Nav.Link> 
+                                <Nav.Link style={langCtx.language === 'english' ?{textAlign:'left'}:null} className={activePage.activePage==='blog' ?`${Style.navLink} ${Style.active}`:`${Style.navLink}`} href="/blog">{langCtx.language === 'english' ?"blog":"وبلاگ"}</Nav.Link>     
+                                {authCtx.isLoggedIn === true && authCtx.decoded.role === 'superAdmin' ?
+                                <Nav.Link style={langCtx.language === 'english' ?{textAlign:'left'}:null} className={Style.navLink} ><SitemapUrls></SitemapUrls></Nav.Link>   
+                                :null}
+                                    <div style={{margin:'-4px 0px 0px 0px'}}   className={dropDownResponsiveMenu === true ?`${Style.logInDropDownResPonsive} ${Style.logInDropDownResPonsiveActive}` : `${Style.logInDropDownResPonsive} ${Style.logInDropDownResPonsiveNotActive}`}> 
+                                   
                                     {Cookies.get('accessToken') === undefined && authCtx.decoded === undefined?
                                             <div style={{padding:'0px 30px 0px 30px'}}>
                                                 <Nav.Link onClick={()=>{setShowLogInModal(true)}} className={Style.navLink} href="#action2"><button style={{maxWidth: '430px' , margin:'0px auto 0px auto' , padding:'5px 0px 1px 0px'}} onClick={()=>{setShowLogInModal(true)}} className={`${Style.logIn_responsive} ${Style.logIn}`}>{langCtx.language === 'english' ?'Log In':'ورود'}<span  onClick={()=>{setShowLogInModal(true)}}className={Style.logInIcon}></span></button></Nav.Link>

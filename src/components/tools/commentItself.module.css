@@ -158,6 +158,36 @@
     padding: none;
 
 }
+.replySection{
+    background-color: #EFEFEF;
+    border-radius: 9px;
+    
+}
+.sendReply{
+    background-color: #354063;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    padding: 14px;
+    border-radius: 100%;
+}
+.sendReply:hover{
+    background-color: #646c85;
+}
+.btnDiv{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: 100%;
+}
+
+.replySection h5{
+    font-size: 18px;
+    margin-right: 38px;
+    padding: 18px 0px 10px 0px;
+    
+    font-family: Dana1;
+    color: #354063;
+}
 
 @media only screen and (max-width: 1200.98px) {
     

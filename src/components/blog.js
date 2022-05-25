@@ -1,5 +1,5 @@
-import { Fragment, useState , useEffect , useContext } from "react";
-import Style from './productListPage.module.css';
+import { Fragment, useState , useEffect , useContext, useRef } from "react";
+import Style from './blog.module.css';
     import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate , useParams , useLocation } from "react-router-dom";
 import axios from "axios";
@@ -18,11 +18,14 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import PriceLimiter from "./tools/priceLimiter";
 import SizeFilter from "./tools/sizeFilter";
 import SortModal from "./tools/sortModal";
-import SortTopToolBar from "./tools/sortTopToolBar";
 import ProductCardHorizon from "./tools/productCardHorizon";
 import Footer from "./footer";
+import BlogPostCard from "./tools/blogPostCard";
+import BlogFilter from "./tools/blogFilter";
+import {Helmet} from "react-helmet";
+import ActivePage from "../store/activePage";
 
-const ProductListPage = () =>{
+const BlogPost = () =>{
     //hooks
     const history = useNavigate();
     const location = useLocation();
@@ -30,6 +33,8 @@ const ProductListPage = () =>{
     const axiosGlobalCtx = useContext(AxiosGlobal);
     const langCtx = useContext(Language);
     const params = useParams();
+    const activePage = useContext(ActivePage)
+    const ref = useRef()
     useEffect(() => {
         document.title = queryParams.get('title');
     }, []);
@@ -63,7 +68,7 @@ const ProductListPage = () =>{
                     const response = await axios({
                         method: 'get',
                         params:{language:langCtx.language},
-                        url: `${axiosGlobalCtx.defaultTargetApi}/product/productListByCategoryAndTagMain?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&id=${queryParams.get('id')}&state=${queryParams.get('state')}&filter=${queryParams.get('filter')}`,
+                        url: `${axiosGlobalCtx.defaultTargetApi}/blog/getAllBlogPost?page=${queryParams.get('page') === null ? '1' : queryParams.get('page')}&limit=20&filter=${queryParams.get('filter')}`,
                         config: { headers: {'Content-Type': 'application/x-www-form-urlencoded' }}
                     })
                     const recivedData = response;
@@ -82,12 +87,15 @@ const ProductListPage = () =>{
                     }
                     setPageLoading(false);
                     setProducts(recivedData.data.results);
-
+                    ref.current.scrollIntoView();
                 }catch(error){
         
                 }
             }
-        
+
+            useEffect(() => {
+                activePage.activePageFn('blog');
+            }, []);
 
             useEffect(() => {
                 getProducts();
@@ -112,9 +120,9 @@ const ProductListPage = () =>{
         const currentPageClick = (event) =>{
             setCurrentPage(event.target.value);
             if(queryParams.get('filter')){
-                history(`/productList?page=${event.target.value}&id=${queryParams.get('id')}&title=${queryParams.get('title')}&state=${queryParams.get('state')}&filter=${queryParams.get('filter')}`);
+                history(`/blog?page=${event.target.value}&filter=${queryParams.get('filter')}`);
             }else{
-                history(`/productList?page=${event.target.value}&id=${queryParams.get('id')}&title=${queryParams.get('title')}&state=${queryParams.get('state')}`);
+                history(`/blog?page=${event.target.value}`);
 
             }
         }
@@ -122,9 +130,9 @@ const ProductListPage = () =>{
             if(nextPage !== undefined){
                 setCurrentPage(nextPage);
                 if(queryParams.get('filter')){
-                    history(`/productList?page=${nextPage}&id=${queryParams.get('id')}&title=${queryParams.get('title')}&state=${queryParams.get('state')}&filter=${queryParams.get('filter')}`);
+                    history(`/blog?page=${nextPage}&filter=${queryParams.get('filter')}`);
                 }else{
-                    history(`/productList?page=${nextPage}&id=${queryParams.get('id')}&title=${queryParams.get('title')}&state=${queryParams.get('state')}`);
+                    history(`/blog?page=${nextPage}`);
 
                 }
             }
@@ -133,9 +141,9 @@ const ProductListPage = () =>{
             if(prevPage !== undefined){
                 setCurrentPage(prevPage);
                 if(queryParams.get('filter')){
-                    history(`/productList?page=${prevPage}&id=${queryParams.get('id')}&title=${queryParams.get('title')}&state=${queryParams.get('state')}&filter=${queryParams.get('filter')}`);
+                    history(`/blog?page=${prevPage}&filter=${queryParams.get('filter')}`);
                 }else{
-                    history(`/productList?page=${prevPage}&id=${queryParams.get('id')}&title=${queryParams.get('title')}&state=${queryParams.get('state')}`);
+                    history(`/blog?page=${prevPage}`);
                 }
             }
         }
@@ -145,34 +153,32 @@ const ProductListPage = () =>{
         if(pageLoadingAllPage === true){
             return(           
                 <div className={Style.loaderDiv} >
-                        <Loader marginBottom={'2px'} borderTop={'4px solid #fff'} border={'#1043A9 4px solid'} width={'60px'} height={'60px'}></Loader>
+                        <Loader marginBottom={'2px'} marginTop={'2px'} borderTop={'4px solid #fff'} border={'#1043A9 4px solid'} width={'60px'} height={'60px'}></Loader>
                 </div>
             )
         }else if(pageLoadingAllPage === false){
 
             return(
                 <Fragment>
+                        <Helmet>
+                            <title>{langCtx.language === 'english' ?'blog':langCtx.language === 'persian' ?'وبلاگ':langCtx.language === 'arabic' ?'test':null}</title>
+                            {/* <meta name="description" content={product.pageDescription} /> */}
+                        </Helmet>
                     {/* footer */}
                     <Footer></Footer>
                     {/* portal */}
                     <MainNav></MainNav>
-                    <SortModal topBarMode='product' setShowSortModal={setShowSortModal} closeModalFn={()=>{setShowSortModal(false)}} showModal={showSortModal} ></SortModal>
+                    <SortModal topBarMode='blog' setShowSortModal={setShowSortModal} closeModalFn={()=>{setShowSortModal(false)}} showModal={showSortModal} ></SortModal>
 
-                    <Container  style={{padding:'0px' , maxWidth:'1676px'}}>
-                            <div style={{ maxWidth:'1676px'}} className={Style.wapper}>
+                            <div  className={Style.wapper}>
                                 <Row style={{width:'100%'  , padding:'0px' , margin:'0px'}} dir="rtl">
-                                    <Col className={Style.sideBarDiv} style={{ padding:'0px 0px 0px 10px'}} xs={0} md={0} lg={3} xl={3} xxl={2}>
-                                        <PriceLimiter></PriceLimiter>
-                                        {/* <SizeFilter></SizeFilter> */}
-                                    </Col>
-                                    <Col  style={{padding:'0px' , margin:'0px'}} xs={12} md={12} lg={9} xl={9} xxl={10}>
-                                        <Row style={{padding:'0px' , margin:'0px'}}>
+
+                                        <Row ref={ref} style={{padding:'0px' , margin:'0px'}}>
                                             <Col style={{padding:'0px' , margin:'0px'}} xs={12} md={12} lg={12} xl={12} xxl={12}>
                                                 <div className={Style.topFilterSectionDiv}>
-                                                    <SortTopToolBar></SortTopToolBar>
+                                                    <BlogFilter></BlogFilter>
                                                 </div>
                                                 <div className={Style.topToolTip}>
-                                                    <button><FilterAltIcon sx={{fontSize:'32px' , color:'#1043A9'}}></FilterAltIcon><h5>فیلتر</h5></button>
                                                     <button onClick={()=>{setShowSortModal(true)}}><FilterListIcon sx={{fontSize:'32px' , color:'#1043A9'}}></FilterListIcon><h5>مرتب سازی</h5></button>
                                                 </div>
                                             </Col>
@@ -182,34 +188,33 @@ const ProductListPage = () =>{
                                                         <Loader marginBottom={'2px'} borderTop={'4px solid #fff'} border={'#1043A9 4px solid'} width={'60px'} height={'60px'}></Loader>
                                                 </div>
                                         :pageLoading === false && products.length !== 0?
-                                            <Row  style={{padding:'0px' , margin:'0px'}}>         
-                                                <Row style={{padding:'0px' , margin:'0px'}} className={Style.normalList}>
-                                                    {products.map((data , i) =>{
-                                                        return(
-                                                            <Col key={i} style={{padding:'0px 5px 18px 5px'}} xs={6} md={4} lg={4} xl={4} xxl={3}>
-                                                                <ProductCard data={data}></ProductCard>
-                                                            </Col>
-                                                        )
-                                                    })}
-                                                </Row>
-
-                                                <Row style={{padding:'0px' , margin:'0px'}} className={Style.normalListResponsive}>    
-                                                    {products.map((data , i) =>{
-                                                        return(
-                                                            <Col key={i} style={{padding:'0px 5px 9px 5px'}} xs={12} md={4} lg={4} xl={4} xxl={3}>
-                                                                <ProductCardHorizon data={data}></ProductCardHorizon>
-                                                            </Col>
-                                                        )
-                                                    })}
-                                                </Row>
+                                            <Row style={{ padding:'0px' , margin:'0px'}}>
+                                                <Col style={{ padding:'0px' , margin:'0px'}} xs={0} sm={0} md={1} lg={2} xl={3}>
+                                                </Col>
+                                                <Col style={{padding:'0px' , margin:'0px'}} xs={12} sm={12} md={10} lg={8} xl={6}>
+                                                    <div dir='rtl' className={Style.listDiv}>
+                                                        <ul>
+                                                            {products.map((data , i)=>{
+                                                                return(
+                                                                <li key={i}>
+                                                                    <BlogPostCard  data={data}></BlogPostCard>
+                                                                </li>
+                                                                )
+                                                            })}
+                                                        </ul>
+                                                    </div>
+            
+                                                </Col >
+                                                <Col style={{padding:'0px' , margin:'0px'}} xs={0} sm={0} md={1} lg={2} xl={3}>
+                                                </Col>
                                             </Row>
                                         :
                                         <div  className={Style.noDataFigureDiv}>
-                                            <NoDataFigure msg='محصولی برای نمایش وجود ندارد'></NoDataFigure>
+                                            <NoDataFigure msg='وبلاگی برای نمایش وجود ندارد'></NoDataFigure>
                                         </div>
                                         }
 
-                                    </Col>
+                                   
                                 </Row>
                                 {pageLoading === true && products.length === 0?
                                     null
@@ -226,10 +231,9 @@ const ProductListPage = () =>{
 
 
 
-                    </Container>
                 </Fragment>
             ) 
         }
     
 }
-export default ProductListPage;
+export default BlogPost;
