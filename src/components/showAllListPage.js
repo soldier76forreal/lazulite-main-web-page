@@ -22,6 +22,7 @@ import SortTopToolBar from "./tools/sortTopToolBar";
 import ProductCardHorizon from "./tools/productCardHorizon";
 import Footer from "./footer";
 
+import Cookies from "js-cookie";
 const ShowAllListPage = () =>{
     //hooks
     const history = useNavigate();
@@ -54,6 +55,21 @@ const ShowAllListPage = () =>{
     const [pageLoadingAllPage , setPageLoadingAllPage] = useState(true);
     const [showSortModal , setShowSortModal] = useState(false);
         
+
+
+    useEffect(()=>{
+        if(location.pathname.split('/')[1]=== 'pr'){
+
+            Cookies.set('currentLang','persian' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('persian');
+        }else if(location.pathname.split('/')[1] === 'en'){
+            Cookies.set('currentLang','english' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('english');
+        }else if(location.pathname.split('/')[1] === 'ar'){
+            Cookies.set('currentLang','arabic' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('arabic');
+        }
+    },[])
     //----------------------------------http req--------------------------------------
         
             // get products
@@ -160,7 +176,7 @@ const ShowAllListPage = () =>{
                                                     <h5 className={Style.lastestProductTitleNormal}>{queryParams.get('title')}</h5>
                                                 </div>
                                                 <div className={Style.topToolTip}>
-                                                    <button><FilterAltIcon sx={{fontSize:'32px' , color:'#1043A9'}}></FilterAltIcon><h5>فیلتر</h5></button>
+                                                    <button><FilterAltIcon sx={{fontSize:'32px' , color:'#1043A9'}}></FilterAltIcon><h5>{langCtx.language === 'persian'?'فیلتر':langCtx.language === 'english'?'filter':langCtx.language ==='arabic'?'منقي':null}</h5></button>
                                                     <h5 className={Style.lastestProductTitleResponsive}>{queryParams.get('title')}</h5>
                                                 </div>
                                             </Col>
@@ -199,7 +215,7 @@ const ShowAllListPage = () =>{
 
                                         :
                                         <div style={{ position:'absolute' , top:'30%'}}>
-                                            <NoDataFigure msg='محصولی وجود ندارد'></NoDataFigure>
+                                            <NoDataFigure msg={langCtx.language === 'persian'?'محصولی وجود ندارد':langCtx.language === 'english'?'there are no products':langCtx.language ==='arabic'?'لا يوجد منتجات':null}></NoDataFigure>
                                         </div>
                                         }
 

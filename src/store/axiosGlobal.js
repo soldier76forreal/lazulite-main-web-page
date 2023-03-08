@@ -5,7 +5,7 @@ const AxiosGlobal = React.createContext({
 });
 export const AxiosGlobalProvider = (props) =>{
     const contextValue ={
-        defaultTargetApi:'http://localhost:3001'
+        defaultTargetApi:'https://api.lazulitemarble.com'
     }
     return <AxiosGlobal.Provider value={contextValue}>{props.children}</AxiosGlobal.Provider>
 }

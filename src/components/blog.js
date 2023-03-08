@@ -24,6 +24,7 @@ import BlogPostCard from "./tools/blogPostCard";
 import BlogFilter from "./tools/blogFilter";
 import {Helmet} from "react-helmet";
 import ActivePage from "../store/activePage";
+import Cookies from "js-cookie";
 
 const BlogPost = () =>{
     //hooks
@@ -58,7 +59,19 @@ const BlogPost = () =>{
     const [pageLoading , setPageLoading] = useState(true);
     const [pageLoadingAllPage , setPageLoadingAllPage] = useState(true);
     const [showSortModal , setShowSortModal] = useState(false);
-        
+    useEffect(()=>{
+        if(location.pathname.split('/')[1]=== 'pr'){
+
+            Cookies.set('currentLang','persian' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('persian');
+        }else if(location.pathname.split('/')[1] === 'en'){
+            Cookies.set('currentLang','english' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('english');
+        }else if(location.pathname.split('/')[1] === 'ar'){
+            Cookies.set('currentLang','arabic' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('arabic');
+        }
+    },[])
     //----------------------------------http req--------------------------------------
         
             // get products
@@ -92,14 +105,12 @@ const BlogPost = () =>{
         
                 }
             }
-
             useEffect(() => {
                 activePage.activePageFn('blog');
             }, []);
-
+            
             useEffect(() => {
                 getProducts();
-        
                 const half =Math.round(maxPage/2);
                 let to = maxPage;
                 if(currentPage + half >= totalPage){
@@ -110,7 +121,6 @@ const BlogPost = () =>{
                 let from = to - maxPage;
                 setItems(Array.from({length:maxPage},(_,i) => (i+1) + from));
         }, [currentPage , queryParams.get('filter')]);
-
 
         useEffect(()=>{
             setPageLoadingAllPage(false);
@@ -161,7 +171,7 @@ const BlogPost = () =>{
             return(
                 <Fragment>
                         <Helmet>
-                            <title>{langCtx.language === 'english' ?'blog':langCtx.language === 'persian' ?'وبلاگ':langCtx.language === 'arabic' ?'test':null}</title>
+                            <title>{langCtx.language === 'english' ?'blog':langCtx.language === 'persian' ?'وبلاگ':langCtx.language === 'arabic' ?'مدونة':null}</title>
                             {/* <meta name="description" content={product.pageDescription} /> */}
                         </Helmet>
                     {/* footer */}
@@ -170,7 +180,7 @@ const BlogPost = () =>{
                     <MainNav></MainNav>
                     <SortModal topBarMode='blog' setShowSortModal={setShowSortModal} closeModalFn={()=>{setShowSortModal(false)}} showModal={showSortModal} ></SortModal>
 
-                            <div  className={Style.wapper}>
+                            <div style={{marginBottom:'20px'}} className={Style.wapper}>
                                 <Row style={{width:'100%'  , padding:'0px' , margin:'0px'}} dir="rtl">
 
                                         <Row ref={ref} style={{padding:'0px' , margin:'0px'}}>
@@ -179,7 +189,7 @@ const BlogPost = () =>{
                                                     <BlogFilter></BlogFilter>
                                                 </div>
                                                 <div className={Style.topToolTip}>
-                                                    <button onClick={()=>{setShowSortModal(true)}}><FilterListIcon sx={{fontSize:'32px' , color:'#1043A9'}}></FilterListIcon><h5>مرتب سازی</h5></button>
+                                                    <button onClick={()=>{setShowSortModal(true)}}><FilterListIcon sx={{fontSize:'32px' , color:'#1043A9'}}></FilterListIcon><h5>{langCtx.language === 'persian' ? 'مرتب سازی':langCtx.language === 'english' ? 'order':langCtx.language === 'arabic' ? 'ترتيب':null}</h5></button>
                                                 </div>
                                             </Col>
                                         </Row>
@@ -210,7 +220,7 @@ const BlogPost = () =>{
                                             </Row>
                                         :
                                         <div  className={Style.noDataFigureDiv}>
-                                            <NoDataFigure msg='وبلاگی برای نمایش وجود ندارد'></NoDataFigure>
+                                            <NoDataFigure msg={langCtx.language === 'persian' ? 'وبلاگی برای نمایش وجود ندارد':langCtx.language === 'english' ? 'There is no blog to display':langCtx.language === 'arabic' ? 'لا توجد مدونة لعرضها':null}></NoDataFigure>
                                         </div>
                                         }
 

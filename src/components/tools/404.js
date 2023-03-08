@@ -3,8 +3,10 @@ import Footer from "../footer";
 import MainNav from "./mainNav";
 import Opps from "../../assets/opps.png";
 import Style from './404.module.css';
-import { Link } from "react-router-dom";
+
+import { Link, useLocation } from "react-router-dom";
 const Error404 = () =>{
+    const location = useLocation()
     return(
         <Fragment>
             <Footer></Footer>
@@ -18,7 +20,7 @@ const Error404 = () =>{
                     <h3>صفحه مورد نظر شما یافت نشد</h3>
                 </div>
                 <div className={Style.backToHome}>
-                    <Link to='/'><button>خانه</button></Link>
+                    <Link to={`/${location.pathname.split('/')[1]}`}><button>خانه</button></Link>
                 </div>
             </div>
         </Fragment>

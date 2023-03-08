@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import ProductCard from './productCard';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Language from '../../store/language';
 
 
@@ -56,6 +56,7 @@ import Language from '../../store/language';
                 dotsClass: `slick-dots slick-thumb customStyle`,
                 infinite: true,
                 speed: 500,
+
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 initialSlide: 0,
@@ -78,42 +79,25 @@ import Language from '../../store/language';
   const CardSlider =(props)=>{
     const langCtx = useContext(Language);
     const [dataToRender , setDataToRender] = useState();
-    useEffect(() => {
-      if(props.data !== undefined){
-        var temp = [...props.data];
-        temp.sort(function (a, b) {
-          var dateA = new Date(a.insertdate), dateB = new Date(b.insertdate)
-          return dateA - dateB
-        });
-        var last = [];
-        for(var i=0 ; temp.length > i ; i++){
-          if(temp.length-i < 12){
-            last.push(temp[i]);
-          }
-        }
-        setDataToRender([...last.reverse()]);
-        console.log(last)
-      }
-
-    }, []);
+    const location = useLocation();
     return(
       <div className='wapperDivCardSlider'>
-      {langCtx.language === 'english' ?
           <div  className='cardSliderTopSection'>
-              <h2 style={{width:'100%' , float:'left' , textAlign:'left' , padding:'0px 0px 0px 20px'}}>{props.cardName}</h2>
-              <Link style={{ float:'right' , textAlign:'right'}} to={`/fullList?lable=${props.listType}&title=${props.cardName}`}><button style={{ padding:'0px 20px 0px 0px' , right:'0px' , left:'auto'}}>{langCtx.language === 'english' ?'Show All':'نمایش همه'}<span style={{marginLeft:'6px' }}><ArrowForwardIcon style={{transform:'rotate(0deg)'}} className='btnArrow' ></ArrowForwardIcon></span></button></Link>
+              <h2 style={{width:'100%' ,  float:'left' , textAlign:'left' , padding:'0px 0px 0px 20px'}}>{props.cardName}</h2>
+              {props.listType === 'last'?
+                <Link style={{ float:'right' , textAlign:'right'}} to={`/${location.pathname.split('/')[1]}/fullList?lable=${props.listType}&title=${props.cardName}`}><button style={{ padding:'0px 20px 0px 0px' , right:'0px' , left:'auto'}}>{langCtx.language === 'english' ?'Show All':langCtx.language === 'arabic' ?'عرض الكل':langCtx.language === 'persian' ?'نمایش همه':null}<span style={{marginLeft:'6px' }}><ArrowForwardIcon style={{transform:'rotate(0deg)'}} className='btnArrow' ></ArrowForwardIcon></span></button></Link>
+              :props.listType === 'travertin'?
+                <Link style={{ float:'right' , textAlign:'right'}} to={props.link}><button style={{ padding:'0px 20px 0px 0px' , right:'0px' , left:'auto'}}>{langCtx.language === 'english' ?'Show All':langCtx.language === 'arabic' ?'عرض الكل':langCtx.language === 'persian' ?'نمایش همه':null}<span style={{marginLeft:'6px' }}><ArrowForwardIcon style={{transform:'rotate(0deg)'}} className='btnArrow' ></ArrowForwardIcon></span></button></Link>
+              :props.listType === 'granite'?
+                <Link style={{ float:'right' , textAlign:'right'}} to={props.link}><button style={{ padding:'0px 20px 0px 0px' , right:'0px' , left:'auto'}}>{langCtx.language === 'english' ?'Show All':langCtx.language === 'arabic' ?'عرض الكل':langCtx.language === 'persian' ?'نمایش همه':null}<span style={{marginLeft:'6px' }}><ArrowForwardIcon style={{transform:'rotate(0deg)'}} className='btnArrow' ></ArrowForwardIcon></span></button></Link>
+              :props.listType === 'marmarit'?
+              <Link style={{ float:'right' , textAlign:'right'}} to={props.link}><button style={{ padding:'0px 20px 0px 0px' , right:'0px' , left:'auto'}}>{langCtx.language === 'english' ?'Show All':langCtx.language === 'arabic' ?'عرض الكل':langCtx.language === 'persian' ?'نمایش همه':null}<span style={{marginLeft:'6px' }}><ArrowForwardIcon style={{transform:'rotate(0deg)'}} className='btnArrow' ></ArrowForwardIcon></span></button></Link>
+            :null}
         </div>
-        :      
-        <div className='cardSliderTopSection'>
-              <Link style={{width:'100%'}} to={`/fullList?lable=${props.listType}&title=${props.cardName}`}><button><span><ArrowForwardIcon className='btnArrow' ></ArrowForwardIcon></span>نمایش همه</button></Link>
-              <h2 style={{width:'100%' }}>{props.cardName}</h2>
-        </div>
- }
-
     <hr className='dotted'></hr>
     <Slider {...settings}>
-      {dataToRender !== undefined?
-              dataToRender.map(dt=>{
+      {props.data !== undefined?
+              props.data.map(dt=>{
                 return(
                   <div className='cardDivCardSlider'>
                     <ProductCard data={dt}></ProductCard>

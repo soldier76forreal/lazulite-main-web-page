@@ -1,16 +1,16 @@
 .showMoreStyle{
-    color: aliceblue;
+    color: rgb(0, 0, 0) !important;
 
 }
 .showLessOrMore{
-    color: #d1d1d1;
+    color: #005980 !important;
     
 }
 .showLessOrMore:hover{
-    color: #90e5f0;
+    color: #90e5f0 ;
 }
 .showMoreStyle span{
-    color:#FFFFFF;
+    color:#000000 !important;
     font-family: Dana2;
     line-height: 28px;
     font-size: 14px;
@@ -29,7 +29,7 @@
 
 
     .showMoreStyle span{
-        color:#FFFFFF;
+        color:#000000 !important;
         font-family: Dana2;
         line-height: 10px;
         font-size: 10px;
@@ -41,8 +41,7 @@
         margin-bottom: 3px;
 
     }
-
-
+    
 
     
  }

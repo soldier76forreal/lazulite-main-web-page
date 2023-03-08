@@ -124,10 +124,17 @@ const CommentBox = (props)=>{
                   </div>
                 :
                 <div className="charCounter">
-                  امتیاز شما به این محصول:{props.ratedBefore.rate} از 5
+                      {langCtx.language === 'arabic'?
+                        `تقييمك لهذا المنتج:${props.ratedBefore.rate} من 5`
+                      :langCtx.language === 'persian'?
+                        `امتیاز شما به این محصول:${props.ratedBefore.rate} از 5`
+                      :langCtx.language === 'english'?
+                        `your rating for this product:${props.ratedBefore.rate} / 5`
+                      :null}
                 </div>
-                
+
              }
+
 
               </div>
               <div>

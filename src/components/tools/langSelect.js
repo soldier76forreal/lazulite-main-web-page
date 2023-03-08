@@ -8,15 +8,18 @@ import Language from '../../store/language';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import jsCookie from 'js-cookie';
 import Loading from '../../store/loading';
+import { useNavigate } from 'react-router-dom';
+import AxiosGlobal from '../../store/axiosGlobal';
 
 const LangSelect = (props) =>{
     const [openMenu , setOpenMenu] = useState(false);
+    const axiosGlobal = useContext(AxiosGlobal);
+    const navigate = useNavigate();
     const loadingCtx = useContext(Loading);
     const openList = () =>{
         if(props.closeLangPicker === true){
             setOpenMenu(false);
             props.setCloseLangPicker(false);
-
         }else if(props.closeLangPicker === false){
             setOpenMenu(true);
             props.setCloseLangPicker(true);
@@ -29,8 +32,17 @@ const LangSelect = (props) =>{
         setOpenMenu(false);  
         props.setCloseLangPicker(false);
         loadingCtx.loadingStatus(false);
-    }
-    const list = [{showName:'فارسی' , value:'persian' , icon:Pr} , {showName:'English' , value:'english' , icon:En} , {showName:'العربی' , value:'arabic' , icon:Ar} ]
+        if(e.currentTarget.value === 'persian'){
+            navigate('/pr')
+        }else if(e.currentTarget.value === 'english'){
+            navigate('/en')
+
+        }else if(e.currentTarget.value === 'arabic'){
+            navigate('/ar')
+
+        }
+        }
+    const list = [{showName:'فارسی' , value:'persian' , icon:Pr} , {showName:'English' , value:'english' , icon:En} , {showName:'العربية' , value:'arabic' , icon:Ar} ]
     const langCtx = useContext(Language);
     return(
         <Fragment>

@@ -7,7 +7,7 @@ import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import axios from 'axios';
 import AuthContext from '../../../store/auth';
-import {Route , Switch  , Redirect, Link , useHistory, useNavigate , useParams} from "react-router-dom";
+import {Route , Switch  , Redirect, Link , useHistory, useNavigate , useParams, useLocation} from "react-router-dom";
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import blg from '../../../assets/sts.jpg';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
@@ -42,6 +42,7 @@ const ResetPassword = () =>{
     const AuthCtx = useContext(AuthContext);
     const axiosGlobal = useContext(AxiosGlobal);
     const params = useParams();
+    const location = useLocation();
     const navigation = useNavigate();
     useEffect(() => {
         document.title = "بازیابی کلمه عبور"
@@ -146,7 +147,7 @@ const ResetPassword = () =>{
                                     <div className={Style.inputDiv}> 
                                             <VpnKeyIcon style={langCtx.language === 'english' ?{marginLeft:'11px', marginTop:'13px', marginRight:'0px' }:{marginLeft:'0px', marginRight:'13px'}} fontSize='medium' className={Style.icon}></VpnKeyIcon>
                                                 <input style={langCtx.language === 'english' ?{textAlign:'left',padding:'13px 20px 13px 38px'}:{padding:'13px 38px 13px 20px' ,textAlign:'right'}} onChange={getPasswordAgain} autoComplete='false' type={passwordVisibiltyStatus2 === false ?'password' :passwordVisibiltyStatus2 === true ? 'text':null}   placeholder={langCtx.language === 'english' ?"Password Again":'تکرار کلمه عبور'} className={Style.input}></input>
-                                            <VisibilityIcon style={langCtx.language === 'english' ?{right:'0px' , left:'auto' , marginRight:'10px'}:{right:'auto' , left:'0px' , marginLeft:'0px'}} onClick={passwordVisibil2}  fontSize='medium' className={passwordVisibiltyStatus2 === true ? `${Style.activeVisibility} ${Style.visibilityIconStyle}` : passwordVisibiltyStatus2 === false ? `${Style.visibilityIconStyle}`:null}></VisibilityIcon>
+                                            <VisibilityIcon style={langCtx.language === 'english' ?{right:'0px' , left:'auto' , marginRight:'10px'}:{right:'auto' , left:'0px' , marginLeft:'10px'}} onClick={passwordVisibil2}  fontSize='medium' className={passwordVisibiltyStatus2 === true ? `${Style.activeVisibility} ${Style.visibilityIconStyle}` : passwordVisibiltyStatus2 === false ? `${Style.visibilityIconStyle}`:null}></VisibilityIcon>
 
                                     </div>
                                 <div className={Style.errorDiv}>
@@ -163,7 +164,7 @@ const ResetPassword = () =>{
                     <div dir={langCtx.language === 'english' ?'ltr':'rtl'} className={Style.resetPasswordDivDiv}>
                         <div style={{backgroundColor:'#b7f0bf'}} className={Style.sendEmailMsgDiv}>
                             <h4>{langCtx.language === 'english' ?"Password updated!":'کلمه عبور بروزرسانی شد'}</h4>
-                            <Link to="/login"><h5 style={{ textAlign:'center' , width:'100%' , margin:'0px' , fontSize:'16px' , cursor:'pointer' , opacity:"0.6" , padding:'0px'}}  className={Style.logInBtn}>{langCtx.language === 'english' ?"Log In":'ورود'}</h5></Link>
+                            <Link to={`/${location.pathname.split('/')[1]}/login`}><h5 style={{ textAlign:'center' , width:'100%' , margin:'0px' , fontSize:'16px' , cursor:'pointer' , opacity:"0.6" , padding:'0px'}}  className={Style.logInBtn}>{langCtx.language === 'english' ?"Log In":'ورود'}</h5></Link>
                         </div>
                     </div>
                 :null} 

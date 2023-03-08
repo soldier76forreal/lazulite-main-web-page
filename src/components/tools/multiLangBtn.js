@@ -6,12 +6,20 @@ import eng from '../../assets/eng.png';
 import { useContext } from 'react';
 import Language from '../../store/language';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 const MultiLangBtn = () =>{
-    
+    const navigation = useNavigate();
     const langCtx = useContext(Language);
     const setLang = (e)=>{
             Cookies.set('currentLang',e.currentTarget.value , {sameSite: 'strict', secure: false , expires:8});
             langCtx.activeLangFn(e.currentTarget.value);
+            if(langCtx === 'persian'){
+                navigation('/pr');
+            }else if(langCtx === 'english'){
+                navigation('/en');
+            }else if(langCtx === 'arabic'){
+                navigation('/ar')
+            }
     }
     return(
 

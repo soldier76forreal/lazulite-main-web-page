@@ -8,6 +8,7 @@ import {Pagination,Navbar,Row  , Nav ,NavDropdown , Container ,Form ,FormControl
 import AuthContext from "../store/auth";
 import Language from "../store/language";
 import * as React from 'react';
+import Cookies from "js-cookie";
 
 import moment from 'jalali-moment';
 import axios from 'axios';
@@ -22,9 +23,25 @@ const ShowBlog = () =>{
     const [post , setPost] = useState({});
     const [date  , setDate] = useState('');
     const activePage = useContext(ActivePage);
+    const location = useLocation();
     useEffect(() => {
         activePage.activePageFn('blog');
     }, []);
+
+    useEffect(()=>{
+        if(location.pathname.split('/')[1]=== 'pr'){
+
+            Cookies.set('currentLang','persian' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('persian');
+        }else if(location.pathname.split('/')[1] === 'en'){
+            Cookies.set('currentLang','english' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('english');
+        }else if(location.pathname.split('/')[1] === 'ar'){
+            Cookies.set('currentLang','arabic' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('arabic');
+        }
+    },[])
+
     const getProduct = async () =>{
 
         try{

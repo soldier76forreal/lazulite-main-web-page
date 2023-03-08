@@ -7,7 +7,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import axios from "axios";
 import AuthContext from '../../../store/auth';
-import {Route , Switch  , Redirect, Link , useNavigate , useHistory} from "react-router-dom";
+import {Route , Switch  , Redirect, Link , useNavigate , useHistory, useLocation} from "react-router-dom";
 import ReactDom from "react-dom";
 import blg from '../../../assets/sts.jpg';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';import {Navbar,Row ,Container , Nav ,NavDropdown ,Form ,FormControl ,Button, Col} from 'react-bootstrap';
@@ -24,6 +24,7 @@ const SignUp = (props) =>{
     const navigate = useNavigate();
     const activePage = useContext(ActivePage);
     const langCtx = useContext(Language);
+    const location = useLocation();
     useEffect(() => {
         document.title = "ثبت نام"
     }, []);
@@ -134,7 +135,7 @@ const SignUp = (props) =>{
                                             <div className={Style.inputDiv}> 
                                                 <VpnKeyIcon style={langCtx.language === 'english' ?{marginLeft:'11px', marginTop:'13px', marginRight:'0px' }:{marginLeft:'0px', marginRight:'13px'}}  fontSize='medium' className={Style.icon}></VpnKeyIcon>
                                                     <input style={langCtx.language === 'english' ?{textAlign:'left',padding:'13px 20px 13px 38px'}:{padding:'13px 38px 13px 20px' ,textAlign:'right'}} onChange={gettingPassword} autoComplete='false' type={passwordVisibiltyStatus === false ?'password' :passwordVisibiltyStatus === true ? 'text':null} placeholder={langCtx.language === 'english' ?"Password":'کمه عبور'} className={Style.input}></input>
-                                                <VisibilityIcon onClick={passwordVisibil} style={langCtx.language === 'english' ?{right:'0px' , left:'auto' , marginRight:'10px'}:{right:'auto' , left:'0px' , marginLeft:'0px'}} fontSize='medium' className={passwordVisibiltyStatus === true ? `${Style.activeVisibility} ${Style.visibilityIconStyle}` : passwordVisibiltyStatus === false ? `${Style.visibilityIconStyle}`:null}></VisibilityIcon>
+                                                <VisibilityIcon onClick={passwordVisibil} style={langCtx.language === 'english' ?{right:'0px' , left:'auto' , marginRight:'10px'}:{right:'auto' , left:'0px' , marginLeft:'10px'}} fontSize='medium' className={passwordVisibiltyStatus === true ? `${Style.activeVisibility} ${Style.visibilityIconStyle}` : passwordVisibiltyStatus === false ? `${Style.visibilityIconStyle}`:null}></VisibilityIcon>
 
                                             </div>           
                                             <div className={Style.errorDiv}>
@@ -146,7 +147,7 @@ const SignUp = (props) =>{
                                             </div>
                                                 <div className={Style.logInDiv}>
                                                     <h5>{langCtx.language === 'english' ?'Already have an account?':'قبلا ثبت نام کرده اید؟'}</h5>
-                                                    <Link to='/login'><h5 className={Style.logInBtn}>{langCtx.language === 'english' ?'Log In':'ورود'}</h5></Link>
+                                                    <Link to={`/${location.pathname.split('/')[1]}/login`}><h5 className={Style.logInBtn}>{langCtx.language === 'english' ?'Log In':'ورود'}</h5></Link>
                                                 </div>
                                             </div>
  

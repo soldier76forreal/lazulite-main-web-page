@@ -7,7 +7,7 @@ import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import axios from 'axios';
 import AuthContext from '../../../store/auth';
-import {Route , Switch  , Redirect, Link , useHistory, useNavigate} from "react-router-dom";
+import {Route , Switch  , useLocation  , Redirect, Link , useHistory, useNavigate} from "react-router-dom";
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import blg from '../../../assets/sts.jpg';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
@@ -38,6 +38,7 @@ const ForgetPassword = () =>{
     const axiosGlobal = useContext(AxiosGlobal);
     const activePage = useContext(ActivePage);
     const navigation = useNavigate();
+    const location = useLocation();
     useEffect(() => {
         document.title = "بازیابی کلمه عبور"
     }, []);
@@ -117,7 +118,7 @@ const ForgetPassword = () =>{
                             <button onClick={resetPass} className={Style.signUpBtn}>{loadingStatus === true ?  <Loader marginBottom={'2px'} borderTop={'3px solid #1043A9'} border={'#fff 3px solid'} width={'25px'} height={'25px'}></Loader> : langCtx.language === 'english' ?"Send":'ارسال'}</button>
                         </div>
                             <div style={{opacity:"0.6"}} className={Style.logInDiv}>
-                                <Link to='/logIn'><h5 className={Style.logInBtn}>{langCtx.language === 'english' ?"Log In":'ورود'}</h5></Link>
+                                <Link to={`/${location.pathname.split('/')[1]}/logIn`}><h5 className={Style.logInBtn}>{langCtx.language === 'english' ?"Log In":'ورود'}</h5></Link>
                             </div>
                         </div>
                 </div>

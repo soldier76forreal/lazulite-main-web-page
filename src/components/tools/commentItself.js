@@ -123,7 +123,7 @@ let CommentItself = (props) =>{
                         <div className={Style.commentItselfDateDiv}>
                             <h4 >{moment(props.comment.comment.insertDate, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD')}</h4>
                         </div>
-                        <div  dir={langCtx.language === 'english' ?'ltr':'rtl'}  className={Style.commentItselfProfDiv}>
+                        <div  dir='rtl'  className={Style.commentItselfProfDiv}>
                             <div className={Style.commentProfItselfImage}>
                                 <TextAvatar text={`${props.comment.user.firstName} ${props.comment.user.lastName}`}></TextAvatar>
                             </div>
@@ -163,11 +163,8 @@ let CommentItself = (props) =>{
                                                 <button  value={props.comment.comment._id} onClick={dislike} style={{background:'none' , border:'none'}}>
                                                     <FontAwesomeIcon className={Style.commentDislikeBtn} size="lg" icon="thumbs-down" color="#DCDCDC" />
                                                 </button>
-
                                             }                            
                                         </div>
-                                    
-
                                 </div>
                                 :authCtx.decoded === undefined ?
                                 <div className={Style.commentLikeAndDislike}>

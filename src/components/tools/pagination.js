@@ -6,13 +6,6 @@ const Pag = (props) =>{
     // const [prevItem , setPrevItem] = useState(props.prev);
     // const [nextItem , setNextItem] = useState(props.next);
 
-    
-
-
-
-
-
-
     return(
       <div className='pg'>
           <ul className='pg_ul'>

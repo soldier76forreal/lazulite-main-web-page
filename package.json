@@ -24,6 +24,7 @@
     "jalali-moment": "^3.3.11",
     "js-cookie": "^3.0.1",
     "jwt-decode": "^3.1.2",
+    "lottie-react": "^2.2.1",
     "lottie-web": "^5.9.1",
     "moment": "^2.29.1",
     "pswp": "^4.5.0",

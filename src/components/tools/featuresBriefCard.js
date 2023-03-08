@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Pagination,Navbar,Row,  Nav ,NavDropdown , Container ,Form ,FormControl ,Button, Col} from 'react-bootstrap';
 import ShowMore from './showMore';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link  , useLocation} from 'react-router-dom';
 import Language from '../../store/language';
 
 const blackCard = {
@@ -17,6 +17,7 @@ const blackCard = {
 
 const FeaturesBriefCard =(props)=>{
     const langCtx = useContext(Language);
+    const location = useLocation();
     return(
         <div dir='ltr' style={props.customColor} className={Style.briefCardRiviewDiv}>
         <Row>
@@ -30,6 +31,8 @@ const FeaturesBriefCard =(props)=>{
                     <h2 style={langCtx.language === 'english' ?{textAlign:'left' , textJustify:'left' , marginRight:'0px' , marginLeft:'18px'}:null}>{props.name}</h2>
                     <div className={Style.responsive}>
                         <ShowMore
+                            showMore={langCtx.language === 'english' ?'show more':langCtx.language === 'arabic' ? 'أظهر المزيد' : langCtx.language === 'persian' ?'نمایش بیشتر' :null}
+                            showLess={langCtx.language === 'english' ?'show less':langCtx.language === 'arabic' ? 'تظهر أقل' : langCtx.language === 'persian' ?'نمایش کمتر' :null}
                             text={
                                 <p style={langCtx.language === 'english' ?{textAlign:'left' , textJustify:'left'}:null} dir={langCtx.language === 'english' ?'ltr':'rtl'}>
                                     {props.content}
@@ -45,7 +48,7 @@ const FeaturesBriefCard =(props)=>{
                     </div>
 
                     <div dir='ltr' className={Style.moreBtn}>
-                         <Link to={`/productList?id=${props.id}&title=${props.name}&state=category`}><button><span>{langCtx.language === 'english' ?'Show Products':'نمایش محصولات'}</span><ArrowForwardIcon className={Style.arrowDiv} sx={{color:'#fff'}}></ArrowForwardIcon></button></Link>
+                         <Link to={`/${location.pathname.split('/')[1]}/productList?id=${props.id}&title=${props.name}&state=category`}><button><span>{langCtx.language === 'english' ?'Show Products':langCtx.language === 'persian' ?'نمایش محصولات':langCtx.language === 'arabic' ?'عرض المنتجات':null}</span><ArrowForwardIcon className={Style.arrowDiv} sx={{color:'#fff'}}></ArrowForwardIcon></button></Link>
                     </div>
                 </div>
             </Col>

@@ -34,13 +34,13 @@
    padding-top: 25px;
 }
 .briefCardRiviewText h2{
-    color:#FFFFFF;
+    color:#1043A9;
     font-family: Dana1;
     margin-right: 40px;
 
  }
  .briefCardRiviewText p{
-    color:#FFFFFF;
+    color:#000000 !important;
     font-family: Dana2;
     line-height: 28px;
     font-size: 14px;
@@ -113,7 +113,7 @@
     }
     
     .briefCardRiviewText h2{
-        color:#FFFFFF;
+        color:#1043A9;
         font-size: 26px;
         font-family: Dana1;
         margin-right: 35px;
@@ -171,7 +171,7 @@
      }
 
     .briefCardRiviewText h4{
-        color:#FFFFFF;
+        color:#1043A9;
         font-family: Dana1;
         margin-right: 30px;
         margin-top: 10px;
@@ -229,7 +229,7 @@
          margin: 0px;
      }
     .briefCardRiviewText h2{
-        color:#FFFFFF;
+        color:#1043A9;
         font-family: Dana1;
         margin-right: 35px;
         margin-top: 19px;
@@ -324,7 +324,7 @@
          margin: 0px;
      }
     .briefCardRiviewText h2{
-        color:#FFFFFF;
+        color:#1043A9;
         font-size: 18px;
         font-family: Dana1;
         margin-right: 35px;
@@ -333,7 +333,7 @@
     
      }
      .briefCardRiviewText p{
-        color:#FFFFFF;
+        color:#000000 !important;
         font-family: Dana2;
         line-height: 21px;
         font-size: 12px;
@@ -432,7 +432,7 @@
          margin: 0px;
      }
     .briefCardRiviewText h2{
-        color:#FFFFFF;
+        color:#1043A9;
         font-size: 15px;
         font-family: Dana1;
         margin-right: 30px;
@@ -441,7 +441,7 @@
     
      }
      .briefCardRiviewText p{
-        color:#FFFFFF;
+        color:#000000 !important;
         font-family: Dana2;
         line-height: 21px;
         font-size: 12px;

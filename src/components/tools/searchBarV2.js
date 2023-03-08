@@ -22,7 +22,7 @@ let SearchBarV2 = (props)=>{
         :
             <div dir='rtl' className={Style.searchBarDiv}>
                 <div  className={Style.searchBtn}>{props.searchLoadingStatus === true?<Loader marginBottom={'2px'} borderTop={'3px solid #fff'} border={'#1043A9 3px solid'} width={'22px'} height={'22px'}></Loader>:props.searchLoadingStatus === false?<SearchIcon sx={{color:'#1043A9'}}></SearchIcon>:null}</div>
-                <input onChange={props.onChange} placeholder='جستجو...' className={Style.searchBar} type='search'></input>
+                <input onChange={props.onChange} placeholder={langCtx.language === 'persian' ? 'جستجو...':langCtx.language === 'english' ? 'search...':langCtx.language === 'arabic'? 'بحث...':null} className={Style.searchBar} type='search'></input>
                 {/* <div className={Style.clearBtn}>            
                     <FontAwesomeIcon size='lg' color='#000' icon='times'></FontAwesomeIcon>
                 </div> */}

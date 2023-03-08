@@ -7,7 +7,7 @@ import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import axios from 'axios';
 import AuthContext from '../../../store/auth';
-import {Route , Switch  , Redirect, Link , useHistory, useNavigate} from "react-router-dom";
+import {Route , Switch  , Redirect, Link , useHistory, useNavigate, useLocation} from "react-router-dom";
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import blg from '../../../assets/sts.jpg';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
@@ -19,6 +19,7 @@ import AxiosGlobal from "../../../store/axiosGlobal";
 import CloseIcon from '@mui/icons-material/Close';
 import ActivePage from "../../../store/activePage";
 import Language from "../../../store/language";
+
 const LogInNoModal = (props) =>{
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
@@ -31,6 +32,7 @@ const LogInNoModal = (props) =>{
     const activePage = useContext(ActivePage);
     const langCtx = useContext(Language);
     const navigation = useNavigate();
+    const location = useLocation();
     useEffect(() => {
         document.title = "ورود"
     }, []);
@@ -111,10 +113,10 @@ const LogInNoModal = (props) =>{
                                                     <div className={Style.inputDiv}> 
                                                             <VpnKeyIcon style={langCtx.language === 'english' ?{marginLeft:'11px', marginTop:'13px', marginRight:'0px' }:{marginLeft:'0px', marginRight:'13px'}} fontSize='medium' className={Style.icon}></VpnKeyIcon>
                                                                 <input style={langCtx.language === 'english' ?{padding:'13px 20px 13px 38px' , textAlign:'left'}:{padding:'13px 38px 13px 20px' , textAlign:'right'}} onChange={getPassword} autoComplete='false' type={passwordVisibiltyStatus === false ?'password' :passwordVisibiltyStatus === true ? 'text':null} placeholder={langCtx.language === 'english' ?"password":'کلمه عبور'} className={Style.input}></input>
-                                                            <VisibilityIcon style={langCtx.language === 'english' ?{right:'0px' , left:'auto' , marginRight:'10px'}:{right:'auto' , left:'0px' , marginLeft:'0px'}} onClick={passwordVisibil}  fontSize='medium' className={passwordVisibiltyStatus === true ? `${Style.activeVisibility} ${Style.visibilityIconStyle}` : passwordVisibiltyStatus === false ? `${Style.visibilityIconStyle}`:null}></VisibilityIcon>
+                                                            <VisibilityIcon style={langCtx.language === 'english' ?{right:'0px' , left:'auto' , marginRight:'10px'}:{right:'auto' , left:'0px' , marginLeft:'10px'}} onClick={passwordVisibil}  fontSize='medium' className={passwordVisibiltyStatus === true ? `${Style.activeVisibility} ${Style.visibilityIconStyle}` : passwordVisibiltyStatus === false ? `${Style.visibilityIconStyle}`:null}></VisibilityIcon>
                                                     </div>
                                                     <div className={Style.logInDiv}>
-                                                        <Link to='/forgetPassword'>
+                                                        <Link to={`/${location.pathname.split('/')[1]}/forgetPassword`}>
                                                             <h5 className={Style.logInBtn}>
                                                                 {langCtx.language === 'english' ?'Forgot your password?':'فراموشی کلمه عبور'}
                                                             </h5>
@@ -128,7 +130,7 @@ const LogInNoModal = (props) =>{
                                                     </div>
                                                     <div className={Style.logInDiv}>
                                                         <h5>{langCtx.language === 'english' ?"Don't have an account?":'هنوز ثبت نام نکرده اید؟'}</h5>
-                                                        <Link to='/signUp'><h5 className={Style.logInBtn}>{langCtx.language === 'english' ?"Sign up":'ثبت نام'}</h5></Link>
+                                                        <Link to={`/${location.pathname.split('/')[1]}/signUp`}><h5 className={Style.logInBtn}>{langCtx.language === 'english' ?"Sign up":'ثبت نام'}</h5></Link>
                                                     </div>
                                                 </div>
                                             </Col>

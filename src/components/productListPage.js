@@ -21,6 +21,7 @@ import SortModal from "./tools/sortModal";
 import SortTopToolBar from "./tools/sortTopToolBar";
 import ProductCardHorizon from "./tools/productCardHorizon";
 import Footer from "./footer";
+import Cookies from "js-cookie";
 
 const ProductListPage = () =>{
     //hooks
@@ -54,6 +55,20 @@ const ProductListPage = () =>{
     const [pageLoadingAllPage , setPageLoadingAllPage] = useState(true);
     const [showSortModal , setShowSortModal] = useState(false);
         
+
+
+    useEffect(()=>{
+        if(location.pathname.split('/')[1]=== 'pr'){
+            Cookies.set('currentLang','persian' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('persian');
+        }else if(location.pathname.split('/')[1] === 'en'){
+            Cookies.set('currentLang','english' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('english');
+        }else if(location.pathname.split('/')[1] === 'ar'){
+            Cookies.set('currentLang','arabic' , {sameSite: 'strict', secure: false , expires:8});
+            langCtx.activeLangFn('arabic');
+        }
+    },[])
     //----------------------------------http req--------------------------------------
         
             // get products
@@ -101,7 +116,7 @@ const ProductListPage = () =>{
                 }
                 let from = to - maxPage;
                 setItems(Array.from({length:maxPage},(_,i) => (i+1) + from));
-        }, [currentPage , queryParams.get('filter')]);
+        }, [currentPage , queryParams.get('filter') , queryParams.get('title') , queryParams.get('state') , queryParams.get('id')]);
 
 
         useEffect(()=>{
@@ -125,7 +140,6 @@ const ProductListPage = () =>{
                     history(`/productList?page=${nextPage}&id=${queryParams.get('id')}&title=${queryParams.get('title')}&state=${queryParams.get('state')}&filter=${queryParams.get('filter')}`);
                 }else{
                     history(`/productList?page=${nextPage}&id=${queryParams.get('id')}&title=${queryParams.get('title')}&state=${queryParams.get('state')}`);
-
                 }
             }
         }
@@ -158,9 +172,9 @@ const ProductListPage = () =>{
                     <MainNav></MainNav>
                     <SortModal topBarMode='product' setShowSortModal={setShowSortModal} closeModalFn={()=>{setShowSortModal(false)}} showModal={showSortModal} ></SortModal>
 
-                    <Container  style={{padding:'0px' , maxWidth:'1676px'}}>
+                    <Container  style={{padding:'0px' , marginBottom:'20px' , maxWidth:'1676px'}}>
                             <div style={{ maxWidth:'1676px'}} className={Style.wapper}>
-                                <Row style={{width:'100%'  , padding:'0px' , margin:'0px'}} dir="rtl">
+                                <Row style={{width:'100%'  , padding:'0px' , margin:'0px'}} dir='rtl'>
                                     <Col className={Style.sideBarDiv} style={{ padding:'0px 0px 0px 10px'}} xs={0} md={0} lg={3} xl={3} xxl={2}>
                                         <PriceLimiter></PriceLimiter>
                                         {/* <SizeFilter></SizeFilter> */}
@@ -168,12 +182,12 @@ const ProductListPage = () =>{
                                     <Col  style={{padding:'0px' , margin:'0px'}} xs={12} md={12} lg={9} xl={9} xxl={10}>
                                         <Row style={{padding:'0px' , margin:'0px'}}>
                                             <Col style={{padding:'0px' , margin:'0px'}} xs={12} md={12} lg={12} xl={12} xxl={12}>
-                                                <div className={Style.topFilterSectionDiv}>
+                                                <div style={langCtx.language === 'english'?{textAlign:'left'}:{textAlign:'right'}} className={Style.topFilterSectionDiv}>
                                                     <SortTopToolBar></SortTopToolBar>
                                                 </div>
                                                 <div className={Style.topToolTip}>
-                                                    <button><FilterAltIcon sx={{fontSize:'32px' , color:'#1043A9'}}></FilterAltIcon><h5>فیلتر</h5></button>
-                                                    <button onClick={()=>{setShowSortModal(true)}}><FilterListIcon sx={{fontSize:'32px' , color:'#1043A9'}}></FilterListIcon><h5>مرتب سازی</h5></button>
+                                                    <button><FilterAltIcon sx={{fontSize:'32px' , color:'#1043A9'}}></FilterAltIcon><h5>{langCtx.language === 'persian'?'فیلتر':langCtx.language === 'english'?'filter':langCtx.language === 'arabic'?'منقي':null}</h5></button>
+                                                    <button onClick={()=>{setShowSortModal(true)}}><FilterListIcon sx={{fontSize:'32px' , color:'#1043A9'}}></FilterListIcon><h5>{langCtx.language === 'persian'?'مرتب سازی':langCtx.language === 'english'?'sort':langCtx.language === 'arabic'?'الترتيب':null}</h5></button>
                                                 </div>
                                             </Col>
                                         </Row>
@@ -205,7 +219,7 @@ const ProductListPage = () =>{
                                             </Row>
                                         :
                                         <div  className={Style.noDataFigureDiv}>
-                                            <NoDataFigure msg='محصولی برای نمایش وجود ندارد'></NoDataFigure>
+                                            <NoDataFigure msg={langCtx.language === 'persian'?'محصولی برای نمایش وجود ندارد':langCtx.language === 'english'?'there is not product to display':langCtx.language === 'arabic'?'لا يوجد منتج لعرضه':null}></NoDataFigure>
                                         </div>
                                         }
 
